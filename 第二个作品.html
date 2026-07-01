@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkLog Case Study — Boyi Tan</title>
+  <style>
+    :root {
+      --bg: #fbfbfa;
+      --text: #0f0f0f;
+      --muted: #6f6f6f;
+      --line: #e6e6e3;
+      --soft: #f3f3f1;
+      --card: #ffffff;
+      --nav-height: 64px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      padding-top: var(--nav-height);
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      padding: 0 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(251, 251, 250, 0.86);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .brand { font-size: 15px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-links { display: flex; align-items: center; gap: 44px; color: #555; font-size: 13px; }
+    .nav-links a {
+      position: relative;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: var(--text);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .circle-icon { width: 18px; height: 18px; border: 1.5px solid var(--muted); border-radius: 999px; }
+
+    .section { padding: 72px; border-bottom: 1px solid var(--line); }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.12fr 1fr;
+      gap: 92px;
+      align-items: end;
+      padding-top: 52px;
+    }
+    .hero h1 {
+      font-size: 76px;
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      margin-bottom: 20px;
+    }
+    .hero .subtitle { font-size: 23px; line-height: 1.35; margin-bottom: 44px; }
+    .hero .hook { max-width: 660px; font-size: 25px; line-height: 1.48; letter-spacing: -0.025em; }
+
+    .hero-right {
+      display: grid;
+      gap: 34px;
+      align-self: end;
+      padding-bottom: 8px;
+    }
+    .summary-copy {
+      max-width: 460px;
+      color: #555;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .project-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+    .fact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .fact-text { font-size: 14px; line-height: 1.55; }
+
+    .placeholder {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(135deg, #f8f8f6, #eeeeeb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      overflow: hidden;
+      padding: 28px;
+      text-align: center;
+    }
+    .placeholder.hero-image { height: 500px; }
+    .placeholder.large { aspect-ratio: 16 / 10; min-height: 360px; }
+    .placeholder.vertical { min-height: 520px; }
+    .placeholder-content {
+      max-width: 520px;
+      display: grid;
+      justify-items: center;
+      gap: 16px;
+    }
+    .placeholder-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #555;
+    }
+    .placeholder-note {
+      font-size: 13px;
+      line-height: 1.65;
+      color: #555;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      border-radius: 6px;
+    }
+    .image-icon {
+      width: 54px;
+      height: 44px;
+      border: 2px solid #bdbdb9;
+      border-radius: 6px;
+      position: relative;
+    }
+    .image-icon::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border: 2px solid #bdbdb9;
+      border-radius: 999px;
+      position: absolute;
+      top: 8px;
+      left: 10px;
+    }
+    .image-icon::after {
+      content: "";
+      width: 28px;
+      height: 22px;
+      border-left: 2px solid #bdbdb9;
+      border-top: 2px solid #bdbdb9;
+      transform: rotate(45deg);
+      position: absolute;
+      bottom: -6px;
+      left: 13px;
+    }
+
+    .overview-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 52px;
+    }
+    .overview-block h2 {
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+    .overview-block p {
+      font-size: 18px;
+      line-height: 1.55;
+      letter-spacing: -0.015em;
+      color: #242424;
+    }
+
+    .solution {
+      background: var(--soft);
+      display: grid;
+      grid-template-columns: 0.65fr 1.35fr;
+      gap: 90px;
+      align-items: center;
+    }
+    .solution p {
+      font-size: 26px;
+      line-height: 1.35;
+      letter-spacing: -0.035em;
+      max-width: 900px;
+    }
+
+    .research {
+      display: grid;
+      grid-template-columns: 0.62fr 1.38fr;
+      gap: 96px;
+      align-items: start;
+    }
+    .research h2,
+    .testing h2,
+    .reflection h2 {
+      font-size: 36px;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      margin-bottom: 28px;
+    }
+    .research-copy {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #333;
+      max-width: 470px;
+    }
+
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .evidence-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      min-height: 200px;
+    }
+    .evidence-card h3 {
+      font-size: 20px;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+    .evidence-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 28px;
+    }
+    .quote-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 42px 36px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .quote {
+      font-size: 25px;
+      line-height: 1.3;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+    }
+    .quote-source {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 32px;
+    }
+
+    .insight-pause {
+      background: #f3f3f1;
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+    .insight-pause h2 {
+      max-width: 1160px;
+      font-size: 52px;
+      line-height: 1.08;
+      letter-spacing: -0.06em;
+    }
+    .muted-line { color: #777; }
+
+    .feature-intro {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 90px;
+      align-items: end;
+    }
+    .feature-intro h2 {
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+    .feature-intro p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #333;
+      max-width: 540px;
+    }
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+    .principle {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #333;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 56px;
+      align-items: center;
+      min-height: 720px;
+      border-bottom: 1px solid var(--line);
+    }
+    .feature.reverse { grid-template-columns: 1.15fr 1fr; }
+    .feature-text { max-width: 540px; }
+    .feature-number { font-size: 13px; font-weight: 700; margin-bottom: 28px; }
+    .feature h3 {
+      font-size: 42px;
+      line-height: 1.04;
+      letter-spacing: -0.055em;
+      margin-bottom: 22px;
+    }
+    .feature p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 28px;
+    }
+    .mini-insight {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      margin-top: 30px;
+    }
+    .mini-insight h4 {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .mini-insight p { margin: 0; font-size: 15px; }
+
+    .testing { border-bottom: none; padding-bottom: 32px; }
+    .insight-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .insight-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 30px;
+      min-height: 230px;
+    }
+    .insight-card .num { color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+    .insight-card h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+    .insight-card p { color: #333; font-size: 14px; line-height: 1.7; }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 28px;
+    }
+    .ba-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+    }
+    .ba-card h3 {
+      font-size: 20px;
+      margin-bottom: 14px;
+      letter-spacing: -0.03em;
+    }
+    .ba-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .reflection {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 92px;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      background: var(--soft);
+    }
+    .reflection-block {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+    }
+    .reflection-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .reflection-block h3 {
+      font-size: 24px;
+      letter-spacing: -0.035em;
+      margin-bottom: 16px;
+    }
+    .reflection-block p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #333;
+    }
+
+    .bottom-nav {
+      padding: 42px 72px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .nav, .section, .bottom-nav { padding-left: 24px; padding-right: 24px; }
+      .nav-links { gap: 18px; }
+      .hero,
+      .overview-strip,
+      .solution,
+      .research,
+      .feature-intro,
+      .feature,
+      .feature.reverse,
+      .reflection,
+      .quote-grid,
+      .principles,
+      .insight-cards,
+      .evidence-grid,
+      .before-after {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .hero h1 { font-size: 52px; }
+      .insight-pause h2 { font-size: 36px; }
+      .placeholder.hero-image { height: 320px; }
+      .project-facts { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links { gap: 16px; }
+      .nav-links a:nth-child(3),
+      .nav-links a:nth-child(4) {
+        display: none;
+      }
+      .circle-icon { display: none; }
+      .bottom-nav {
+        flex-direction: column;
+        gap: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html#top">Boyi Tan</a>
+    <nav class="nav-links">
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#resume">Resume</a>
+      <span class="circle-icon"></span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section hero">
+      <div>
+        <div class="eyebrow">Case Study 02</div>
+        <h1>LinkLog</h1>
+        <p class="subtitle">Designing Continuity for Long-Term Social Prescribing Follow-ups</p>
+        <p class="hook">
+          Social prescribing does not end after referral. Link Workers need to understand each older adult’s evolving context across 3-, 6-, and 12-month follow-ups.
+        </p>
+      </div>
+
+      <div class="hero-right">
+        <p class="summary-copy">
+          LinkLog explores how a lightweight follow-up support system can help Link Workers prioritize clients, understand context, and document interactions without adding unnecessary documentation burden.
+        </p>
+
+        <div class="project-facts">
+          <div>
+            <div class="fact-label">Timeline</div>
+            <div class="fact-text">5-day design sprint<br />3–12 month roadmap</div>
+          </div>
+          <div>
+            <div class="fact-label">Role</div>
+            <div class="fact-text">UX Design<br />Service Design<br />Prototype</div>
+          </div>
+          <div>
+            <div class="fact-label">Tools</div>
+            <div class="fact-text">Figma<br />FigJam<br />HTML/CSS/JS<br />CSV</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="placeholder hero-image">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Follow-up Workflow Overview</div>
+          <div class="placeholder-note">A system view connecting the priority queue, client profile, context filter, and interaction log into one continuous follow-up workflow.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section overview-strip">
+      <div class="overview-block">
+        <div class="eyebrow">Problem</div>
+        <h2>Follow-up context was scattered across spreadsheets, notes, paper records, and memory.</h2>
+        <p>Link Workers needed to understand each client’s current situation before reaching out, but the information required to do so was difficult to retrieve quickly.</p>
+      </div>
+
+      <div class="overview-block">
+        <div class="eyebrow">Direction</div>
+        <h2>How might we help Link Workers maintain long-term client context?</h2>
+        <p>The design focused on making client history, follow-up status, and next steps visible before, during, and after each interaction.</p>
+      </div>
+
+      <div class="overview-block">
+        <div class="eyebrow">Challenge</div>
+        <h2>Structure the workflow without replacing human judgement.</h2>
+        <p>The system needed to support consistency and continuity while remaining flexible enough for different SALC practices.</p>
+      </div>
+    </section>
+
+    <section class="section solution">
+      <div>
+        <div class="eyebrow">Solution Preview</div>
+      </div>
+      <p>
+        A follow-up support system that helps Link Workers prioritize clients, prepare with context, log interactions, and maintain continuity across long-term social prescribing journeys.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="placeholder large">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Solution Preview Screens</div>
+          <div class="placeholder-note">Four core screens show how a Link Worker moves from queue triage to client context review, live call logging, and next-step scheduling.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research">
+      <div>
+        <div class="eyebrow">Research Evidence</div>
+        <h2>The service problem was longitudinal, not transactional.</h2>
+        <p class="research-copy">
+          Based on previous cohort research, service blueprint analysis, workflow mapping, sprint discussion, and prototype critique, our team identified follow-up as a key gap in the Links2Wellbeing service experience.
+        </p>
+      </div>
+
+      <div class="evidence-grid">
+        <div class="evidence-card">
+          <h3>Follow-up is ongoing</h3>
+          <p>3-, 6-, and 12-month follow-ups require workers to understand how each client’s needs and participation change over time.</p>
+        </div>
+        <div class="evidence-card">
+          <h3>Context is fragmented</h3>
+          <p>Client history may live across spreadsheets, notes, paper records, and individual memory, making preparation harder.</p>
+        </div>
+        <div class="evidence-card">
+          <h3>Records need both structure and story</h3>
+          <p>Structured fields support consistency, while freeform notes preserve the human context behind each interaction.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research">
+      <div>
+        <div class="eyebrow">User Voices / Synthesized Concerns</div>
+        <h2>What Link Workers needed to know before every follow-up</h2>
+        <p class="research-copy">
+          These statements represent the kinds of questions the system needed to answer before a worker contacted a client.
+        </p>
+      </div>
+
+      <div>
+        <div class="quote-grid">
+          <div class="quote-card">
+            <div class="quote">“What is this client’s current situation?”</div>
+            <div class="quote-source">— Synthesized follow-up concern</div>
+          </div>
+          <div class="quote-card">
+            <div class="quote">“I need to know whether I already contacted this client.”</div>
+            <div class="quote-source">— Synthesized follow-up concern</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section insight-pause">
+      <div class="eyebrow">The Insight</div>
+      <h2>
+        The problem was not simply missing data.<br />
+        <span class="muted-line">It was the lack of a clear structure for turning scattered follow-up records into usable client context.</span>
+      </h2>
+    </section>
+
+    <section class="section feature-intro">
+      <div>
+        <div class="eyebrow">Design Response</div>
+        <h2>Designing continuity before automation</h2>
+        <p>
+          Instead of designing a fully automated or AI-driven system, I focused on a lightweight structure that supports human judgement while reducing memory reliance.
+        </p>
+      </div>
+
+      <div class="principles">
+        <div class="principle">Simple structure over complex automation</div>
+        <div class="principle">Context before action</div>
+        <div class="principle">Structured input with space for narrative notes</div>
+        <div class="principle">Reduce memory reliance, not human judgement</div>
+      </div>
+    </section>
+
+    <section class="section feature">
+      <div class="feature-text">
+        <div class="feature-number">01</div>
+        <h3>Priority-Based Follow-up Dashboard</h3>
+        <p>
+          Link Workers needed to know who required attention first, and why. I designed a dashboard that surfaces overdue follow-ups, due-this-week clients, contact attempts, follow-up type, and priority level.
+        </p>
+        <div class="mini-insight">
+          <h4>Why it matters</h4>
+          <p>The dashboard becomes a workflow entry point rather than a database view, helping workers move from “all clients” to “who needs attention now.”</p>
+        </div>
+      </div>
+      <div class="placeholder large">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Priority Dashboard</div>
+          <div class="placeholder-note">The dashboard groups overdue, due-this-week, and high-priority clients so workers can start with the most time-sensitive follow-ups.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature reverse">
+      <div class="placeholder large">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Client Profile</div>
+          <div class="placeholder-note">A single profile keeps intake details, interaction history, and 3-, 6-, and 12-month follow-up stages visible in one place.</div>
+        </div>
+      </div>
+      <div class="feature-text">
+        <div class="feature-number">02</div>
+        <h3>Client Profile with Longitudinal Follow-up Tabs</h3>
+        <p>
+          Social prescribing is a long-term relationship, not a single referral. The client profile organizes intake information, interaction history, and 3-, 6-, and 12-month follow-up stages into one place.
+        </p>
+        <div class="mini-insight">
+          <h4>Why it matters</h4>
+          <p>This helps Link Workers understand the client journey before starting a new interaction.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature">
+      <div class="feature-text">
+        <div class="feature-number">03</div>
+        <h3>Show Client Context Filter</h3>
+        <p>
+          Too much information can slow preparation, but too little information weakens the follow-up call. The context filter lets Link Workers choose what they need to see, such as hobbies, barriers, program attendance, transportation, and communication preferences.
+        </p>
+        <div class="mini-insight">
+          <h4>Why it matters</h4>
+          <p>This supports the real workflow of preparing before a call without forcing every detail onto the screen at once.</p>
+        </div>
+      </div>
+      <div class="placeholder large">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Client Context Filter</div>
+          <div class="placeholder-note">Selectable context categories let workers focus on the details relevant to the next conversation without flattening the full client story.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature reverse">
+      <div class="placeholder large">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Log Interaction Workflow</div>
+          <div class="placeholder-note">Structured fields, quick tags, narrative notes, and follow-up scheduling work together to keep each interaction usable later.</div>
+        </div>
+      </div>
+      <div class="feature-text">
+        <div class="feature-number">04</div>
+        <h3>Guided Log Interaction Workflow</h3>
+        <p>
+          Follow-up notes need structure, but older adults’ experiences cannot be reduced to checkboxes. The log interaction workflow combines structured fields with freeform notes, quick tags, and next-step scheduling.
+        </p>
+        <div class="mini-insight">
+          <h4>Why it matters</h4>
+          <p>This balances reporting consistency with the need to preserve the client’s story.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature">
+      <div class="feature-text">
+        <div class="feature-number">05</div>
+        <h3>Contact Attempts and Reschedule Tracking</h3>
+        <p>
+          Follow-up is not always a single successful call. The system supports no answer, rescheduled, discontinued, in-person follow-up, and repeated contact attempts.
+        </p>
+        <div class="mini-insight">
+          <h4>Why it matters</h4>
+          <p>Real service workflows include missed calls and changing communication channels, so the system needed to reflect those variations.</p>
+        </div>
+      </div>
+      <div class="placeholder large">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Contact Attempt States</div>
+          <div class="placeholder-note">Outcome states account for no answer, rescheduled calls, discontinued service, in-person follow-ups, and repeated contact attempts.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testing">
+      <div class="eyebrow">Testing / Iteration</div>
+      <h2>Testing changed the way I framed the task</h2>
+
+      <div class="insight-cards">
+        <div class="insight-card">
+          <div class="num">01</div>
+          <h3>The role needed context</h3>
+          <p>Testers needed to understand what a Link Worker does before the task could feel realistic.</p>
+        </div>
+
+        <div class="insight-card">
+          <div class="num">02</div>
+          <h3>The task needed a scenario</h3>
+          <p>A vague instruction to “complete the follow-up” did not explain the purpose of the workflow.</p>
+        </div>
+
+        <div class="insight-card">
+          <div class="num">03</div>
+          <h3>Context filter needed clearer cause-and-effect</h3>
+          <p>If the layout is not explicit, users may not realize that left-side selections change right-side information.</p>
+        </div>
+      </div>
+
+      <div class="before-after">
+        <div class="ba-card">
+          <h3>Before</h3>
+          <p>“Complete the follow-up interaction and save the record.”</p>
+        </div>
+        <div class="ba-card">
+          <h3>After</h3>
+          <p>“You are a Link Worker preparing to call Cora Picard. Review her context, update the interaction log during the call, and save the profile.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="placeholder large">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Testing / Iteration Visual</div>
+          <div class="placeholder-note">The iteration focused on clearer role framing, a specific client scenario, and more explicit cause-and-effect in the context filter.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reflection">
+      <div>
+        <div class="eyebrow">Outcome</div>
+        <h2>A clearer structure for long-term follow-up support</h2>
+      </div>
+
+      <div>
+        <div class="reflection-block">
+          <h3>What the prototype demonstrated</h3>
+          <p>
+            The prototype clarified the follow-up workflow and demonstrated how structured client context could support Link Workers before, during, and after follow-up interactions.
+          </p>
+        </div>
+
+        <div class="reflection-block">
+          <h3>Expectation vs. reality</h3>
+          <p>
+            I initially thought the system should focus on automation: reminders, priority generation, and recommendations. Through the sprint, I realized that early-stage service tools need to be simple, transparent, and explainable. Link Workers still need human judgement. The system should reduce memory reliance, not replace care work.
+          </p>
+        </div>
+
+        <div class="reflection-block">
+          <h3>What I would improve next</h3>
+          <p>
+            I would test the dashboard and log interaction workflow with real Link Workers, define fixed and centre-specific fields, refine priority logic, and explore AI-assisted notes summarization as a future direction rather than the current core feature.
+          </p>
+        </div>
+
+        <div class="reflection-block">
+          <h3>What I learned</h3>
+          <p>
+            Designing for social care is not just about organizing data. It is about helping people understand the right context at the right moment, so they can make better decisions for the person in front of them.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="bottom-nav">
+      <a href="./第一个作品.html">← Previous project</a>
+      <a href="index.html#projects">Back to projects →</a>
+    </nav>
+  </main>
+</body>
+</html>

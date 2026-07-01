@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Boyi Tan — UX designer portfolio." />
+  <title>Boyi Tan — UX Designer Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main id="top">
+    <!-- =======================================================
+      NAVIGATION
+      EDIT HERE:
+      - Change "Boyi Tan" if you want a different brand label.
+      - #about points to the intro note, #process points to the case-study section.
+    ======================================================== -->
+    <header class="site-nav" id="siteNav">
+      <a class="site-brand" href="#top">Boyi Tan</a>
+
+      <nav class="site-links" aria-label="Main navigation">
+        <a href="#projects">Work</a>
+        <a href="#about">About</a>
+        <a href="#process">Process</a>
+        <a href="#resume">Resume</a>
+        <span class="nav-mark" aria-hidden="true"></span>
+      </nav>
+    </header>
+
+    <!-- =======================================================
+      HERO
+      EDIT HERE:
+      - hero-kicker: small label above the headline
+      - hero-title: main homepage sentence
+      - hero-aside paragraph: short intro / positioning statement
+    ======================================================== -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div>
+        <p class="eyebrow hero-kicker">Selected Work</p>
+
+        <h1 class="hero-title" id="heroTitle">
+          I design experiences as narratives—guiding users through complexity with clarity and intention.
+        </h1>
+      </div>
+
+      <aside class="hero-aside" id="about">
+        <p>
+          Each project starts with a breakdown in understanding—and ends with a clearer path forward.
+        </p>
+
+        <a class="text-link down" href="#projects">
+          See all projects <span class="arrow" aria-hidden="true">↓</span>
+        </a>
+      </aside>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- =======================================================
+      CASE STUDIES HEADER
+      EDIT HERE: change label or link text if needed.
+    ======================================================== -->
+    <div class="section-header" id="process">
+      <p class="eyebrow">Case Studies</p>
+      <a href="#projects" class="text-link">
+        View all projects <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <!-- =======================================================
+      PROJECT GRID
+      HOW TO ADD A NEW PROJECT:
+      1. Copy one full <article class="project-card"> block.
+      2. Change number, title, subtitle, problem, outcome, and link.
+      3. Replace the mockup inside .project-visual with a real image if needed.
+    ======================================================== -->
+    <section class="project-grid" id="projects" aria-label="Selected case studies">
+
+      <!-- PROJECT 01 — ARTFAC
+           EDIT HERE: this is your strongest current UX case study card. -->
+      <article class="project-card">
+        <div>
+          <p class="project-number">Case Study 01</p>
+          <h2 class="project-title">ArtFac</h2>
+          <p class="project-subtitle">Designing trust in commission-based systems</p>
+
+          <!-- VISUAL OPTION A: keep this lightweight CSS mockup.
+               VISUAL OPTION B: replace everything inside .project-visual with:
+               <img src="images/artfac-cover.jpg" alt="ArtFac case study screens" /> -->
+          <div class="project-visual" aria-label="ArtFac payment progress interface mockup">
+            <div class="mock-artfac">
+              <div class="mock-sidebar">
+                <div class="mock-line" style="width:55%"></div>
+                <div class="mock-line" style="width:72%"></div>
+                <div class="mock-line" style="width:60%"></div>
+                <div class="mock-line" style="width:80%"></div>
+                <div class="mock-line" style="width:50%"></div>
+              </div>
+
+              <div class="mock-main">
+                <h4>Payment Progress</h4>
+
+                <div class="mock-progress" aria-hidden="true">
+                  <div class="mock-step"></div>
+                  <div class="mock-progress-line"></div>
+                  <div class="mock-step"></div>
+                  <div class="mock-progress-line"></div>
+                  <div class="mock-step is-empty"></div>
+                  <div class="mock-progress-line"></div>
+                  <div class="mock-step is-empty"></div>
+                </div>
+
+                <div class="mock-payment">
+                  <div>
+                    <small>Stage 2 — In Progress</small>
+                    <strong>$450.00</strong>
+                  </div>
+                  <div class="mock-button">Review &amp; Pay</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-meta">
+            <div>
+              <p class="meta-label">The Problem</p>
+              <p class="meta-text">
+                Clients struggled to understand when to pay, how revisions worked, and what progress they should expect during custom art commissions.
+              </p>
+            </div>
+
+            <div>
+              <p class="meta-label">The Outcome</p>
+              <p class="meta-text">
+                I redesigned the experience around milestone payments, visible project status, and structured collaboration to reduce uncertainty before conflict happens.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a class="text-link" href="./第一个作品.html">
+          View case study <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </article>
+
+      <!-- PROJECT 02 — LINKLOG -->
+      <article class="project-card">
+        <div>
+          <p class="project-number">Case Study 02</p>
+          <h2 class="project-title">LinkLog</h2>
+          <p class="project-subtitle">Follow-up workflow for social prescribing teams</p>
+
+          <div class="project-visual" aria-label="LinkLog follow-up workflow mockup">
+            <div class="mock-linklog">
+              <div class="mock-linklog-rail">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="mock-linklog-main">
+                <div class="mock-linklog-top">
+                  <div>
+                    <div class="mock-linklog-title">Follow-up Queue</div>
+                    <div class="mock-linklog-subcopy">Overdue and due-this-week clients</div>
+                  </div>
+                  <div class="mock-linklog-pill">3 / 6 / 12 mo</div>
+                </div>
+
+                <div class="mock-linklog-row is-priority">
+                  <span>Cora P.</span>
+                  <strong>Overdue</strong>
+                </div>
+                <div class="mock-linklog-row">
+                  <span>Samuel K.</span>
+                  <strong>Due this week</strong>
+                </div>
+
+                <div class="mock-linklog-profile">
+                  <div class="mock-profile-line wide"></div>
+                  <div class="mock-profile-line"></div>
+                  <div class="mock-tags">
+                    <span>transport</span>
+                    <span>isolation</span>
+                    <span>call back</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-meta">
+            <div>
+              <p class="meta-label">The Problem</p>
+              <p class="meta-text">
+                Link Workers needed to prepare for long-term client follow-ups while context was scattered across spreadsheets, notes, paper records, and memory.
+              </p>
+            </div>
+
+            <div>
+              <p class="meta-label">The Outcome</p>
+              <p class="meta-text">
+                I designed a lightweight workflow for prioritizing clients, reviewing context, logging interactions, and preserving continuity over time.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a class="text-link" href="./第二个作品.html">
+          View case study <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </article>
+
+      <!-- PROJECT 03 — THREADS OF CHOICE
+           EDIT HERE: replace or keep depending on your final portfolio direction. -->
+      <article class="project-card">
+        <div>
+          <p class="project-number">Case Study 03</p>
+          <h2 class="project-title">Threads of Choice</h2>
+          <p class="project-subtitle">Understanding risk in online clothing decisions</p>
+
+          <div class="project-visual" aria-label="Threads of Choice research insight cards">
+            <div class="mock-insights">
+              <p class="mock-insight-label">Key Insights</p>
+
+              <div class="mock-insight-grid">
+                <div class="mock-insight-card">
+                  <div class="mock-dot"></div>
+                  <p class="mock-insight-title">Compare</p>
+                  <p class="mock-insight-number">87%</p>
+                  <p class="mock-insight-copy">compare multiple options before deciding</p>
+                </div>
+
+                <div class="mock-insight-card">
+                  <div class="mock-dot" style="background:#c8c8c4"></div>
+                  <p class="mock-insight-title">Delay</p>
+                  <p class="mock-insight-number">62%</p>
+                  <p class="mock-insight-copy">delay when uncertain about size or fit</p>
+                </div>
+
+                <div class="mock-insight-card">
+                  <div class="mock-dot" style="background:#dddddd"></div>
+                  <p class="mock-insight-title">Reassurance</p>
+                  <p class="mock-insight-number">71%</p>
+                  <p class="mock-insight-copy">look for reviews before purchasing</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-meta">
+            <div>
+              <p class="meta-label">The Problem</p>
+              <p class="meta-text">
+                Users often compare, delay, and second-guess clothing purchases when fit, quality, and return expectations feel unclear.
+              </p>
+            </div>
+
+            <div>
+              <p class="meta-label">The Outcome</p>
+              <p class="meta-text">
+                I translated behavioral patterns into design implications that support more confident online purchase decisions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <span class="text-link is-disabled" aria-disabled="true">
+          Case study coming soon
+        </span>
+      </article>
+    </section>
+
+    <!-- =======================================================
+      FOOTER
+      EDIT HERE:
+      - Email address
+      - LinkedIn URL
+      - Resume note or PDF URL/path
+    ======================================================== -->
+    <footer class="site-footer">
+      <span class="footer-heading">Let’s connect</span>
+      <a href="mailto:boyitan0011@gmail.com">boyitan0011@gmail.com</a>
+      <a href="https://www.linkedin.com/in/boyi-tan-719230285/">LinkedIn</a>
+      <span id="resume" class="footer-note">Resume available on request</span>
+      <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

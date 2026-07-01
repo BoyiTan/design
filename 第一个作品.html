@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArtFac Case Study — Boyi Tan</title>
+  <style>
+    :root {
+      --bg: #fbfbfa;
+      --text: #0f0f0f;
+      --muted: #6f6f6f;
+      --line: #e6e6e3;
+      --soft: #f3f3f1;
+      --card: #ffffff;
+      --nav-height: 64px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      padding-top: var(--nav-height);
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      padding: 0 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(251, 251, 250, 0.86);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .brand { font-size: 15px; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-links { display: flex; align-items: center; gap: 44px; color: #555; font-size: 13px; }
+    .nav-links a {
+      position: relative;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: var(--text);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+    .circle-icon { width: 18px; height: 18px; border: 1.5px solid var(--muted); border-radius: 999px; }
+
+    .section { padding: 72px; border-bottom: 1px solid var(--line); }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.12fr 1fr;
+      gap: 92px;
+      align-items: end;
+      padding-top: 52px;
+    }
+    .hero h1 {
+      font-size: 76px;
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      margin-bottom: 20px;
+    }
+    .hero .subtitle { font-size: 23px; line-height: 1.35; margin-bottom: 44px; }
+    .hero .hook { max-width: 620px; font-size: 25px; line-height: 1.48; letter-spacing: -0.025em; }
+
+    .hero-right {
+      display: grid;
+      gap: 34px;
+      align-self: end;
+      padding-bottom: 8px;
+    }
+    .summary-copy {
+      max-width: 440px;
+      color: #555;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .project-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+    .fact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .fact-text { font-size: 14px; line-height: 1.55; }
+
+    .placeholder {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(135deg, #f8f8f6, #eeeeeb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      overflow: hidden;
+      padding: 28px;
+      text-align: center;
+    }
+    .placeholder.hero-image { height: 500px; }
+    .placeholder.large { aspect-ratio: 16 / 10; min-height: 360px; }
+    .placeholder-content {
+      max-width: 520px;
+      display: grid;
+      justify-items: center;
+      gap: 16px;
+    }
+    .placeholder-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #555;
+    }
+    .placeholder-note {
+      font-size: 13px;
+      line-height: 1.65;
+      color: #555;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      border-radius: 6px;
+    }
+    .image-icon {
+      width: 54px;
+      height: 44px;
+      border: 2px solid #bdbdb9;
+      border-radius: 6px;
+      position: relative;
+    }
+    .image-icon::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border: 2px solid #bdbdb9;
+      border-radius: 999px;
+      position: absolute;
+      top: 8px;
+      left: 10px;
+    }
+    .image-icon::after {
+      content: "";
+      width: 28px;
+      height: 22px;
+      border-left: 2px solid #bdbdb9;
+      border-top: 2px solid #bdbdb9;
+      transform: rotate(45deg);
+      position: absolute;
+      bottom: -6px;
+      left: 13px;
+    }
+
+    .overview-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 52px;
+    }
+    .overview-block h2 {
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+    .overview-block p {
+      font-size: 18px;
+      line-height: 1.55;
+      letter-spacing: -0.015em;
+      color: #242424;
+    }
+
+    .solution {
+      background: var(--soft);
+      display: grid;
+      grid-template-columns: 0.65fr 1.35fr;
+      gap: 90px;
+      align-items: center;
+    }
+    .solution p {
+      font-size: 26px;
+      line-height: 1.35;
+      letter-spacing: -0.035em;
+      max-width: 860px;
+    }
+
+    .research {
+      display: grid;
+      grid-template-columns: 0.62fr 1.38fr;
+      gap: 96px;
+      align-items: start;
+    }
+    .research h2,
+    .testing h2,
+    .reflection h2 {
+      font-size: 36px;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      margin-bottom: 28px;
+    }
+    .research-copy {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #333;
+      max-width: 450px;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    .quote-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 42px 36px;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .quote {
+      font-size: 25px;
+      line-height: 1.3;
+      letter-spacing: -0.03em;
+      font-weight: 600;
+    }
+    .quote-source {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 32px;
+    }
+
+    .insight-pause {
+      background: #f3f3f1;
+      padding-top: 96px;
+      padding-bottom: 96px;
+    }
+    .insight-pause h2 {
+      max-width: 1160px;
+      font-size: 52px;
+      line-height: 1.08;
+      letter-spacing: -0.06em;
+    }
+    .muted-line { color: #777; }
+
+    .feature-intro {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 90px;
+      align-items: end;
+    }
+    .feature-intro h2 {
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+    .feature-intro p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #333;
+      max-width: 520px;
+    }
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+    .principle {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #333;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 56px;
+      align-items: center;
+      min-height: 720px;
+      border-bottom: 1px solid var(--line);
+    }
+    .feature.reverse { grid-template-columns: 1.15fr 1fr; }
+    .feature-text { max-width: 520px; }
+    .feature-number { font-size: 13px; font-weight: 700; margin-bottom: 28px; }
+    .feature h3 {
+      font-size: 42px;
+      line-height: 1.04;
+      letter-spacing: -0.055em;
+      margin-bottom: 22px;
+    }
+    .feature p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 28px;
+    }
+    .mini-insight {
+      border-top: 1px solid var(--line);
+      padding-top: 20px;
+      margin-top: 30px;
+    }
+    .mini-insight h4 {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .mini-insight p { margin: 0; font-size: 15px; }
+
+    .testing { border-bottom: none; padding-bottom: 32px; }
+    .insight-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .insight-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 30px;
+      min-height: 210px;
+    }
+    .insight-card .num { color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+    .insight-card h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+    .insight-card p { color: #333; font-size: 14px; line-height: 1.7; }
+
+    .reflection {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 92px;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      background: var(--soft);
+    }
+    .reflection-block {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 32px;
+      margin-bottom: 32px;
+    }
+    .reflection-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .reflection-block h3 {
+      font-size: 24px;
+      letter-spacing: -0.035em;
+      margin-bottom: 16px;
+    }
+    .reflection-block p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #333;
+    }
+
+    .bottom-nav {
+      padding: 42px 72px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .nav, .section, .bottom-nav { padding-left: 24px; padding-right: 24px; }
+      .nav-links { gap: 18px; }
+      .hero,
+      .overview-strip,
+      .solution,
+      .research,
+      .feature-intro,
+      .feature,
+      .feature.reverse,
+      .reflection,
+      .quote-grid,
+      .principles,
+      .insight-cards {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+      .hero h1 { font-size: 52px; }
+      .insight-pause h2 { font-size: 36px; }
+      .placeholder.hero-image { height: 320px; }
+      .project-facts { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links { gap: 16px; }
+      .nav-links a:nth-child(3),
+      .nav-links a:nth-child(4) {
+        display: none;
+      }
+      .circle-icon { display: none; }
+      .bottom-nav {
+        flex-direction: column;
+        gap: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav">
+    <a class="brand" href="index.html#top">Boyi Tan</a>
+    <nav class="nav-links">
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#process">Process</a>
+      <a href="index.html#resume">Resume</a>
+      <span class="circle-icon"></span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section hero">
+      <div>
+        <div class="eyebrow">Case Study 01</div>
+        <h1>ArtFac</h1>
+        <p class="subtitle">Designing Trust in Commission-Based Systems</p>
+        <p class="hook">
+          When users cannot understand how money moves through a creative service,
+          they stop trusting the process.
+        </p>
+      </div>
+
+      <div class="hero-right">
+        <p class="summary-copy">
+          ArtFac redesigns the custom artwork commission experience through milestone-based payments,
+          transparent progress tracking, and structured artist-client collaboration.
+        </p>
+
+        <div class="project-facts">
+          <div>
+            <div class="fact-label">Timeline</div>
+            <div class="fact-text">8 weeks</div>
+          </div>
+          <div>
+            <div class="fact-label">Role</div>
+            <div class="fact-text">UX Research<br />UI Design<br />Prototype</div>
+          </div>
+          <div>
+            <div class="fact-label">Tools</div>
+            <div class="fact-text">Figma<br />FigJam<br />Maze</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="placeholder hero-image">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">ArtFac Prototype Overview</div>
+          <div class="placeholder-note">A project overview showing the commission flow from artist selection to milestone payment, revision, and final delivery.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section overview-strip">
+      <div class="overview-block">
+        <div class="eyebrow">Problem</div>
+        <h2>Commissioning artwork online often feels uncertain.</h2>
+        <p>Users struggled to understand when to pay, what revisions included, and whether they could trust unfamiliar artists.</p>
+      </div>
+
+      <div class="overview-block">
+        <div class="eyebrow">Direction</div>
+        <h2>How might we make creative collaboration feel transparent?</h2>
+        <p>The project focused on turning unclear commission stages into visible progress, decisions, and expectations.</p>
+      </div>
+
+      <div class="overview-block">
+        <div class="eyebrow">Challenge</div>
+        <h2>Balance creative freedom with predictable workflows.</h2>
+        <p>Creative work is flexible by nature, but users still need structure to feel confident moving forward.</p>
+      </div>
+    </section>
+
+    <section class="section solution">
+      <div class="eyebrow">Solution Preview</div>
+      <p>
+        A guided commission system that makes payments, progress, revisions, and approvals visible at the moments users need them most.
+      </p>
+    </section>
+
+    <section class="section research">
+      <div>
+        <div class="eyebrow">The Breakdown</div>
+        <h2>Where understanding broke down</h2>
+        <p class="research-copy">
+          During usability testing, participants frequently skipped or misunderstood key payment information,
+          even when it was technically present in the interface.
+        </p>
+      </div>
+
+      <div class="quote-grid">
+        <div class="quote-card">
+          <div class="quote">“I’m not sure if I pay every time or how it works.”</div>
+          <div class="quote-source">— Usability Test Participant</div>
+        </div>
+        <div class="quote-card">
+          <div class="quote">“I didn’t notice too much of the payments.”</div>
+          <div class="quote-source">— Usability Test Participant</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section insight-pause">
+      <div class="eyebrow">The Insight</div>
+      <h2>
+        The issue was not missing information.<br />
+        <span class="muted-line">Users were surrounded by information—but unable to understand the logic of the system itself.</span>
+      </h2>
+    </section>
+
+    <section class="section feature-intro">
+      <div>
+        <div class="eyebrow">Design Response</div>
+        <h2>Designing for clarity before completion</h2>
+        <p>
+          Instead of only optimizing task completion, the redesign focused on helping users build a clearer mental model of the commission process.
+        </p>
+      </div>
+
+      <div class="principles">
+        <div class="principle">Make payments visible at every stage</div>
+        <div class="principle">Connect progress to creative milestones</div>
+        <div class="principle">Separate approval from revision decisions</div>
+        <div class="principle">Support trust through structured communication</div>
+      </div>
+    </section>
+
+    <section class="section feature">
+      <div class="feature-text">
+        <div class="feature-number">01</div>
+        <h3>Making progress financially visible</h3>
+        <p>
+          Payments were divided into visible milestones tied directly to creative progress:
+          deposit, sketch approval, development, and final delivery.
+        </p>
+        <div class="mini-insight">
+          <h4>Insight</h4>
+          <p>Users needed to see not only what they were paying, but why that payment happened at that moment.</p>
+        </div>
+      </div>
+      <div class="placeholder large">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Milestone Payment Flow</div>
+          <div class="placeholder-note">The interface ties each payment to a visible creative milestone so clients can understand what they are paying for and why.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature reverse">
+      <div class="placeholder large">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Collaboration Status View</div>
+          <div class="placeholder-note">A persistent project status layout clarifies completed milestones, active responsibilities, pending approvals, and revision windows.</div>
+        </div>
+      </div>
+      <div class="feature-text">
+        <div class="feature-number">02</div>
+        <h3>Showing the state of the collaboration</h3>
+        <p>
+          A persistent progress structure communicates the current stage, completed milestones,
+          pending approvals, and revision opportunities.
+        </p>
+        <div class="mini-insight">
+          <h4>Insight</h4>
+          <p>Users lost confidence when they could not tell whether the project was waiting on them, the artist, or the system.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section feature">
+      <div class="feature-text">
+        <div class="feature-number">03</div>
+        <h3>Structuring revision and feedback decisions</h3>
+        <p>
+          Users can leave feedback, request edits, and review drafts before approval.
+          This keeps collaboration flexible without making the workflow feel ambiguous.
+        </p>
+        <div class="mini-insight">
+          <h4>Insight</h4>
+          <p>Strong payment CTAs drew attention away from revision options, so the redesign made decision paths more balanced.</p>
+        </div>
+      </div>
+      <div class="placeholder large">
+        <div class="placeholder-content">
+          <div class="image-icon"></div>
+          <div class="placeholder-title">Revision Decision Path</div>
+          <div class="placeholder-note">Balanced approval and revision actions make feedback choices visible without letting payment CTAs dominate the workflow.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testing">
+      <div class="eyebrow">What Users Revealed</div>
+      <h2>Testing changed what I prioritized</h2>
+
+      <div class="insight-cards">
+        <div class="insight-card">
+          <div class="num">01</div>
+          <h3>Payment information was overlooked</h3>
+          <p>Users focused on moving forward quickly and missed important payment details.</p>
+        </div>
+
+        <div class="insight-card">
+          <div class="num">02</div>
+          <h3>Primary actions dominated attention</h3>
+          <p>Strong CTA buttons caused secondary actions such as “Request Edit” to be overlooked.</p>
+        </div>
+
+        <div class="insight-card">
+          <div class="num">03</div>
+          <h3>Users wanted more trust signals</h3>
+          <p>Participants expected artist portfolios, previous works, and multiple artist options before selecting.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reflection">
+      <div>
+        <div class="eyebrow">Outcome</div>
+        <h2>A clearer, more confident commission experience</h2>
+      </div>
+
+      <div>
+        <div class="reflection-block">
+          <h3>What changed</h3>
+          <p>
+            The final prototype improved payment visibility, process clarity, and user confidence
+            throughout the commission journey.
+          </p>
+        </div>
+
+        <div class="reflection-block">
+          <h3>Expectation vs. reality</h3>
+          <p>
+            I initially assumed that adding more payment information would solve the trust problem.
+            Testing showed that users did not need more information—they needed the right information
+            to appear with stronger hierarchy at the right moment.
+          </p>
+        </div>
+
+        <div class="reflection-block">
+          <h3>What I learned</h3>
+          <p>
+            Transparency is not simply about providing information. It is about designing when, where,
+            and how important information becomes visible within a user’s decision-making journey.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <nav class="bottom-nav">
+      <a href="index.html#projects">← Back to projects</a>
+      <a href="./第二个作品.html">Next project →</a>
+    </nav>
+  </main>
+</body>
+</html>
