@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LinkLog Case Study — Boyi Tan</title>
+  <title>ToMuDo Case Study - Boyi Tan</title>
   <style>
     :root {
       --bg: #fbfbfa;
@@ -75,12 +75,12 @@
     }
 
     .hero {
-      min-height: 620px;
+      min-height: 560px;
       display: grid;
       grid-template-columns: 1.12fr 1fr;
       gap: 92px;
-      align-items: end;
-      padding-top: 52px;
+      align-items: start;
+      padding-top: 40px;
     }
     .hero h1 {
       font-size: 76px;
@@ -94,8 +94,8 @@
     .hero-right {
       display: grid;
       gap: 34px;
-      align-self: end;
-      padding-bottom: 8px;
+      align-self: start;
+      padding-top: 40px;
     }
     .summary-copy {
       max-width: 460px;
@@ -133,11 +133,10 @@
       padding: 28px;
       text-align: center;
     }
-    .placeholder.hero-image { height: 500px; }
+    .placeholder.hero-image { min-height: 500px; }
     .placeholder.large { aspect-ratio: 16 / 10; min-height: 360px; }
-    .placeholder.vertical { min-height: 520px; }
     .placeholder-content {
-      max-width: 520px;
+      max-width: 620px;
       display: grid;
       justify-items: center;
       gap: 16px;
@@ -187,18 +186,18 @@
 
     .overview-strip {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 52px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 34px;
     }
     .overview-block h2 {
-      font-size: 28px;
-      line-height: 1.1;
-      letter-spacing: -0.04em;
-      margin-bottom: 20px;
+      font-size: 23px;
+      line-height: 1.16;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
     }
     .overview-block p {
-      font-size: 18px;
-      line-height: 1.55;
+      font-size: 16px;
+      line-height: 1.65;
       letter-spacing: -0.015em;
       color: #242424;
     }
@@ -219,8 +218,8 @@
 
     .research {
       display: grid;
-      grid-template-columns: 0.62fr 1.38fr;
-      gap: 96px;
+      grid-template-columns: 1fr;
+      gap: 34px;
       align-items: start;
     }
     .research h2,
@@ -229,13 +228,13 @@
       font-size: 36px;
       line-height: 1.08;
       letter-spacing: -0.045em;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
     .research-copy {
       font-size: 15px;
       line-height: 1.8;
       color: #333;
-      max-width: 470px;
+      max-width: 760px;
     }
 
     .evidence-grid {
@@ -247,8 +246,8 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 28px;
-      min-height: 200px;
+      padding: 24px;
+      min-height: 180px;
     }
     .evidence-card h3 {
       font-size: 20px;
@@ -262,52 +261,28 @@
       color: #333;
     }
 
-    .quote-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
-      margin-top: 28px;
-    }
-    .quote-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 42px 36px;
-      min-height: 230px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .quote {
-      font-size: 25px;
-      line-height: 1.3;
-      letter-spacing: -0.03em;
-      font-weight: 600;
-    }
-    .quote-source {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 32px;
-    }
-
     .insight-pause {
       background: #f3f3f1;
-      padding-top: 96px;
-      padding-bottom: 96px;
+      padding-top: 76px;
+      padding-bottom: 76px;
     }
     .insight-pause h2 {
-      max-width: 1160px;
-      font-size: 52px;
-      line-height: 1.08;
-      letter-spacing: -0.06em;
+      max-width: 980px;
+      font-size: 42px;
+      line-height: 1.16;
+      letter-spacing: -0.045em;
     }
-    .muted-line { color: #777; }
+    .muted-line {
+      color: #777;
+      display: inline-block;
+      margin-top: 10px;
+    }
 
     .feature-intro {
       display: grid;
       grid-template-columns: 0.8fr 1.2fr;
       gap: 90px;
-      align-items: end;
+      align-items: center;
     }
     .feature-intro h2 {
       font-size: 34px;
@@ -324,14 +299,38 @@
     .principles {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 22px;
+      gap: 18px;
+      position: relative;
+      padding-top: 28px;
+    }
+    .principles::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--line);
     }
     .principle {
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
+      position: relative;
+      border-top: none;
+      padding-top: 0;
       font-size: 14px;
       line-height: 1.55;
       color: #333;
+    }
+    .principle::before {
+      content: "";
+      position: absolute;
+      top: -24px;
+      left: 0;
+      width: 13px;
+      height: 13px;
+      border: 2px solid var(--text);
+      border-radius: 999px;
+      background: var(--bg);
+      z-index: 1;
     }
 
     .feature {
@@ -339,16 +338,18 @@
       grid-template-columns: 1fr 1.15fr;
       gap: 56px;
       align-items: center;
-      min-height: 720px;
+      min-height: auto;
+      padding-top: 64px;
+      padding-bottom: 64px;
       border-bottom: 1px solid var(--line);
     }
     .feature.reverse { grid-template-columns: 1.15fr 1fr; }
     .feature-text { max-width: 540px; }
     .feature-number { font-size: 13px; font-weight: 700; margin-bottom: 28px; }
     .feature h3 {
-      font-size: 42px;
-      line-height: 1.04;
-      letter-spacing: -0.055em;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: -0.045em;
       margin-bottom: 22px;
     }
     .feature p {
@@ -393,37 +394,16 @@
     }
     .insight-card p { color: #333; font-size: 14px; line-height: 1.7; }
 
-    .before-after {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      margin-top: 28px;
-    }
-    .ba-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 28px;
-    }
-    .ba-card h3 {
-      font-size: 20px;
-      margin-bottom: 14px;
-      letter-spacing: -0.03em;
-    }
-    .ba-card p {
-      font-size: 14px;
-      line-height: 1.7;
-      color: #333;
-    }
-
     .reflection {
       display: grid;
-      grid-template-columns: 0.75fr 1.25fr;
-      gap: 92px;
+      grid-template-columns: 1fr;
+      gap: 42px;
       align-items: start;
       border-top: 1px solid var(--line);
       background: var(--soft);
     }
+    .reflection > div:first-child { max-width: 760px; }
+    .reflection > div:last-child { max-width: 920px; }
     .reflection-block {
       border-bottom: 1px solid var(--line);
       padding-bottom: 32px;
@@ -448,6 +428,41 @@
       font-size: 14px;
     }
 
+    @media (max-width: 1180px) {
+      .feature-intro {
+        grid-template-columns: 1fr;
+        gap: 44px;
+        align-items: start;
+      }
+
+      .feature-intro p {
+        max-width: 760px;
+      }
+
+      .principles {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding-top: 0;
+        padding-left: 30px;
+      }
+
+      .principles::before {
+        top: 2px;
+        bottom: 2px;
+        left: 6px;
+        right: auto;
+        width: 1px;
+        height: auto;
+      }
+
+      .principle::before {
+        top: 2px;
+        left: -30px;
+        width: 13px;
+        height: 13px;
+      }
+    }
+
     @media (max-width: 980px) {
       .nav, .section, .bottom-nav { padding-left: 24px; padding-right: 24px; }
       .nav-links { gap: 18px; }
@@ -459,18 +474,17 @@
       .feature,
       .feature.reverse,
       .reflection,
-      .quote-grid,
       .principles,
       .insight-cards,
-      .evidence-grid,
-      .before-after {
+      .evidence-grid {
         grid-template-columns: 1fr;
         gap: 36px;
       }
       .hero h1 { font-size: 52px; }
       .insight-pause h2 { font-size: 36px; }
-      .placeholder.hero-image { height: 320px; }
+      .placeholder.hero-image { min-height: 320px; }
       .project-facts { grid-template-columns: 1fr; }
+      .feature.reverse .feature-text { order: -1; }
     }
 
     @media (max-width: 680px) {
@@ -503,42 +517,45 @@
   <main>
     <section class="section hero">
       <div>
-        <div class="eyebrow">Case Study 02</div>
-        <h1>LinkLog</h1>
-        <p class="subtitle">Designing Continuity for Long-Term Social Prescribing Follow-ups</p>
+        <div class="eyebrow">Case Study 03</div>
+        <h1>ToMuDo</h1>
+        <p class="subtitle">AI Task Planner for Turning Overwhelm into Action</p>
         <p class="hook">
-          Social prescribing does not end after referral. Link Workers need to understand each older adult’s evolving context across 3-, 6-, and 12-month follow-ups.
+          When people cannot see what to do first, a task becomes heavier before the work even begins.
         </p>
       </div>
 
       <div class="hero-right">
         <p class="summary-copy">
-          LinkLog explores how a lightweight follow-up support system can help Link Workers prioritize clients, understand context, and document interactions without adding unnecessary documentation burden.
+          ToMuDo explores a mobile AI task planner around task decomposition, visible next steps,
+          time-aware planning, and user autonomy. The goal was not to create another tool to manage,
+          but to help overwhelmed students and workers begin. I was drawn to this problem because
+          school and project pressure often becomes hardest at the moment before starting.
         </p>
 
         <div class="project-facts">
           <div>
-            <div class="fact-label">Timeline</div>
-            <div class="fact-text">5-day design sprint<br />3–12 month roadmap</div>
+            <div class="fact-label">Project</div>
+            <div class="fact-text">Mobile AI task planner designed from scratch</div>
           </div>
           <div>
             <div class="fact-label">Role</div>
-            <div class="fact-text">UX Design<br />Service Design<br />Prototype</div>
+            <div class="fact-text">UX Research<br />Transcript Coding<br />Component Organization<br />Usability Testing</div>
           </div>
           <div>
-            <div class="fact-label">Tools</div>
-            <div class="fact-text">Figma<br />FigJam<br />HTML/CSS/JS<br />CSV</div>
+            <div class="fact-label">Context</div>
+            <div class="fact-text">Team mobile prototype design from scratch<br />12 target-user interviews<br />8 usability tests</div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="placeholder hero-image">
+      <div class="placeholder hero-image" aria-label="ToMuDo mobile prototype overview visual">
         <div class="placeholder-content">
           <div class="image-icon"></div>
-          <div class="placeholder-title">Follow-up Workflow Overview</div>
-          <div class="placeholder-note">A system view connecting the priority queue, client profile, context filter, and interaction log into one continuous follow-up workflow.</div>
+          <div class="placeholder-title">ToMuDo Prototype Overview</div>
+          <div class="placeholder-note">A project overview representing the flow from an overwhelming task to an AI-assisted breakdown and a clear first action.</div>
         </div>
       </div>
     </section>
@@ -546,38 +563,37 @@
     <section class="section overview-strip">
       <div class="overview-block">
         <div class="eyebrow">Problem</div>
-        <h2>Follow-up context was scattered across spreadsheets, notes, paper records, and memory.</h2>
-        <p>Link Workers needed to understand each client’s current situation before reaching out, but the information required to do so was difficult to retrieve quickly.</p>
+        <h2>Complex tasks became psychologically heavy before users started.</h2>
+        <p>Students and workers were not only avoiding work. They were stuck because the next step, workload, and available time felt unclear.</p>
       </div>
 
       <div class="overview-block">
         <div class="eyebrow">Direction</div>
-        <h2>How might we help Link Workers maintain long-term client context?</h2>
-        <p>The design focused on making client history, follow-up status, and next steps visible before, during, and after each interaction.</p>
+        <h2>How might we turn overwhelm into a visible first step?</h2>
+        <p>The design focused on breaking large tasks into understandable actions, then organizing those actions into a plan users could actually begin.</p>
       </div>
 
       <div class="overview-block">
         <div class="eyebrow">Challenge</div>
-        <h2>Structure the workflow without replacing human judgement.</h2>
-        <p>The system needed to support consistency and continuity while remaining flexible enough for different SALC practices.</p>
+        <h2>Use AI without taking autonomy away.</h2>
+        <p>The planner needed to support users' ability to act, not make them dependent on another system to manage their lives.</p>
       </div>
     </section>
 
     <section class="section solution">
-      <div>
-        <div class="eyebrow">Solution Preview</div>
-      </div>
+      <div class="eyebrow">Solution Preview</div>
       <p>
-        A follow-up support system that helps Link Workers prioritize clients, prepare with context, log interactions, and maintain continuity across long-term social prescribing journeys.
+        A mobile AI planner that decomposes complex work into ordered steps, generates a todo list,
+        and helps users plan time before they begin.
       </p>
     </section>
 
     <section class="section">
-      <div class="placeholder large">
+      <div class="placeholder large" aria-label="ToMuDo solution screens visual">
         <div class="placeholder-content">
           <div class="image-icon"></div>
-          <div class="placeholder-title">Solution Preview Screens</div>
-          <div class="placeholder-note">Four core screens show how a Link Worker moves from queue triage to client context review, live call logging, and next-step scheduling.</div>
+          <div class="placeholder-title">Input, Breakdown, Todo, Time Plan</div>
+          <div class="placeholder-note">Four mobile states show task input, AI decomposition, visible todos, and a time-aware plan.</div>
         </div>
       </div>
     </section>
@@ -585,47 +601,53 @@
     <section class="section research">
       <div>
         <div class="eyebrow">Research Evidence</div>
-        <h2>The service problem was longitudinal, not transactional.</h2>
+        <h2>The research was about task initiation, not productivity alone.</h2>
         <p class="research-copy">
-          Based on previous cohort research, service blueprint analysis, workflow mapping, sprint discussion, and prototype critique, our team identified follow-up as a key gap in the Links2Wellbeing service experience.
+          Our team completed 12 target-user interviews with people who experienced pressure from school, work, and complex tasks.
+          I conducted 3 interviews, contributed theory materials on procrastination and psychological pressure,
+          and coded interview transcripts so the team could translate recurring patterns into wireframing and brainstorming inputs.
         </p>
       </div>
 
       <div class="evidence-grid">
         <div class="evidence-card">
-          <h3>Follow-up is ongoing</h3>
-          <p>3-, 6-, and 12-month follow-ups require workers to understand how each client’s needs and participation change over time.</p>
+          <h3>Psychological pressure before action</h3>
+          <p>Procrastination was treated as a clarity and readiness problem, not a character flaw or a lack of caring.</p>
         </div>
         <div class="evidence-card">
-          <h3>Context is fragmented</h3>
-          <p>Client history may live across spreadsheets, notes, paper records, and individual memory, making preparation harder.</p>
+          <h3>Interview-to-wireframe synthesis</h3>
+          <p>Transcript coding helped the team move from broad stories of overwhelm into design opportunities around task breakdown and initiation.</p>
         </div>
         <div class="evidence-card">
-          <h3>Records need both structure and story</h3>
-          <p>Structured fields support consistency, while freeform notes preserve the human context behind each interaction.</p>
+          <h3>Autonomy as a design requirement</h3>
+          <p>The planner needed to help users understand the work well enough to begin, not make them follow AI blindly.</p>
         </div>
       </div>
     </section>
 
     <section class="section research">
       <div>
-        <div class="eyebrow">User Voices / Synthesized Concerns</div>
-        <h2>What Link Workers needed to know before every follow-up</h2>
+        <div class="eyebrow">My Role</div>
+        <h2>My contribution sat between research synthesis and prototype execution.</h2>
         <p class="research-copy">
-          These statements represent the kinds of questions the system needed to answer before a worker contacted a client.
+          This was a team project, so my role was not to own every screen end-to-end. I brought theory
+          materials into the second-stage research analysis, conducted 3 of the 12 target-user interviews,
+          analyzed transcripts, and contributed coding that informed team wireframing and brainstorming.
         </p>
       </div>
 
-      <div>
-        <div class="quote-grid">
-          <div class="quote-card">
-            <div class="quote">“What is this client’s current situation?”</div>
-            <div class="quote-source">— Synthesized follow-up concern</div>
-          </div>
-          <div class="quote-card">
-            <div class="quote">“I need to know whether I already contacted this client.”</div>
-            <div class="quote-source">— Synthesized follow-up concern</div>
-          </div>
+      <div class="evidence-grid">
+        <div class="evidence-card">
+          <h3>Research and coding</h3>
+          <p>I helped turn interview material and theory about procrastination and psychological pressure into structured design inputs.</p>
+        </div>
+        <div class="evidence-card">
+          <h3>Prototype consistency</h3>
+          <p>I participated in the first prototype while the team divided page ownership, with a focus on organizing reusable components and maintaining consistency.</p>
+        </div>
+        <div class="evidence-card">
+          <h3>Testing support</h3>
+          <p>The team ran 8 usability tests. I moderated 2 sessions and served as note taker for 2 others.</p>
         </div>
       </div>
     </section>
@@ -633,66 +655,68 @@
     <section class="section insight-pause">
       <div class="eyebrow">The Insight</div>
       <h2>
-        The problem was not simply missing data.<br />
-        <span class="muted-line">It was the lack of a clear structure for turning scattered follow-up records into usable client context.</span>
+        The blocker was not motivation alone.<br />
+        <span class="muted-line">Users needed a clearer mental model of the task: what it contained, what should happen first, and how the plan fit into the time they had.</span>
       </h2>
     </section>
 
     <section class="section feature-intro">
       <div>
         <div class="eyebrow">Design Response</div>
-        <h2>Designing continuity before automation</h2>
+        <h2>Designing autonomy before automation</h2>
         <p>
-          Instead of designing a fully automated or AI-driven system, I focused on a lightweight structure that supports human judgement while reducing memory reliance.
+          Instead of positioning AI as a decision-maker, the product concept treated AI as a planning scaffold.
+          ToMuDo should reduce the psychological load before task initiation while still leaving the user in control.
         </p>
       </div>
 
       <div class="principles">
-        <div class="principle">Simple structure over complex automation</div>
-        <div class="principle">Context before action</div>
-        <div class="principle">Structured input with space for narrative notes</div>
-        <div class="principle">Reduce memory reliance, not human judgement</div>
+        <div class="principle">Clarify the first step</div>
+        <div class="principle">Break complexity into visible actions</div>
+        <div class="principle">Make time feel understandable</div>
+        <div class="principle">Support autonomy, not dependency</div>
       </div>
     </section>
 
     <section class="section feature">
       <div class="feature-text">
         <div class="feature-number">01</div>
-        <h3>Priority-Based Follow-up Dashboard</h3>
+        <h3>Turning a large task into visible next steps</h3>
         <p>
-          Link Workers needed to know who required attention first, and why. I designed a dashboard that surfaces overdue follow-ups, due-this-week clients, contact attempts, follow-up type, and priority level.
+          Users can start with an overwhelming task or goal, and the AI planner decomposes it into smaller actions.
+          The purpose is to reduce the blank-page feeling before work begins.
         </p>
         <div class="mini-insight">
           <h4>Why it matters</h4>
-          <p>The dashboard becomes a workflow entry point rather than a database view, helping workers move from “all clients” to “who needs attention now.”</p>
+          <p>A complex task becomes less intimidating when users can see what it contains.</p>
         </div>
       </div>
-      <div class="placeholder large">
+      <div class="placeholder large" aria-label="AI task decomposition visual">
         <div class="placeholder-content">
           <div class="image-icon"></div>
-          <div class="placeholder-title">Priority Dashboard</div>
-          <div class="placeholder-note">The dashboard groups overdue, due-this-week, and high-priority clients so workers can start with the most time-sensitive follow-ups.</div>
+          <div class="placeholder-title">AI Task Decomposition</div>
+          <div class="placeholder-note">A large goal is broken into grouped steps so the user can understand what the work contains before starting.</div>
         </div>
       </div>
     </section>
 
     <section class="section feature reverse">
-      <div class="placeholder large">
+      <div class="placeholder large" aria-label="Generated todo list visual">
         <div class="placeholder-content">
           <div class="image-icon"></div>
-          <div class="placeholder-title">Client Profile</div>
-          <div class="placeholder-note">A single profile keeps intake details, interaction history, and 3-, 6-, and 12-month follow-up stages visible in one place.</div>
+          <div class="placeholder-title">Visible Todo Structure</div>
+          <div class="placeholder-note">Ordered todos, completion states, and first-action focus turn the AI breakdown into a usable plan.</div>
         </div>
       </div>
       <div class="feature-text">
         <div class="feature-number">02</div>
-        <h3>Client Profile with Longitudinal Follow-up Tabs</h3>
+        <h3>Generating a todo list users can act on</h3>
         <p>
-          Social prescribing is a long-term relationship, not a single referral. The client profile organizes intake information, interaction history, and 3-, 6-, and 12-month follow-up stages into one place.
+          The decomposed steps become a structured todo list, giving users a clear sequence instead of a vague intention.
         </p>
         <div class="mini-insight">
           <h4>Why it matters</h4>
-          <p>This helps Link Workers understand the client journey before starting a new interaction.</p>
+          <p>The list turns planning into an actionable path, not just another place to store tasks.</p>
         </div>
       </div>
     </section>
@@ -700,153 +724,106 @@
     <section class="section feature">
       <div class="feature-text">
         <div class="feature-number">03</div>
-        <h3>Show Client Context Filter</h3>
+        <h3>Planning time around the work</h3>
         <p>
-          Too much information can slow preparation, but too little information weakens the follow-up call. The context filter lets Link Workers choose what they need to see, such as hobbies, barriers, program attendance, transportation, and communication preferences.
+          ToMuDo helps users connect steps with time, so they can understand what remains and how the work might fit into their schedule.
         </p>
         <div class="mini-insight">
           <h4>Why it matters</h4>
-          <p>This supports the real workflow of preparing before a call without forcing every detail onto the screen at once.</p>
+          <p>Time visibility reduces uncertainty before task initiation.</p>
         </div>
       </div>
-      <div class="placeholder large">
+      <div class="placeholder large" aria-label="Time planning visual">
         <div class="placeholder-content">
           <div class="image-icon"></div>
-          <div class="placeholder-title">Client Context Filter</div>
-          <div class="placeholder-note">Selectable context categories let workers focus on the details relevant to the next conversation without flattening the full client story.</div>
+          <div class="placeholder-title">Time-Aware Plan</div>
+          <div class="placeholder-note">Workload blocks and estimated effort make time visible without relying on unsupported outcome metrics.</div>
         </div>
       </div>
     </section>
 
     <section class="section feature reverse">
-      <div class="placeholder large">
+      <div class="placeholder large" aria-label="First-step start flow visual">
         <div class="placeholder-content">
           <div class="image-icon"></div>
-          <div class="placeholder-title">Log Interaction Workflow</div>
-          <div class="placeholder-note">Structured fields, quick tags, narrative notes, and follow-up scheduling work together to keep each interaction usable later.</div>
+          <div class="placeholder-title">First-Step Start Flow</div>
+          <div class="placeholder-note">The user chooses an adjustable first action instead of managing another complex planner.</div>
         </div>
       </div>
       <div class="feature-text">
         <div class="feature-number">04</div>
-        <h3>Guided Log Interaction Workflow</h3>
+        <h3>Helping users start, then step back</h3>
         <p>
-          Follow-up notes need structure, but older adults’ experiences cannot be reduced to checkboxes. The log interaction workflow combines structured fields with freeform notes, quick tags, and next-step scheduling.
+          The experience should make the first action easy to identify while keeping AI guidance lightweight and adjustable.
         </p>
         <div class="mini-insight">
           <h4>Why it matters</h4>
-          <p>This balances reporting consistency with the need to preserve the client’s story.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section feature">
-      <div class="feature-text">
-        <div class="feature-number">05</div>
-        <h3>Contact Attempts and Reschedule Tracking</h3>
-        <p>
-          Follow-up is not always a single successful call. The system supports no answer, rescheduled, discontinued, in-person follow-up, and repeated contact attempts.
-        </p>
-        <div class="mini-insight">
-          <h4>Why it matters</h4>
-          <p>Real service workflows include missed calls and changing communication channels, so the system needed to reflect those variations.</p>
-        </div>
-      </div>
-      <div class="placeholder large">
-        <div class="placeholder-content">
-          <div class="image-icon"></div>
-          <div class="placeholder-title">Contact Attempt States</div>
-          <div class="placeholder-note">Outcome states account for no answer, rescheduled calls, discontinued service, in-person follow-ups, and repeated contact attempts.</div>
+          <p>Our guiding phrase was: We built this app so users would no longer need it. In the prototype, that meant AI should clarify a first action rather than ask users to manage another system.</p>
         </div>
       </div>
     </section>
 
     <section class="section testing">
       <div class="eyebrow">Testing / Iteration</div>
-      <h2>Testing changed the way I framed the task</h2>
+      <h2>Testing focused on whether the plan became actionable</h2>
 
       <div class="insight-cards">
         <div class="insight-card">
           <div class="num">01</div>
-          <h3>The role needed context</h3>
-          <p>Testers needed to understand what a Link Worker does before the task could feel realistic.</p>
+          <h3>Plan comprehension</h3>
+          <p>Could users understand how the AI-generated breakdown related to their original task?</p>
         </div>
 
         <div class="insight-card">
           <div class="num">02</div>
-          <h3>The task needed a scenario</h3>
-          <p>A vague instruction to “complete the follow-up” did not explain the purpose of the workflow.</p>
+          <h3>Start-point clarity</h3>
+          <p>Could users identify what to do first after reviewing the plan?</p>
         </div>
 
         <div class="insight-card">
           <div class="num">03</div>
-          <h3>Context filter needed clearer cause-and-effect</h3>
-          <p>If the layout is not explicit, users may not realize that left-side selections change right-side information.</p>
+          <h3>Autonomy and pressure</h3>
+          <p>Did the planner feel supportive rather than controlling or like another system to maintain?</p>
         </div>
       </div>
 
-      <div class="before-after">
-        <div class="ba-card">
-          <h3>Before</h3>
-          <p>“Complete the follow-up interaction and save the record.”</p>
-        </div>
-        <div class="ba-card">
-          <h3>After</h3>
-          <p>“You are a Link Worker preparing to call Cora Picard. Review her context, update the interaction log during the call, and save the profile.”</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="placeholder large">
-        <div class="placeholder-content">
-          <div class="image-icon"></div>
-          <div class="placeholder-title">Testing / Iteration Visual</div>
-          <div class="placeholder-note">The iteration focused on clearer role framing, a specific client scenario, and more explicit cause-and-effect in the context filter.</div>
-        </div>
-      </div>
     </section>
 
     <section class="section reflection">
       <div>
         <div class="eyebrow">Outcome</div>
-        <h2>A clearer structure for long-term follow-up support</h2>
+        <h2>A planner should build the user's ability to begin</h2>
       </div>
 
       <div>
         <div class="reflection-block">
-          <h3>What the prototype demonstrated</h3>
+          <h3>What the prototype frames</h3>
           <p>
-            The prototype clarified the follow-up workflow and demonstrated how structured client context could support Link Workers before, during, and after follow-up interactions.
+            The prototype frames task planning as a bridge from uncertainty to action. It combines AI task decomposition, visible todos, and time planning so users can understand what to do first.
           </p>
         </div>
 
         <div class="reflection-block">
           <h3>Expectation vs. reality</h3>
           <p>
-            I initially thought the system should focus on automation: reminders, priority generation, and recommendations. Through the sprint, I realized that early-stage service tools need to be simple, transparent, and explainable. Link Workers still need human judgement. The system should reduce memory reliance, not replace care work.
-          </p>
-        </div>
-
-        <div class="reflection-block">
-          <h3>What I would improve next</h3>
-          <p>
-            I would test the dashboard and log interaction workflow with real Link Workers, define fixed and centre-specific fields, refine priority logic, and explore AI-assisted notes summarization as a future direction rather than the current core feature.
+            I was drawn to this project because I recognized the problem personally: under heavy school and project workload, the hardest part was often the unclear moment before starting.
+            The project shifted my focus from building a powerful planner to designing a scaffold that makes the next step easier to trust.
           </p>
         </div>
 
         <div class="reflection-block">
           <h3>What I learned</h3>
           <p>
-            Designing for social care is not just about organizing data. It is about helping people understand the right context at the right moment, so they can make better decisions for the person in front of them.
+            We built this app so users would no longer need it. For me, that phrase describes a design intent: the prototype should help users understand their work,
+            trust their next step, and gradually need less support from the planner.
           </p>
         </div>
       </div>
     </section>
 
     <nav class="bottom-nav">
-      <a href="./ArtFac.html">← Previous project</a>
-      <a href="index.html#projects">Back to projects</a>
-      <a href="./ToMuDo.html">Next project →</a>
+      <a href="./LinkLog.html">&larr; Previous project</a>
+      <a href="index.html#projects">Back to projects &rarr;</a>
     </nav>
   </main>
 </body>
