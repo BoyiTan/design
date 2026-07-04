@@ -120,71 +120,131 @@
     }
     .fact-text { font-size: 14px; line-height: 1.55; }
 
-    .placeholder {
-      width: 100%;
+    .case-figure {
+      margin: 0;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: linear-gradient(135deg, #f8f8f6, #eeeeeb);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #777;
+      background: #fff;
       overflow: hidden;
-      padding: 28px;
-      text-align: center;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
     }
-    .placeholder.hero-image { height: 500px; }
-    .placeholder.large { aspect-ratio: 16 / 10; min-height: 360px; }
-    .placeholder.vertical { min-height: 520px; }
-    .placeholder-content {
-      max-width: 520px;
-      display: grid;
-      justify-items: center;
-      gap: 16px;
+    .case-figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: top left;
+      background: #f7f8fb;
     }
-    .placeholder-title {
-      font-size: 14px;
-      font-weight: 700;
-      color: #555;
-    }
-    .placeholder-note {
+    .case-figure figcaption {
+      border-top: 1px solid var(--line);
+      padding: 14px 16px;
       font-size: 13px;
-      line-height: 1.65;
-      color: #555;
-      background: #ffffff;
-      border: 1px solid var(--line);
-      padding: 10px 12px;
-      border-radius: 6px;
-    }
-    .image-icon {
-      width: 54px;
-      height: 44px;
-      border: 2px solid #bdbdb9;
-      border-radius: 6px;
-      position: relative;
-    }
-    .image-icon::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border: 2px solid #bdbdb9;
-      border-radius: 999px;
-      position: absolute;
-      top: 8px;
-      left: 10px;
-    }
-    .image-icon::after {
-      content: "";
-      width: 28px;
-      height: 22px;
-      border-left: 2px solid #bdbdb9;
-      border-top: 2px solid #bdbdb9;
-      transform: rotate(45deg);
-      position: absolute;
-      bottom: -6px;
-      left: 13px;
+      line-height: 1.55;
+      color: #444;
+      background: #fff;
     }
 
+    .live-prototype {
+      display: grid;
+      gap: 32px;
+      background: var(--soft);
+    }
+    .prototype-intro {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 90px;
+      align-items: end;
+    }
+    .prototype-intro h2 {
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: 0;
+      margin-bottom: 20px;
+    }
+    .prototype-copy {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #333;
+      max-width: 720px;
+    }
+    .prototype-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .button-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--text);
+      background: var(--text);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 650;
+    }
+    .button-link.secondary {
+      background: #fff;
+      color: var(--text);
+      border-color: var(--line);
+    }
+    .prototype-frame-shell {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.08);
+    }
+    .prototype-frame-toolbar {
+      min-height: 44px;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--muted);
+      background: #fbfbfa;
+    }
+    .prototype-frame {
+      display: block;
+      width: 100%;
+      height: 720px;
+      border: 0;
+      background: #f4f6fb;
+    }
+    .implementation-bridge {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .bridge-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .bridge-card h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0;
+      margin-bottom: 14px;
+    }
+    .bridge-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #333;
+    }
+    .prototype-note {
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
     .overview-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -460,6 +520,8 @@
       .feature.reverse,
       .reflection,
       .quote-grid,
+      .prototype-intro,
+      .implementation-bridge,
       .principles,
       .insight-cards,
       .evidence-grid,
@@ -469,7 +531,8 @@
       }
       .hero h1 { font-size: 52px; }
       .insight-pause h2 { font-size: 36px; }
-      .placeholder.hero-image { height: 320px; }
+      .prototype-frame { height: 560px; }
+      .feature.reverse .feature-text { order: -1; }
       .project-facts { grid-template-columns: 1fr; }
     }
 
@@ -484,6 +547,13 @@
         flex-direction: column;
         gap: 18px;
       }
+      .prototype-frame { height: 480px; }
+      .prototype-frame-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        padding-top: 12px;
+        padding-bottom: 12px;
+      }
     }
   </style>
 </head>
@@ -494,7 +564,6 @@
     <nav class="nav-links">
       <a href="index.html#projects">Projects</a>
       <a href="index.html#about">About</a>
-      <a href="index.html#process">Process</a>
       <a href="index.html#resume">Resume</a>
       <span class="circle-icon"></span>
     </nav>
@@ -533,12 +602,49 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="placeholder hero-image">
-        <div class="placeholder-content">
-          <div class="image-icon"></div>
-          <div class="placeholder-title">Follow-up Workflow Overview</div>
-          <div class="placeholder-note">A system view connecting the priority queue, client profile, context filter, and interaction log into one continuous follow-up workflow.</div>
+    <section class="section live-prototype" id="live-prototype">
+      <div class="prototype-intro">
+        <div>
+          <div class="eyebrow">Live Prototype</div>
+          <h2>A working follow-up dashboard, not only a screen concept</h2>
+        </div>
+        <div>
+          <p class="prototype-copy">
+            The prototype opens with built-in demo data, so reviewers can immediately inspect the
+            priority queue, client profiles, context filter, and interaction log without selecting CSV files.
+          </p>
+          <div class="prototype-actions">
+            <a class="button-link" href="assets/linklog-demo/SP_Dashboard_Followup_Merged_v69_filter_v68_style.html" target="_blank" rel="noopener">Open full prototype</a>
+            <a class="button-link secondary" href="assets/linklog-demo/L2W Legacy Tracker Converter.zip">Download converter package</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="prototype-frame-shell">
+        <div class="prototype-frame-toolbar">
+          <span>Interactive dashboard preview</span>
+          <span class="prototype-note">Built-in demo data loads automatically for quick portfolio review. Select Folder is optional for testing your own CSV files.</span>
+        </div>
+        <iframe
+          class="prototype-frame"
+          src="assets/linklog-demo/SP_Dashboard_Followup_Merged_v69_filter_v68_style.html"
+          title="LinkLog interactive dashboard demo"
+          loading="eager"
+        ></iframe>
+      </div>
+
+      <div class="implementation-bridge">
+        <div class="bridge-card">
+          <h3>Live dashboard</h3>
+          <p>The HTML prototype demonstrates priority queues, client profiles, interaction history, and guided follow-up logging with the same records.</p>
+        </div>
+        <div class="bridge-card">
+          <h3>CSV-based data model</h3>
+          <p>The demo uses separate client and interaction datasets so Link Workers can review context and update follow-up records without losing history.</p>
+        </div>
+        <div class="bridge-card">
+          <h3>L2W legacy tracker converter</h3>
+          <p>I also built a Python converter that transforms older Links2Wellbeing tracker spreadsheets into the dashboard's required CSV schema.</p>
         </div>
       </div>
     </section>
@@ -570,16 +676,6 @@
       <p>
         A follow-up support system that helps Link Workers prioritize clients, prepare with context, log interactions, and maintain continuity across long-term social prescribing journeys.
       </p>
-    </section>
-
-    <section class="section">
-      <div class="placeholder large">
-        <div class="placeholder-content">
-          <div class="image-icon"></div>
-          <div class="placeholder-title">Solution Preview Screens</div>
-          <div class="placeholder-note">Four core screens show how a Link Worker moves from queue triage to client context review, live call logging, and next-step scheduling.</div>
-        </div>
-      </div>
     </section>
 
     <section class="section research">
@@ -667,23 +763,17 @@
           <p>The dashboard becomes a workflow entry point rather than a database view, helping workers move from “all clients” to “who needs attention now.”</p>
         </div>
       </div>
-      <div class="placeholder large">
-        <div class="placeholder-content">
-          <div class="image-icon"></div>
-          <div class="placeholder-title">Priority Dashboard</div>
-          <div class="placeholder-note">The dashboard groups overdue, due-this-week, and high-priority clients so workers can start with the most time-sensitive follow-ups.</div>
-        </div>
-      </div>
+      <figure class="case-figure is-wide">
+        <img src="assets/linklog-images/linklog-dashboard-priority.png" alt="LinkLog priority dashboard showing scheduled, overdue, and due-this-week follow-up queues" />
+        <figcaption>The dashboard starts with time-sensitive follow-ups, so workers can move from a full client list to the clients who need attention now.</figcaption>
+      </figure>
     </section>
 
     <section class="section feature reverse">
-      <div class="placeholder large">
-        <div class="placeholder-content">
-          <div class="image-icon"></div>
-          <div class="placeholder-title">Client Profile</div>
-          <div class="placeholder-note">A single profile keeps intake details, interaction history, and 3-, 6-, and 12-month follow-up stages visible in one place.</div>
-        </div>
-      </div>
+      <figure class="case-figure is-wide">
+        <img src="assets/linklog-images/linklog-client-profile.png" alt="LinkLog client profile showing long-term follow-up milestones and client details" />
+        <figcaption>The profile keeps intake details, interaction history, and follow-up milestones in one view so workers can rebuild context before reaching out.</figcaption>
+      </figure>
       <div class="feature-text">
         <div class="feature-number">02</div>
         <h3>Client Profile with Longitudinal Follow-up Tabs</h3>
@@ -709,23 +799,17 @@
           <p>This supports the real workflow of preparing before a call without forcing every detail onto the screen at once.</p>
         </div>
       </div>
-      <div class="placeholder large">
-        <div class="placeholder-content">
-          <div class="image-icon"></div>
-          <div class="placeholder-title">Client Context Filter</div>
-          <div class="placeholder-note">Selectable context categories let workers focus on the details relevant to the next conversation without flattening the full client story.</div>
-        </div>
-      </div>
+      <figure class="case-figure is-wide">
+        <img src="assets/linklog-images/linklog-context-filter.png" alt="LinkLog show client context filter with selectable categories and detail cards" />
+        <figcaption>Workers can choose which context categories to display, keeping preparation focused without flattening the full client story.</figcaption>
+      </figure>
     </section>
 
     <section class="section feature reverse">
-      <div class="placeholder large">
-        <div class="placeholder-content">
-          <div class="image-icon"></div>
-          <div class="placeholder-title">Log Interaction Workflow</div>
-          <div class="placeholder-note">Structured fields, quick tags, narrative notes, and follow-up scheduling work together to keep each interaction usable later.</div>
-        </div>
-      </div>
+      <figure class="case-figure is-tall">
+        <img src="assets/linklog-images/linklog-log-interaction.png" alt="LinkLog guided log interaction workflow with outcome, key updates, notes, and quick tags" />
+        <figcaption>The logging flow pairs required structured fields with notes and quick tags, making the record usable later without over-constraining the conversation.</figcaption>
+      </figure>
       <div class="feature-text">
         <div class="feature-number">04</div>
         <h3>Guided Log Interaction Workflow</h3>
@@ -751,13 +835,10 @@
           <p>Real service workflows include missed calls and changing communication channels, so the system needed to reflect those variations.</p>
         </div>
       </div>
-      <div class="placeholder large">
-        <div class="placeholder-content">
-          <div class="image-icon"></div>
-          <div class="placeholder-title">Contact Attempt States</div>
-          <div class="placeholder-note">Outcome states account for no answer, rescheduled calls, discontinued service, in-person follow-ups, and repeated contact attempts.</div>
-        </div>
-      </div>
+      <figure class="case-figure">
+        <img src="assets/linklog-images/linklog-reschedule-tracking.png" alt="LinkLog reschedule tracking state with follow-up type, outcome, date, time, and channel fields" />
+        <figcaption>Outcome-specific states expose only the fields needed for the next action, such as the agreed date, time, and channel for a rescheduled call.</figcaption>
+      </figure>
     </section>
 
     <section class="section testing">
@@ -797,13 +878,10 @@
     </section>
 
     <section class="section">
-      <div class="placeholder large">
-        <div class="placeholder-content">
-          <div class="image-icon"></div>
-          <div class="placeholder-title">Testing / Iteration Visual</div>
-          <div class="placeholder-note">The iteration focused on clearer role framing, a specific client scenario, and more explicit cause-and-effect in the context filter.</div>
-        </div>
-      </div>
+      <figure class="case-figure is-process">
+        <img src="assets/linklog-images/linklog-workflow-iteration.png" alt="LinkLog testing iteration visual showing the shift from generic task instruction to role-based scenario" />
+        <figcaption>The test script changed from a generic “complete the follow-up” instruction into a role-based scenario that made preparation, logging, and context filtering easier to understand.</figcaption>
+      </figure>
     </section>
 
     <section class="section reflection">

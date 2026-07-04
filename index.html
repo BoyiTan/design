@@ -14,7 +14,7 @@
       NAVIGATION
       EDIT HERE:
       - Change "Boyi Tan" if you want a different brand label.
-      - #about points to the intro note, #process points to the case-study section.
+      - #about points to the intro note, #projects points to the case-study grid.
     ======================================================== -->
     <header class="site-nav" id="siteNav">
       <a class="site-brand" href="#top">Boyi Tan</a>
@@ -22,7 +22,6 @@
       <nav class="site-links" aria-label="Main navigation">
         <a href="#projects">Work</a>
         <a href="#about">About</a>
-        <a href="#process">Process</a>
         <a href="#resume">Resume</a>
         <span class="nav-mark" aria-hidden="true"></span>
       </nav>
@@ -33,26 +32,20 @@
       EDIT HERE:
       - hero-kicker: small label above the headline
       - hero-title: main homepage sentence
-      - hero-aside paragraph: short intro / positioning statement
+      - hero-cta: single project CTA below the headline
     ======================================================== -->
     <section class="hero" aria-labelledby="heroTitle">
-      <div>
+      <div id="about">
         <p class="eyebrow hero-kicker">Selected Work</p>
 
         <h1 class="hero-title" id="heroTitle">
           I design experiences as narratives—guiding users through complexity with clarity and intention.
         </h1>
-      </div>
 
-      <aside class="hero-aside" id="about">
-        <p>
-          Each project starts with a breakdown in understanding—and ends with a clearer path forward.
-        </p>
-
-        <a class="text-link down" href="#projects">
+        <a class="text-link down hero-cta" href="#projects">
           See all projects <span class="arrow" aria-hidden="true">↓</span>
         </a>
-      </aside>
+      </div>
     </section>
 
     <div class="divider" aria-hidden="true"></div>
@@ -61,11 +54,8 @@
       CASE STUDIES HEADER
       EDIT HERE: change label or link text if needed.
     ======================================================== -->
-    <div class="section-header" id="process">
+    <div class="section-header">
       <p class="eyebrow">Case Studies</p>
-      <a href="#projects" class="text-link">
-        View all projects <span class="arrow" aria-hidden="true">→</span>
-      </a>
     </div>
 
     <!-- =======================================================
@@ -151,43 +141,12 @@
           <h2 class="project-title">LinkLog</h2>
           <p class="project-subtitle">Follow-up workflow for social prescribing teams</p>
 
-          <div class="project-visual" aria-label="LinkLog follow-up workflow mockup">
-            <div class="mock-linklog">
-              <div class="mock-linklog-rail">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-
-              <div class="mock-linklog-main">
-                <div class="mock-linklog-top">
-                  <div>
-                    <div class="mock-linklog-title">Follow-up Queue</div>
-                    <div class="mock-linklog-subcopy">Overdue and due-this-week clients</div>
-                  </div>
-                  <div class="mock-linklog-pill">3 / 6 / 12 mo</div>
-                </div>
-
-                <div class="mock-linklog-row is-priority">
-                  <span>Cora P.</span>
-                  <strong>Overdue</strong>
-                </div>
-                <div class="mock-linklog-row">
-                  <span>Samuel K.</span>
-                  <strong>Due this week</strong>
-                </div>
-
-                <div class="mock-linklog-profile">
-                  <div class="mock-profile-line wide"></div>
-                  <div class="mock-profile-line"></div>
-                  <div class="mock-tags">
-                    <span>transport</span>
-                    <span>isolation</span>
-                    <span>call back</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="project-visual">
+            <img
+              class="project-cover-image"
+              src="assets/linklog-images/linklog-dashboard-priority.png"
+              alt="LinkLog Follow-up Queue dashboard showing 3 / 6 / 12 mo follow-up statuses"
+            />
           </div>
 
           <div class="project-meta">

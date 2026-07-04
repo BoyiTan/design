@@ -1,0 +1,221 @@
+Log_ID,Date_of_Call,Client_ID,Client_Name,Interaction_Type,Outcome,Staff_Notes,Program_Participation,Lack_Companionship,Left_Out,Isolated,Mood_Tags,Topic_Tags,Barrier_Tags
+LOG-0220,2026-05-13,GTSC14,Beatrix Murphy,6-Month Check-in,Discontinued,oirgnoiwrgr,,,,,,,
+LOG-0219,2026-05-13,GTSC4,Ernest Rossi,6-Month Check-in,Complete,INOSIDGOISNEGOISDPGSMPGDOE,Somewhat Active,Hardly ever,Sometimes,Hardly ever,Calm,Health,Mobility
+LOG-0216,2026-05-11,GTSC100,Leonard Bergström,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Not Active,Hardly ever,Hardly ever,Hardly ever,Anxious; Calm,Transport; Social,Lives Alone; Financial
+LOG-0149,2026-05-07,GTSC64,Gladys Park,3-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0212,2026-05-06,GTSC94,Ralph Khalil,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Not Active,Often,Often,Hardly ever,Anxious; Withdrawn,Social; Programs,Financial; Mobility
+LOG-0025,2026-05-05,GTSC10,Clifford Zukerman,12-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Sometimes,Hardly ever,Often,Energetic; Withdrawn,Mood,Transportation
+LOG-0107,2026-05-04,GTSC45,Ralph Nakamura,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Sometimes,Often,Often,Withdrawn,Social,Language
+LOG-0022,2026-05-02,GTSC9,Wallace Novak,12-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Often,Hardly ever,Often,Tired; Energetic,Mood,Transportation; Financial
+LOG-0103,2026-05-01,GTSC42,Florence Müller,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Sometimes,Often,Often,Cheerful; Calm,Family,Transportation
+LOG-0183,2026-04-28,GTSC83,Marjorie O'Brien,12-Month Check-in,Complete,Client completed 12-month programme. Transitioning to independent participation.,Somewhat Active,Sometimes,Sometimes,Hardly ever,Energetic,Family,Financial; Mental Health
+LOG-0190,2026-04-18,GTSC86,Bertha Zukerman,12-Month Check-in,Complete,Client completed 12-month programme. Transitioning to independent participation.,Not Active,Hardly ever,Sometimes,Sometimes,Energetic; Anxious,Transport,Mobility
+LOG-0082,2026-04-17,GTSC33,Ina Leblanc,12-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Hardly ever,Hardly ever,Often,Tired,Health,Mental Health; Transportation
+LOG-0016,2026-04-12,GTSC7,Clifton Bauer,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Often,Often,Hardly ever,Calm,Family,Mobility
+LOG-0123,2026-04-10,GTSC51,Opal Rossi,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Sometimes,Often,Often,Anxious; Cheerful,Social; Health,Transportation; Lives Alone
+LOG-0091,2026-04-10,GTSC37,Murray Kowalski,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Sometimes,Sometimes,Sometimes,Withdrawn,Programs,Mental Health
+LOG-0217,2026-04-09,GTSC101,Sally Smithe,3-Month Check-in,Rescheduled,Rescheduled.,,,,,,,
+LOG-0015,2026-04-05,GTSC6,Reginald Bellamy,3-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Somewhat Active,Often,Often,Hardly ever,Cheerful; Anxious,Family,Mental Health; Transportation
+LOG-0014,2026-04-05,GTSC5,Sylvia Deschamps,12-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0218,2026-04-01,GTSC102,Jonathan Doe,3-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Hardly ever,Often,Sometimes,Calm,Programs,Language; Mobility
+LOG-0061,2026-03-27,GTSC25,Eleanor Rashid,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Hardly ever,Often,Often,Tired,Mood,Lives Alone
+LOG-0048,2026-03-26,GTSC20,Ethel Bellamy,12-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Hardly ever,Hardly ever,Sometimes,Tired,Health; Transport,Transportation
+LOG-0011,2026-03-22,GTSC4,Ernest Rossi,12-Month Check-in,Rescheduled,Rescheduled.,,,,,,,
+LOG-0210,2026-03-12,GTSC93,Emma Lagrange,12-Month Check-in,Complete,Client completed 12-month programme. Transitioning to independent participation.,Active,Often,Sometimes,Hardly ever,Tired,Mood; Social,Financial
+LOG-0179,2026-03-11,GTSC81,Clifton Nakamura,3-Month Check-in,Discontinued,Withdrawn,,,,,,,
+LOG-0037,2026-03-11,GTSC16,Marjorie Popescu,3-Month Check-in,Rescheduled,Rescheduled.,,,,,,,
+LOG-0213,2026-03-10,GTSC95,Rose Bauer,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Often,Hardly ever,Hardly ever,Energetic,Transport; Social,Language; Financial
+LOG-0165,2026-03-08,GTSC71,Patricia Kovacs,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Hardly ever,Often,Often,Calm; Tired,Health; Mood,Transportation; Mobility
+LOG-0106,2026-03-06,GTSC44,Edith Nguyen,3-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Often,Hardly ever,Withdrawn,Family; Mood,Language; Transportation
+LOG-0026,2026-03-02,GTSC11,Norman Diallo,3-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0105,2026-02-28,GTSC43,Winifred Murphy,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Sometimes,Often,Often,Withdrawn,Family; Social,Lives Alone
+LOG-0039,2026-02-28,GTSC17,Lloyd Achebe,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Hardly ever,Sometimes,Hardly ever,Calm; Tired,Family,Mobility; Transportation
+LOG-0005,2026-02-28,GTSC2,Irene Nguyen,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Hardly ever,Sometimes,Often,Withdrawn,Mood,Financial
+LOG-0033,2026-02-24,GTSC14,Beatrix Murphy,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Often,Often,Often,Withdrawn,Social; Transport,Language
+LOG-0196,2026-02-23,GTSC88,Ina Park,12-Month Check-in,Complete,Client completed 12-month programme. Transitioning to independent participation.,Somewhat Active,Hardly ever,Hardly ever,Often,Calm; Withdrawn,Health,Mental Health
+LOG-0184,2026-02-23,GTSC84,Lillian Thompson,3-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0164,2026-02-23,GTSC70,Leonard Popescu,3-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0202,2026-02-17,GTSC90,Ina Kovacs,12-Month Check-in,Complete,Client completed 12-month programme. Transitioning to independent participation.,Active,Hardly ever,Sometimes,Often,Withdrawn,Transport,Language; Mental Health
+LOG-0187,2026-02-17,GTSC85,Sylvia Asante,12-Month Check-in,Complete,Client completed 12-month programme. Transitioning to independent participation.,Active,Sometimes,Sometimes,Often,Anxious; Calm,Family; Social,Transportation; Mental Health
+LOG-0059,2026-02-10,GTSC24,Clifton Picard,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Often,Hardly ever,Often,Anxious; Energetic,Health; Social,Financial; Language
+LOG-0076,2026-02-08,GTSC31,Florence Bauer,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Hardly ever,Often,Often,Energetic; Anxious,Transport; Health,Transportation; Mental Health
+LOG-0137,2026-02-04,GTSC59,Alma Mensah,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Sometimes,Hardly ever,Sometimes,Tired; Cheerful,Social; Mood,Transportation
+LOG-0163,2026-02-01,GTSC69,Doris Khalil,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Not Active,Hardly ever,Sometimes,Hardly ever,Withdrawn,Mood,Transportation; Mobility
+LOG-0090,2026-01-27,GTSC36,Marjorie Patel,12-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Hardly ever,Sometimes,Sometimes,Withdrawn,Social; Family,Language; Financial
+LOG-0211,2026-01-26,GTSC94,Ralph Khalil,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Sometimes,Hardly ever,Sometimes,Energetic; Withdrawn,Transport; Programs,Language
+LOG-0099,2026-01-24,GTSC40,Theodore Novak,12-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Often,Sometimes,Hardly ever,Cheerful,Mood,Transportation
+LOG-0199,2026-01-19,GTSC89,Theodore Kowalski,12-Month Check-in,Complete,Client completed 12-month programme. Transitioning to independent participation.,Somewhat Active,Sometimes,Often,Hardly ever,Tired,Social,Mobility
+LOG-0122,2026-01-13,GTSC51,Opal Rossi,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Hardly ever,Sometimes,Hardly ever,Anxious,Mood; Family,Transportation; Lives Alone
+LOG-0207,2026-01-12,GTSC92,Phyllis Nakamura,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Often,Sometimes,Hardly ever,Energetic,Transport; Mood,Mental Health; Language
+LOG-0145,2026-01-06,GTSC62,Douglas Petrov,12-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Active,Often,Often,Often,Cheerful,Transport,Mobility
+LOG-0142,2026-01-04,GTSC61,Ernest Yuen,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Hardly ever,Often,Hardly ever,Anxious,Transport,Financial; Mental Health
+LOG-0069,2026-01-01,GTSC28,Velma Bergström,6-Month Check-in,Complete,Discussed program participation and current support needs.,Not Active,Sometimes,Hardly ever,Often,Tired; Energetic,Programs; Social,Transportation; Lives Alone
+LOG-0029,2025-12-29,GTSC12,Milton Picard,12-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Hardly ever,Sometimes,Hardly ever,Tired; Cheerful,Health,Transportation
+LOG-0152,2025-12-23,GTSC65,Sylvia Mensah,12-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Sometimes,Sometimes,Often,Tired; Energetic,Family,Mental Health
+LOG-0140,2025-12-22,GTSC60,Roy Chen,12-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Hardly ever,Sometimes,Hardly ever,Anxious; Calm,Programs; Health,Transportation; Mental Health
+LOG-0071,2025-12-17,GTSC29,Beatrice O'Brien,6-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0093,2025-12-14,GTSC38,Ida Fernandez,6-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0060,2025-12-14,GTSC25,Eleanor Rashid,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Not Active,Hardly ever,Hardly ever,Often,Energetic; Anxious,Health; Mood,Transportation
+LOG-0104,2025-12-09,GTSC43,Winifred Murphy,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Often,Hardly ever,Sometimes,Cheerful; Withdrawn,Health,Transportation
+LOG-0003,2025-12-05,GTSC1,Vernon Tremblay,12-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Active,Often,Often,Sometimes,Tired,Transport,Mobility
+LOG-0038,2025-12-04,GTSC17,Lloyd Achebe,3-Month Check-in,Complete,Completed 3-month check-in and confirmed current support needs.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0127,2025-11-30,GTSC53,Rose Achebe,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Not Active,Often,Hardly ever,Often,Tired; Energetic,Programs; Social,Language
+LOG-0129,2025-11-29,GTSC54,Alice Novak,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Sometimes,Sometimes,Often,Anxious; Cheerful,Mood,Transportation
+LOG-0004,2025-11-29,GTSC2,Irene Nguyen,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Often,Sometimes,Sometimes,Calm,Programs; Mood,Lives Alone; Mental Health
+LOG-0148,2025-11-28,GTSC63,Cora Nkemdirim,12-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Often,Often,Sometimes,Tired; Energetic,Social; Mood,Transportation
+LOG-0178,2025-11-21,GTSC80,Ethel Okonkwo,3-Month Check-in,Discontinued,Withdrawn,,,,,,,
+LOG-0121,2025-11-21,GTSC50,Arthur Nkemdirim,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Often,Often,Often,Tired; Withdrawn,Family; Programs,Transportation; Lives Alone
+LOG-0116,2025-11-21,GTSC48,Reginald Magnusson,12-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Often,Often,Sometimes,Cheerful; Withdrawn,Health; Social,Mobility; Mental Health
+LOG-0176,2025-11-20,GTSC78,Roland Bellamy,6-Month Check-in,Discontinued,Withdrawn,,,,,,,
+LOG-0125,2025-11-18,GTSC52,Ralph Mensah,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Hardly ever,Sometimes,Sometimes,Cheerful,Health,Language; Mental Health
+LOG-0075,2025-11-14,GTSC31,Florence Bauer,3-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Hardly ever,Sometimes,Hardly ever,Tired,Mood,Mental Health; Language
+LOG-0162,2025-11-13,GTSC69,Doris Khalil,3-Month Check-in,Complete,Completed 3-month check-in and confirmed current support needs.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0119,2025-11-11,GTSC49,Bertha Lagrange,12-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Active,Sometimes,Often,Hardly ever,Withdrawn; Calm,Social; Mood,Transportation; Mental Health
+LOG-0087,2025-11-11,GTSC35,Audrey Nguyen,6-Month Check-in,Rescheduled,Rescheduled.,,,,,,,
+LOG-0136,2025-11-09,GTSC59,Alma Mensah,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Often,Hardly ever,Sometimes,Tired; Calm,Social,Mobility; Language
+LOG-0058,2025-11-07,GTSC24,Clifton Picard,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Sometimes,Sometimes,Sometimes,Anxious,Mood; Health,Mental Health
+LOG-0024,2025-11-04,GTSC10,Clifford Zukerman,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0021,2025-10-29,GTSC9,Wallace Novak,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Sometimes,Often,Sometimes,Cheerful; Anxious,Programs,Transportation
+LOG-0045,2025-10-28,GTSC19,Howard O'Brien,12-Month Check-in,Rescheduled,Rescheduled.,,,,,,,
+LOG-0215,2025-10-27,GTSC98,Russell Andersen,3-Month Check-in,Discontinued,On Hold,,,,,,,
+LOG-0189,2025-10-22,GTSC86,Bertha Zukerman,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0067,2025-10-21,GTSC27,Ida Kaur,12-Month Check-in,Rescheduled,Rescheduled.,,,,,,,
+LOG-0182,2025-10-17,GTSC83,Marjorie O'Brien,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Often,Often,Hardly ever,Calm; Withdrawn,Family,Financial; Mobility
+LOG-0155,2025-10-16,GTSC66,Chester Lagrange,12-Month Check-in,Complete,Discussed program participation and current support needs.,Not Active,Sometimes,Often,Often,Tired; Anxious,Mood,Mobility
+LOG-0081,2025-10-14,GTSC33,Ina Leblanc,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Sometimes,Hardly ever,Calm,Transport,Mental Health
+LOG-0068,2025-10-13,GTSC28,Velma Bergström,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Often,Hardly ever,Sometimes,Anxious,Mood,Financial; Lives Alone
+LOG-0141,2025-10-12,GTSC61,Ernest Yuen,3-Month Check-in,Complete,Completed 3-month check-in and confirmed current support needs.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0206,2025-10-09,GTSC92,Phyllis Nakamura,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Often,Often,Often,Withdrawn; Cheerful,Transport; Mood,Language
+LOG-0205,2025-10-02,GTSC91,Russell Nkemdirim,12-Month Check-in,Complete,Client completed 12-month programme. Transitioning to independent participation.,Not Active,Often,Often,Sometimes,Calm,Family; Social,Transportation; Lives Alone
+LOG-0051,2025-10-02,GTSC21,Nathan Mensah,12-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Hardly ever,Sometimes,Cheerful,Family; Mood,Lives Alone
+LOG-0169,2025-10-01,GTSC73,Reginald Deschamps,3-Month Check-in,Discontinued,Withdrawn,,,,,,,
+LOG-0013,2025-09-28,GTSC5,Sylvia Deschamps,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Often,Hardly ever,Anxious,Social,Transportation
+LOG-0102,2025-09-22,GTSC41,Ethel Nkemdirim,12-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Often,Sometimes,Often,Calm; Tired,Programs; Health,Mobility; Transportation
+LOG-0070,2025-09-18,GTSC29,Beatrice O'Brien,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Sometimes,Sometimes,Often,Anxious,Family,Lives Alone; Financial
+LOG-0032,2025-09-18,GTSC13,Cora Picard,12-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Often,Sometimes,Hardly ever,Tired,Social; Mood,Language; Lives Alone
+LOG-0047,2025-09-17,GTSC20,Ethel Bellamy,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Hardly ever,Sometimes,Often,Calm; Withdrawn,Transport,Mental Health
+LOG-0010,2025-09-15,GTSC4,Ernest Rossi,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Often,Often,Sometimes,Cheerful,Social; Mood,Transportation
+LOG-0174,2025-09-14,GTSC77,Harvey Santos,3-Month Check-in,Discontinued,Withdrawn,,,,,,,
+LOG-0209,2025-09-12,GTSC93,Emma Lagrange,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0092,2025-09-12,GTSC38,Ida Fernandez,3-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Somewhat Active,Often,Often,Often,Withdrawn,Family,Mental Health; Language
+LOG-0126,2025-09-11,GTSC53,Rose Achebe,3-Month Check-in,Complete,Completed 3-month check-in and confirmed current support needs.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0113,2025-09-07,GTSC47,Cora Andersen,12-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0057,2025-09-04,GTSC23,Frances Khalil,12-Month Check-in,Complete,Discussed program participation and current support needs.,Not Active,Hardly ever,Sometimes,Hardly ever,Calm; Withdrawn,Family; Mood,Mobility
+LOG-0079,2025-09-03,GTSC32,Hazel Magnusson,12-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0008,2025-09-02,GTSC3,Karl Yuen,12-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Often,Hardly ever,Often,Calm; Tired,Transport; Social,Lives Alone; Financial
+LOG-0120,2025-08-31,GTSC50,Arthur Nkemdirim,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Hardly ever,Sometimes,Often,Tired,Social,Lives Alone
+LOG-0168,2025-08-29,GTSC72,Viola O'Brien,12-Month Check-in,Complete,Discussed program participation and current support needs.,Not Active,Sometimes,Often,Hardly ever,Tired,Transport,Mobility
+LOG-0201,2025-08-28,GTSC90,Ina Kovacs,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Sometimes,Sometimes,Often,Calm,Social; Health,Mental Health
+LOG-0195,2025-08-24,GTSC88,Ina Park,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Often,Often,Often,Withdrawn; Anxious,Mood; Social,Lives Alone; Transportation
+LOG-0128,2025-08-24,GTSC54,Alice Novak,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Often,Sometimes,Sometimes,Anxious; Calm,Health; Programs,Financial; Mental Health
+LOG-0086,2025-08-22,GTSC35,Audrey Nguyen,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Often,Often,Sometimes,Tired; Energetic,Transport,Transportation; Mobility
+LOG-0177,2025-08-20,GTSC79,Bertha Fernandez,3-Month Check-in,Discontinued,Withdrawn,,,,,,,
+LOG-0193,2025-08-16,GTSC87,Lorraine Okonkwo,12-Month Check-in,Complete,Client completed 12-month programme. Transitioning to independent participation.,Active,Sometimes,Hardly ever,Sometimes,Withdrawn,Transport; Health,Mobility; Language
+LOG-0124,2025-08-15,GTSC52,Ralph Mensah,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Hardly ever,Sometimes,Often,Tired,Mood; Programs,Mental Health
+LOG-0186,2025-08-13,GTSC85,Sylvia Asante,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Often,Often,Hardly ever,Anxious,Transport; Programs,Language; Mental Health
+LOG-0175,2025-08-13,GTSC78,Roland Bellamy,3-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Sometimes,Often,Sometimes,Tired,Family; Mood,Language; Mobility
+LOG-0020,2025-08-10,GTSC9,Wallace Novak,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Often,Often,Often,Anxious,Programs; Mood,Mental Health; Lives Alone
+LOG-0110,2025-08-05,GTSC46,Vera Bergström,12-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Sometimes,Sometimes,Hardly ever,Calm,Programs,Language; Lives Alone
+LOG-0023,2025-08-04,GTSC10,Clifford Zukerman,3-Month Check-in,Complete,Discussed program participation and current support needs.,Not Active,Hardly ever,Often,Hardly ever,Withdrawn; Anxious,Family,Lives Alone; Mobility
+LOG-0135,2025-08-03,GTSC58,Reginald Kovacs,12-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Sometimes,Sometimes,Hardly ever,Anxious; Tired,Transport,Transportation
+LOG-0089,2025-07-27,GTSC36,Marjorie Patel,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0074,2025-07-27,GTSC30,Velma Achebe,12-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0098,2025-07-21,GTSC40,Theodore Novak,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Often,Hardly ever,Sometimes,Calm; Energetic,Mood; Programs,Mobility; Financial
+LOG-0064,2025-07-21,GTSC26,Beatrice Bauer,12-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Sometimes,Often,Hardly ever,Calm; Energetic,Social; Mood,Mobility
+LOG-0198,2025-07-20,GTSC89,Theodore Kowalski,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0188,2025-07-18,GTSC86,Bertha Zukerman,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Hardly ever,Sometimes,Often,Anxious,Family,Lives Alone
+LOG-0181,2025-07-16,GTSC83,Marjorie O'Brien,3-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Hardly ever,Sometimes,Often,Energetic; Withdrawn,Mood; Social,Transportation; Mobility
+LOG-0080,2025-07-04,GTSC33,Ina Leblanc,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Hardly ever,Hardly ever,Often,Withdrawn; Energetic,Family,Transportation; Mobility
+LOG-0085,2025-07-03,GTSC34,Cecil Johansson,12-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Sometimes,Sometimes,Sometimes,Withdrawn; Calm,Health; Programs,Transportation
+LOG-0144,2025-07-01,GTSC62,Douglas Petrov,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0139,2025-06-30,GTSC60,Roy Chen,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Not Active,Hardly ever,Hardly ever,Often,Energetic; Cheerful,Programs,Mobility; Language
+LOG-0046,2025-06-29,GTSC20,Ethel Bellamy,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Often,Hardly ever,Hardly ever,Withdrawn; Anxious,Transport; Health,Language; Mobility
+LOG-0012,2025-06-28,GTSC5,Sylvia Deschamps,3-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Hardly ever,Hardly ever,Hardly ever,Calm,Programs; Family,Mobility
+LOG-0036,2025-06-27,GTSC15,Raymond O'Brien,12-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Often,Often,Sometimes,Cheerful,Programs,Language
+LOG-0151,2025-06-21,GTSC65,Sylvia Mensah,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Hardly ever,Sometimes,Hardly ever,Tired; Anxious,Health; Mood,Mental Health; Transportation
+LOG-0028,2025-06-17,GTSC12,Milton Picard,6-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Hardly ever,Often,Hardly ever,Withdrawn,Programs; Health,Lives Alone
+LOG-0208,2025-06-12,GTSC93,Emma Lagrange,3-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Somewhat Active,Often,Sometimes,Sometimes,Withdrawn; Cheerful,Transport; Mood,Mental Health; Mobility
+LOG-0042,2025-06-07,GTSC18,Sylvia Patel,12-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Often,Often,Withdrawn; Energetic,Mood; Social,Mobility
+LOG-0009,2025-06-05,GTSC4,Ernest Rossi,3-Month Check-in,Complete,Discussed program participation and current support needs.,Not Active,Hardly ever,Hardly ever,Sometimes,Anxious,Mood,Transportation; Lives Alone
+LOG-0002,2025-06-04,GTSC1,Vernon Tremblay,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Sometimes,Hardly ever,Often,Anxious,Social; Programs,Language; Mental Health
+LOG-0147,2025-06-01,GTSC63,Cora Nkemdirim,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Sometimes,Often,Hardly ever,Tired,Programs,Mental Health; Lives Alone
+LOG-0200,2025-05-25,GTSC90,Ina Kovacs,3-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Often,Sometimes,Often,Withdrawn,Family,Lives Alone; Language
+LOG-0185,2025-05-22,GTSC85,Sylvia Asante,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Often,Hardly ever,Hardly ever,Withdrawn; Energetic,Health,Transportation; Lives Alone
+LOG-0194,2025-05-21,GTSC88,Ina Park,3-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Somewhat Active,Sometimes,Sometimes,Sometimes,Tired,Social; Family,Mobility; Financial
+LOG-0115,2025-05-19,GTSC48,Reginald Magnusson,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Active,Sometimes,Sometimes,Sometimes,Cheerful,Mood; Family,Language; Lives Alone
+LOG-0118,2025-05-18,GTSC49,Bertha Lagrange,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Sometimes,Hardly ever,Often,Withdrawn; Anxious,Health,Mobility; Financial
+LOG-0019,2025-05-17,GTSC8,Ina Popescu,12-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0173,2025-05-15,GTSC76,Frederick Moreau,6-Month Check-in,Discontinued,Withdrawn,,,,,,,
+LOG-0054,2025-05-12,GTSC22,Arnold Kowalski,12-Month Check-in,Rescheduled,Rescheduled.,,,,,,,
+LOG-0097,2025-05-03,GTSC40,Theodore Novak,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Hardly ever,Often,Often,Withdrawn; Anxious,Family; Programs,Transportation
+LOG-0044,2025-05-02,GTSC19,Howard O'Brien,6-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Hardly ever,Often,Hardly ever,Calm,Mood; Programs,Transportation
+LOG-0088,2025-04-26,GTSC36,Marjorie Patel,3-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Often,Hardly ever,Sometimes,Tired,Health,Mobility
+LOG-0066,2025-04-25,GTSC27,Ida Kaur,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Often,Sometimes,Often,Anxious,Social,Transportation; Mental Health
+LOG-0197,2025-04-23,GTSC89,Theodore Kowalski,3-Month Check-in,Complete,Completed 3-month check-in and confirmed current support needs.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0132,2025-04-23,GTSC55,Harvey Kowalski,6-Month Check-in,Rescheduled,Rescheduled.,,,,,,,
+LOG-0158,2025-04-17,GTSC67,Bruce Patel,12-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Hardly ever,Sometimes,Sometimes,Energetic,Social; Programs,Transportation
+LOG-0154,2025-04-10,GTSC66,Chester Lagrange,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Often,Hardly ever,Often,Anxious,Social,Mental Health
+LOG-0161,2025-04-09,GTSC68,Clifton Singh,12-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Often,Sometimes,Often,Cheerful,Family,Mental Health
+LOG-0096,2025-04-04,GTSC39,Ethel Fernandez,12-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Hardly ever,Hardly ever,Hardly ever,Withdrawn,Health,Financial
+LOG-0143,2025-04-01,GTSC62,Douglas Petrov,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Hardly ever,Often,Often,Calm,Health; Social,Financial
+LOG-0031,2025-04-01,GTSC13,Cora Picard,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Sometimes,Sometimes,Hardly ever,Withdrawn,Health; Mood,Transportation; Language
+LOG-0050,2025-03-31,GTSC21,Nathan Mensah,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Hardly ever,Hardly ever,Often,Calm,Transport; Health,Financial; Language
+LOG-0204,2025-03-29,GTSC91,Russell Nkemdirim,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0150,2025-03-27,GTSC65,Sylvia Mensah,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Sometimes,Often,Often,Withdrawn; Anxious,Programs,Mobility; Financial
+LOG-0101,2025-03-27,GTSC41,Ethel Nkemdirim,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Sometimes,Hardly ever,Sometimes,Anxious; Cheerful,Programs; Health,Mobility; Lives Alone
+LOG-0138,2025-03-26,GTSC60,Roy Chen,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Hardly ever,Sometimes,Sometimes,Anxious; Tired,Health,Mobility
+LOG-0027,2025-03-26,GTSC12,Milton Picard,3-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Sometimes,Often,Sometimes,Withdrawn,Family; Mood,Language; Mobility
+LOG-0171,2025-03-25,GTSC75,Arthur Huang,3-Month Check-in,Discontinued,Withdrawn,,,,,,,
+LOG-0056,2025-03-13,GTSC23,Frances Khalil,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Often,Often,Often,Withdrawn; Energetic,Health; Programs,Language
+LOG-0078,2025-03-07,GTSC32,Hazel Magnusson,6-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Hardly ever,Sometimes,Sometimes,Calm; Cheerful,Social; Family,Lives Alone; Language
+LOG-0167,2025-03-05,GTSC72,Viola O'Brien,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Sometimes,Hardly ever,Sometimes,Cheerful; Calm,Transport,Lives Alone; Transportation
+LOG-0001,2025-03-03,GTSC1,Vernon Tremblay,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Hardly ever,Hardly ever,Sometimes,Tired,Health,Mobility; Transportation
+LOG-0007,2025-02-27,GTSC3,Karl Yuen,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Not Active,Sometimes,Sometimes,Sometimes,Energetic,Programs,Transportation
+LOG-0114,2025-02-26,GTSC48,Reginald Magnusson,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Sometimes,Sometimes,Hardly ever,Cheerful; Withdrawn,Programs; Family,Mobility
+LOG-0112,2025-02-26,GTSC47,Cora Andersen,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Often,Often,Sometimes,Anxious; Withdrawn,Family; Social,Lives Alone
+LOG-0146,2025-02-19,GTSC63,Cora Nkemdirim,3-Month Check-in,Complete,Discussed program participation and current support needs.,Not Active,Often,Sometimes,Often,Withdrawn,Mood; Transport,Transportation; Mental Health
+LOG-0117,2025-02-16,GTSC49,Bertha Lagrange,3-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Often,Often,Hardly ever,Withdrawn,Programs,Transportation; Lives Alone
+LOG-0192,2025-02-12,GTSC87,Lorraine Okonkwo,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Hardly ever,Sometimes,Often,Energetic; Cheerful,Transport; Mood,Financial; Lives Alone
+LOG-0172,2025-02-08,GTSC76,Frederick Moreau,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Often,Often,Often,Tired,Transport; Health,Lives Alone; Mobility
+LOG-0134,2025-02-01,GTSC58,Reginald Kovacs,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Sometimes,Hardly ever,Often,Tired; Withdrawn,Health; Social,Language; Transportation
+LOG-0063,2025-01-30,GTSC26,Beatrice Bauer,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Often,Sometimes,Sometimes,Withdrawn,Mood; Social,Financial; Mobility
+LOG-0109,2025-01-27,GTSC46,Vera Bergström,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0043,2025-01-27,GTSC19,Howard O'Brien,3-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Sometimes,Often,Hardly ever,Cheerful,Family,Mental Health; Lives Alone
+LOG-0065,2025-01-20,GTSC27,Ida Kaur,3-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Sometimes,Hardly ever,Hardly ever,Withdrawn; Cheerful,Social; Health,Lives Alone
+LOG-0073,2025-01-16,GTSC30,Velma Achebe,6-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Hardly ever,Hardly ever,Sometimes,Cheerful; Tired,Mood; Social,Language; Mobility
+LOG-0049,2025-01-06,GTSC21,Nathan Mensah,3-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Somewhat Active,Sometimes,Hardly ever,Often,Calm,Social; Family,Lives Alone; Financial
+LOG-0153,2025-01-05,GTSC66,Chester Lagrange,3-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Active,Often,Often,Hardly ever,Anxious; Calm,Health; Mood,Language
+LOG-0084,2024-12-30,GTSC34,Cecil Johansson,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0030,2024-12-26,GTSC13,Cora Picard,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Often,Sometimes,Often,Cheerful,Programs,Financial
+LOG-0100,2024-12-25,GTSC41,Ethel Nkemdirim,3-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Somewhat Active,Hardly ever,Hardly ever,Sometimes,Anxious; Cheerful,Social,Lives Alone
+LOG-0203,2024-12-22,GTSC91,Russell Nkemdirim,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Sometimes,Sometimes,Often,Calm; Cheerful,Family,Mobility
+LOG-0035,2024-12-22,GTSC15,Raymond O'Brien,6-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Sometimes,Hardly ever,Sometimes,Withdrawn,Social,Transportation; Mobility
+LOG-0055,2024-12-17,GTSC23,Frances Khalil,3-Month Check-in,Complete,Completed 3-month check-in and confirmed current support needs.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0077,2024-12-10,GTSC32,Hazel Magnusson,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Sometimes,Often,Often,Energetic; Calm,Programs,Mental Health
+LOG-0111,2024-12-09,GTSC47,Cora Andersen,3-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Sometimes,Often,Often,Tired,Social; Family,Mobility
+LOG-0006,2024-12-09,GTSC3,Karl Yuen,3-Month Check-in,Complete,Completed 3-month check-in and confirmed current support needs.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0166,2024-12-07,GTSC72,Viola O'Brien,3-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Somewhat Active,Hardly ever,Sometimes,Sometimes,Withdrawn; Cheerful,Programs; Health,Mobility
+LOG-0041,2024-12-04,GTSC18,Sylvia Patel,6-Month Check-in,Complete,"Checked in on wellbeing, companionship, and attendance barriers.",Active,Hardly ever,Hardly ever,Sometimes,Energetic,Social,Transportation; Mental Health
+LOG-0018,2024-11-24,GTSC8,Ina Popescu,6-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Sometimes,Sometimes,Hardly ever,Calm,Mood; Transport,Mobility
+LOG-0053,2024-11-18,GTSC22,Arnold Kowalski,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Somewhat Active,Sometimes,Hardly ever,Hardly ever,Tired,Mood,Mobility; Lives Alone
+LOG-0191,2024-11-13,GTSC87,Lorraine Okonkwo,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Hardly ever,Often,Often,Energetic,Health; Programs,Transportation; Lives Alone
+LOG-0170,2024-11-10,GTSC74,Alvin Patel,3-Month Check-in,Discontinued,Withdrawn,,,,,,,
+LOG-0108,2024-11-04,GTSC46,Vera Bergström,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Often,Sometimes,Hardly ever,Anxious,Family; Health,Language; Financial
+LOG-0180,2024-10-31,GTSC82,Ernest Patel,3-Month Check-in,Discontinued,Withdrawn,,,,,,,
+LOG-0131,2024-10-30,GTSC55,Harvey Kowalski,6-Month Check-in,No Answer,No answer.,,,,,,,
+LOG-0133,2024-10-25,GTSC58,Reginald Kovacs,3-Month Check-in,Complete,Discussed program participation and current support needs.,Somewhat Active,Sometimes,Sometimes,Sometimes,Calm,Family,Lives Alone; Language
+LOG-0062,2024-10-19,GTSC26,Beatrice Bauer,3-Month Check-in,Complete,Completed 3-month check-in and confirmed current support needs.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0157,2024-10-15,GTSC67,Bruce Patel,6-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Often,Hardly ever,Often,Tired; Calm,Transport,Financial; Language
+LOG-0072,2024-10-14,GTSC30,Velma Achebe,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Often,Sometimes,Hardly ever,Cheerful; Withdrawn,Social,Lives Alone
+LOG-0083,2024-10-05,GTSC34,Cecil Johansson,3-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Not Active,Often,Hardly ever,Hardly ever,Calm; Withdrawn,Programs; Mood,Language; Transportation
+LOG-0160,2024-09-29,GTSC68,Clifton Singh,6-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Not Active,Sometimes,Sometimes,Sometimes,Anxious; Withdrawn,Family; Health,Language
+LOG-0095,2024-09-29,GTSC39,Ethel Fernandez,6-Month Check-in,Complete,Client shared updates about social activities and barriers.,Not Active,Hardly ever,Often,Hardly ever,Calm; Energetic,Mood,Language
+LOG-0034,2024-09-21,GTSC15,Raymond O'Brien,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Hardly ever,Often,Often,Withdrawn; Cheerful,Programs; Transport,Mental Health
+LOG-0214,2024-09-19,GTSC97,Irene Rashid,3-Month Check-in,Discontinued,On Hold,,,,,,,
+LOG-0040,2024-09-02,GTSC18,Sylvia Patel,3-Month Check-in,Complete,Client shared updates about social activities and barriers.,Active,Hardly ever,Sometimes,Hardly ever,Anxious; Cheerful,Health; Transport,Financial
+LOG-0017,2024-08-26,GTSC8,Ina Popescu,3-Month Check-in,Complete,Completed 3-month check-in and confirmed current support needs.,Active,Sometimes,Sometimes,Sometimes,Calm,Programs; Social,Transportation
+LOG-0052,2024-08-17,GTSC22,Arnold Kowalski,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Hardly ever,Often,Sometimes,Anxious,Family,Mobility; Mental Health
+LOG-0130,2024-08-03,GTSC55,Harvey Kowalski,3-Month Check-in,Complete,Client reported wanting more social connection and regular participation.,Somewhat Active,Sometimes,Sometimes,Sometimes,Anxious,Social; Transport,Mental Health
+LOG-0159,2024-07-10,GTSC68,Clifton Singh,3-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Active,Often,Sometimes,Hardly ever,Cheerful; Energetic,Transport; Social,Financial; Mental Health
+LOG-0156,2024-07-02,GTSC67,Bruce Patel,3-Month Check-in,Complete,Reviewed participation progress and confirmed next support steps.,Somewhat Active,Hardly ever,Often,Sometimes,Energetic; Withdrawn,Programs,Mental Health; Lives Alone
+LOG-0094,2024-06-21,GTSC39,Ethel Fernandez,3-Month Check-in,Complete,Discussed program participation and current support needs.,Active,Often,Sometimes,Often,Anxious,Social; Programs,Financial; Language
