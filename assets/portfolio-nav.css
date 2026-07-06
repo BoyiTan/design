@@ -99,12 +99,35 @@ nav.portfolio-nav [data-nav-separator] {
   height: var(--portfolio-chapter-h) !important;
   padding-left: var(--portfolio-nav-edge) !important;
   padding-right: var(--portfolio-nav-edge) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
   scrollbar-width: none;
 }
 
 .portfolio-nav-chapters::-webkit-scrollbar,
 .film-chapters::-webkit-scrollbar {
   display: none;
+}
+
+.portfolio-nav-chapters [data-ch],
+.film-chapters [data-ch] {
+  display: block !important;
+  flex: 0 0 auto !important;
+  padding: 5px 12px !important;
+  border-radius: 999px !important;
+  white-space: nowrap !important;
+  font: 600 10.5px ui-monospace, Menlo, monospace !important;
+  letter-spacing: .07em !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  background: transparent;
+  transition: color .2s ease, background .2s ease !important;
+}
+
+.portfolio-nav-dark .portfolio-nav-chapters [data-ch],
+.portfolio-nav-dark .film-chapters [data-ch] {
+  color: rgba(255, 255, 255, .7);
 }
 
 .portfolio-nav-brand,

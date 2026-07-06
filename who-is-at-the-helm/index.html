@@ -113,7 +113,7 @@ body{margin:0;background:#0a0a0c;font-family:'Instrument Sans',sans-serif;-webki
     <div class="film-progress"><div class="film-progress-fill"></div></div>
     <div class="film-chapters portfolio-nav-chapters">
       <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="8">
-        <button onClick="{{ ch.onClick }}" data-ch="{{ ch.id }}" data-cursor="Jump the reel" style="all:unset;cursor:pointer;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.07em;color:rgba(255,255,255,.42);padding:4px 10px;border-radius:999px;white-space:nowrap;transition:color .2s ease,background .2s ease" style-hover="color:#f2f2f4">{{ ch.label }}</button>
+        <button onClick="{{ ch.onClick }}" data-ch="{{ ch.id }}" data-cursor="Jump the reel" style="appearance:none;background:transparent;border:0;cursor:pointer;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.07em;color:rgba(255,255,255,.7);padding:5px 12px;border-radius:999px;white-space:nowrap;transition:color .2s ease,background .2s ease" style-hover="color:#f2f2f4">{{ ch.label }}</button>
       </sc-for>
     </div>
   </div>
