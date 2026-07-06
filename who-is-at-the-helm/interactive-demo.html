@@ -288,11 +288,6 @@ function enter360(nodeId = activeNode, startSeconds) {
   permissionStatus.textContent = 'DRAG TO LOOK';
   entryButtons.forEach(hideButton);
   showButton(returnButton);
-  if (linearPlayer && typeof linearPlayer.pauseVideo === 'function') {
-    try {
-      linearPlayer.pauseVideo();
-    } catch (error) {}
-  }
 
   const target = typeof startSeconds === 'number' ? startSeconds : sync360Player();
   if (spherePlayer) {
