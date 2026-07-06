@@ -359,7 +359,7 @@ a{color:inherit}
     if (!shell || shell.getAttribute("data-youtube-ready") === "1") return;
 
     if (window.location.protocol === "file:") {
-      shell.innerHTML = '<div style="max-width:360px;text-align:center;line-height:1.7;padding:22px;color:rgba(255,255,255,.72)">YouTube embeds need an http or https page origin. Open this case study through the local server instead of file://.</div>';
+      shell.innerHTML = '<div style="max-width:360px;text-align:center;line-height:1.7;padding:22px;color:rgba(255,255,255,.72)">YouTube embeds need an http or https page origin. Open this case study through a web server rather than a direct local file open.</div>';
       shell.setAttribute("data-youtube-ready", "file-blocked");
       return;
     }
