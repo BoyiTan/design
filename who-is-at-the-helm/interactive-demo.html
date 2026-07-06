@@ -193,7 +193,7 @@ function handleSphereReady() {
 function handleSphereStateChange(event) {
   if (!in360 || !window.YT) return;
   if (event.data === YT.PlayerState.ENDED) {
-    returnToLinearCut();
+    returnToLinearCut({ complete: true });
   }
 }
 
@@ -288,6 +288,11 @@ function enter360(nodeId = activeNode, startSeconds) {
   permissionStatus.textContent = 'DRAG TO LOOK';
   entryButtons.forEach(hideButton);
   showButton(returnButton);
+  if (linearPlayer && typeof linearPlayer.pauseVideo === 'function') {
+    try {
+      linearPlayer.pauseVideo();
+    } catch (error) {}
+  }
 
   const target = typeof startSeconds === 'number' ? startSeconds : sync360Player();
   if (spherePlayer) {
@@ -318,10 +323,15 @@ function exit360() {
   hideButton(returnButton);
 }
 
-function returnToLinearCut() {
-  completed360Nodes.add(activeNode);
+function returnToLinearCut(options = {}) {
+  const shouldComplete = options.complete === true;
+  if (shouldComplete) {
+    completed360Nodes.add(activeNode);
+  }
   exit360();
-  permissionStatus.textContent = '360 COMPLETE';
+  if (shouldComplete) {
+    permissionStatus.textContent = '360 COMPLETE';
+  }
   if (linearPlayer && typeof linearPlayer.playVideo === 'function') {
     try {
       linearPlayer.playVideo();
@@ -473,7 +483,7 @@ entryButtons.forEach((button) => {
 
 returnButton.addEventListener('click', () => {
   if (in360) {
-    returnToLinearCut();
+    returnToLinearCut({ complete: false });
   }
 });
 
