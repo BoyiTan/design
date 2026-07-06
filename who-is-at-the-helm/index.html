@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Who Is at the Helm? Case Study - Boyi Tan</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="../assets/portfolio-nav.css">
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{height:auto!important;min-height:100%;overflow-x:hidden}
+body{margin:0;background:#0a0a0c;font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-y:auto!important}
+#dc-root,#dc-root>.sc-host{height:auto!important;min-height:100%!important}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes recBlink{0%,100%{opacity:1}50%{opacity:.15}}
+@keyframes grainShift{0%{transform:translate(0,0)}25%{transform:translate(-14px,9px)}50%{transform:translate(9px,-12px)}75%{transform:translate(-7px,-6px)}100%{transform:translate(0,0)}}
+.film-nav{position:fixed;top:0;left:0;right:0;z-index:70}
+.film-nav-bar{height:60px;background:rgba(10,10,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:space-between;padding:0 36px}
+.film-nav-left{display:flex;align-items:center;gap:24px}
+.film-nav-brand{font-weight:700;font-size:14.5px;color:#f5f5f7;white-space:nowrap}
+.film-nav-back{all:unset;cursor:pointer;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px;text-decoration:none;white-space:nowrap}
+.film-nav-right{display:flex;align-items:center;gap:26px}
+.film-nav-tc{display:flex;align-items:center;gap:8px;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:rgba(255,255,255,.45);white-space:nowrap}
+.film-nav-rec{width:8px;height:8px;border-radius:50%;background:#e5484d;animation:recBlink 1.3s infinite}
+.film-nav-links{display:flex;align-items:center;gap:22px;font-size:13px;color:rgba(255,255,255,.55)}
+.film-nav-links a{color:inherit;text-decoration:none}
+.film-mode-switch{display:grid;grid-template-columns:auto 18px auto;align-items:center;column-gap:9px;font:600 11.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:rgba(255,255,255,.58)}
+.film-nav-separator{width:1px;height:18px;background:rgba(255,255,255,.14);display:inline-block}
+.film-progress{height:2px;background:rgba(255,255,255,.1)}
+.film-progress-fill{height:100%;width:calc(var(--prog)*100%);background:#e5484d}
+.film-chapters{height:38px;background:rgba(10,10,12,.88);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:4px;padding:0 30px;overflow-x:auto}
+.film-chapters button{appearance:none;background:transparent;border:0;color:rgba(255,255,255,.42)}
+.film-chapters button:focus-visible{outline:1px solid rgba(229,72,77,.7);outline-offset:2px}
+@media(max-width:980px){
+  .film-nav-tc{display:none!important}
+  .film-chapters{display:none!important}
+  .film-title-sequence{padding-top:126px!important}
+  [data-case-cursor-label]{display:none!important}
+}
+@media(max-width:720px){
+  .film-nav-bar{height:auto!important;min-height:74px!important;align-items:flex-start!important;flex-wrap:wrap!important;gap:10px 14px!important;padding:12px 18px!important}
+  .film-nav-left{width:100%!important;justify-content:space-between!important;gap:12px!important}
+  .film-nav-brand{font-size:13px!important}
+  .film-nav-back{font-size:10.5px!important}
+  .film-nav-right{width:100%!important;justify-content:flex-start!important;align-items:flex-start!important;flex-direction:column!important;gap:9px!important}
+  .film-nav-links{width:100%!important;gap:12px!important;font-size:12px!important;flex-wrap:wrap!important;justify-content:flex-start!important}
+  .film-nav-links a{white-space:nowrap!important}
+  .film-mode-switch{column-gap:7px!important;font-size:10.5px!important}
+  .film-nav-separator{display:none!important}
+  .film-title-sequence{padding-top:126px!important}
+  [style*="grid-template-columns:repeat(4,1fr)"],
+  [style*="grid-template-columns: repeat(4, 1fr)"],
+  [style*="grid-template-columns:repeat(3,1fr)"],
+  [style*="grid-template-columns: repeat(3, 1fr)"],
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:1fr 1.15fr"],
+  [style*="grid-template-columns: 1fr 1.15fr"],
+  [style*="grid-template-columns:1.15fr 1fr"],
+  [style*="grid-template-columns: 1.15fr 1fr"],
+  [style*="grid-template-columns:1fr 1fr 1.3fr"],
+  [style*="grid-template-columns: 1fr 1fr 1.3fr"],
+  [style*="grid-template-columns:1.25fr auto"],
+  [style*="grid-template-columns: 1.25fr auto"]{grid-template-columns:1fr!important}
+  a[style*="white-space:nowrap"],a[style*="white-space: nowrap"]{white-space:normal!important;text-align:center!important;box-sizing:border-box!important;max-width:100%!important}
+  [style*="max-width:1080px"],
+  [style*="max-width: 1080px"],
+  [style*="max-width:1120px"],
+  [style*="max-width: 1120px"],
+  [style*="max-width:1160px"],
+  [style*="max-width: 1160px"]{max-width:100%!important;box-sizing:border-box!important}
+  [style*="padding:72px 40px"],
+  [style*="padding: 72px 40px"],
+  [style*="padding:84px 40px"],
+  [style*="padding: 84px 40px"],
+  [style*="padding:96px 40px"]{padding-left:20px!important;padding-right:20px!important}
+  [style*="padding: 96px 40px"]{padding-left:20px!important;padding-right:20px!important}
+  [style*="font-size:clamp(56px,8vw,96px)"]{font-size:clamp(42px,14vw,64px)!important}
+  [style*="display:flex;justify-content:space-between;align-items:center;margin-top:16px"]{align-items:flex-start!important;flex-direction:column!important;gap:12px!important}
+}
+@media(hover:none),(pointer:coarse),(max-width:1140px){
+  [data-case-cursor-label]{display:none!important}
+  .film-nav-rec{animation:none!important}
+}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" data-helm-case-root style="--prog:0;color:#f2f2f4;background:#0a0a0c;min-height:100vh">
+
+  <sc-if value="{{ grainOn }}" hint-placeholder-val="{{ false }}">
+    <div ref="{{ grainRef }}" style="position:fixed;inset:-60px;opacity:.1;animation:grainShift 1.1s steps(1,end) infinite;pointer-events:none;z-index:50"></div>
+  </sc-if>
+
+  <!-- ══════════ NAV + TC progress + reel chapters ══════════ -->
+  <div class="film-nav portfolio-nav portfolio-nav-case portfolio-nav-dark">
+    <div class="film-nav-bar portfolio-nav-bar">
+      <div class="film-nav-left portfolio-nav-left">
+        <span class="film-nav-brand">Designed by Boyi Tan</span>
+        <a class="film-nav-back" href="../index.html#film" data-cursor="Back to film work" style-hover="color:#e5484d">← ALL REELS</a>
+      </div>
+      <div class="film-nav-right portfolio-nav-right">
+        <sc-if value="{{ showTimecode }}" hint-placeholder-val="{{ true }}">
+          <span class="film-nav-tc"><span class="film-nav-rec"></span><span style="color:#e5484d">REEL 02</span> · TC <span ref="{{ tcRef }}" data-helm-timecode>00:00:00</span> / 07:00:00</span>
+        </sc-if>
+        <div class="film-nav-links portfolio-nav-links"><div data-package-mode-switch class="film-mode-switch" aria-label="Portfolio mode navigation"><a href="../index.html#projects" data-cursor="Back to UX work">UX</a><span style="color:rgba(255,255,255,.36);text-align:center">/</span><a href="../index.html#film" data-cursor="Cut to film work" style="color:rgba(255,255,255,.5)">FILM</a></div><span data-nav-separator class="film-nav-separator" aria-hidden="true"></span><a href="../About.html" data-cursor="About Boyi">About</a><a href="../Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf" target="_blank" rel="noopener" data-cursor="Open resume PDF">Resume</a></div>
+      </div>
+    </div>
+    <div class="film-progress"><div class="film-progress-fill"></div></div>
+    <div class="film-chapters portfolio-nav-chapters">
+      <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="8">
+        <button onClick="{{ ch.onClick }}" data-ch="{{ ch.id }}" data-cursor="Jump the reel" style="all:unset;cursor:pointer;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.07em;color:rgba(255,255,255,.42);padding:4px 10px;border-radius:999px;white-space:nowrap;transition:color .2s ease,background .2s ease" style-hover="color:#f2f2f4">{{ ch.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ══════════ TITLE SEQUENCE ══════════ -->
+  <div class="film-title-sequence helm-title-sequence" data-screen-label="Title Sequence" style="max-width:1080px;margin:0 auto;padding:186px 40px 0;text-align:center">
+    <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.3em;color:rgba(245,245,247,.6);animation:fadeUp .6s ease both">BOYI TAN PRESENTS · AN INTERACTIVE RESEARCH DOCUMENTARY</div>
+    <div style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(56px,8vw,96px);line-height:1.02;letter-spacing:-0.01em;margin:30px 0 24px;animation:fadeUp .6s .12s ease both">Who Is at the Helm?</div>
+    <div style="font-family:'Newsreader',serif;font-style:italic;font-size:21px;line-height:1.55;color:#d9d9de;max-width:660px;margin:0 auto;animation:fadeUp .6s .24s ease both">A documentary about interactive media — with interactive nodes inside it. At chosen moments, the director hands the camera to you.</div>
+    <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.18em;line-height:2;color:rgba(255,255,255,.38);max-width:760px;margin:34px auto 0;animation:fadeUp .6s .34s ease both">DIRECTED BY BOYI TAN · CARLETON MPAD4400 · MENTORED BY KATIE GRAHAM · 2024.09–2025.01<br>CUT IN PREMIERE PRO · MOTION IN AFTER EFFECTS · BUILT IN HTML WITH A 360 RIG</div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);padding:20px 0;margin:46px 0 0;text-align:left;animation:fadeUp .6s .44s ease both">
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:7px">DIRECTED BY</div><div style="font-size:14px;font-weight:600">Boyi Tan</div><div style="font-size:12.5px;color:rgba(255,255,255,.5);margin-top:4px">Director, planner &amp; initiator</div></div>
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:7px">FORMAT</div><div style="font-size:14px;font-weight:600">Web-based interactive doc</div><div style="font-size:12.5px;color:rgba(255,255,255,.5);margin-top:4px">Linear film + parallel 360 video</div></div>
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:7px">VOICES</div><div style="font-size:14px;font-weight:600">3 expert interviews</div><div style="font-size:12.5px;color:rgba(255,255,255,.5);margin-top:4px">Cut into one conversation</div></div>
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:7px">MY SCOPE</div><div style="font-size:14px;font-weight:600">Full pipeline</div><div style="font-size:12.5px;color:rgba(255,255,255,.5);margin-top:4px">Research question · interviews · shoot · edit · interaction build</div></div>
+    </div>
+  </div>
+
+  <!-- ══════════ FEATURE PRESENTATION ══════════ -->
+  <div id="s-feat" data-screen-label="Feature" style="max-width:1080px;margin:0 auto;padding:72px 40px 0">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:26px">
+      <span style="display:flex;align-items:center;gap:8px;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#e5484d"><span style="width:8px;height:8px;border-radius:50%;background:#e5484d;animation:recBlink 1.3s infinite"></span>NOW SCREENING</span>
+      <div style="flex:1;height:1px;background:rgba(255,255,255,.1)"></div>
+      <span style="font:600 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">TC 00:32</span>
+    </div>
+    <div data-cursor="The documentary — press play" style="position:relative;animation:fadeUp .7s ease both">
+      <div style="aspect-ratio:16/9;background:#000;overflow:hidden">
+        <iframe src="https://www.youtube.com/embed/gQwMz0cdapg?rel=0&amp;modestbranding=1" title="Who Is at the Helm? — interactive documentary" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" style="display:block;width:100%;height:100%;border:0"></iframe>
+      </div>
+      <div style="position:absolute;top:0;left:0;width:30px;height:30px;border-top:2px solid #fff;border-left:2px solid #fff;pointer-events:none"></div>
+      <div style="position:absolute;top:0;right:0;width:30px;height:30px;border-top:2px solid #fff;border-right:2px solid #fff;pointer-events:none"></div>
+      <div style="position:absolute;bottom:0;left:0;width:30px;height:30px;border-bottom:2px solid #fff;border-left:2px solid #fff;pointer-events:none"></div>
+      <div style="position:absolute;bottom:0;right:0;width:30px;height:30px;border-bottom:2px solid #fff;border-right:2px solid #fff;pointer-events:none"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px">
+      <span style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">THE LINEAR CUT — IN THE HTML BUILD, INTERACTION NODES HAND OVER CONTROL AT CHOSEN TIMESTAMPS</span>
+      <a href="https://www.youtube.com/watch?v=gQwMz0cdapg" target="_blank" rel="noopener" data-cursor="Opens YouTube in a new tab" style="text-decoration:none;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#f5f5f7;border:1px solid rgba(255,255,255,.3);padding:9px 16px" style-hover="border-color:#fff">WATCH ON YOUTUBE ↗</a>
+    </div>
+    <div style="margin-top:26px;border:1px solid rgba(229,72,77,.6);background:linear-gradient(135deg,rgba(229,72,77,.16),rgba(255,255,255,.035));padding:24px 26px;display:grid;grid-template-columns:1.25fr auto;gap:22px;align-items:center">
+      <div>
+        <div style="font:700 10.5px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#e5484d;margin-bottom:9px">ONLINE PROTOTYPE</div>
+        <div style="font-family:'Newsreader',serif;font-size:25px;line-height:1.22;color:#f2f2f4">A lightweight online reconstruction of the handoff mechanism.</div>
+        <div style="font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.58);margin-top:10px">It uses YouTube-hosted streams instead of the original 3GB local video package, so reviewers can try the linear-to-360 switch directly in the browser.</div>
+      </div>
+      <a href="./interactive-demo.html" target="_blank" rel="noopener" data-cursor="Open the lightweight interactive demo" style="text-decoration:none;font:700 11px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#fff;background:#e5484d;border:1px solid #e5484d;padding:13px 18px;white-space:nowrap" style-hover="background:#ff5d62;border-color:#ff5d62">TRY THE INTERACTIVE WEB DEMO ↗</a>
+    </div>
+  </div>
+
+  <!-- ══════════ THE PARADOX — two layers ══════════ -->
+  <div id="s-log" data-screen-label="Paradox" style="max-width:1080px;margin:0 auto;padding:84px 40px 0">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:30px">
+      <span style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#e5484d">THE RESEARCH QUESTION — WHO CONTROLS THE FRAME?</span>
+      <div style="flex:1;height:1px;background:rgba(255,255,255,.1)"></div>
+      <span style="font:600 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">TC 01:10</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px">
+      <div style="border:1px solid rgba(255,255,255,.14);padding:28px 30px">
+        <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:12px">THE DIRECTOR'S FRAME</div>
+        <div style="font-family:'Newsreader',serif;font-size:23px;line-height:1.35;color:#f2f2f4">Traditional film controls your attention — framing, editing, light, and music decide what you see, and when.</div>
+        <div style="font-size:14px;line-height:1.7;color:rgba(255,255,255,.55);margin-top:14px">The director, cinematographer, and editor hold the helm. Nothing important is ever missed — because you were never free to look away.</div>
+      </div>
+      <div style="border:1px solid #e5484d;padding:28px 30px">
+        <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#e5484d;margin-bottom:12px">THE AUDIENCE'S FIELD</div>
+        <div style="font-family:'Newsreader',serif;font-size:23px;line-height:1.35;color:#f2f2f4">Interactive media — 360 video, VR, games — hands part of that control to the viewer.</div>
+        <div style="font-size:14px;line-height:1.7;color:rgba(255,255,255,.55);margin-top:14px">You gain exploration and presence. You also gain the freedom to look the wrong way and miss the story entirely.</div>
+      </div>
+    </div>
+    <div style="border-left:2px solid #e5484d;padding-left:22px;margin-top:36px">
+      <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#e5484d;margin-bottom:10px">THE NARRATIVE PARADOX</div>
+      <div style="font-size:16px;line-height:1.65;color:#d9d9de;max-width:720px">The freer the audience, the harder it is to hold a narrative together; the tighter the narrative, the less the interactivity means. If interactivity creates this tension — why do we still want it? That question became the film.</div>
+    </div>
+  </div>
+
+  <!-- ══════════ DIRECTOR'S STATEMENT ══════════ -->
+  <div data-screen-label="Statement" style="max-width:680px;margin:0 auto;padding:84px 40px 0;text-align:center">
+    <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#e5484d;margin-bottom:14px">DIRECTOR'S STATEMENT</div>
+    <div style="font-family:'Newsreader',serif;font-style:italic;font-size:21px;line-height:1.6;color:#e8e8ec">"I didn't want to praise interactivity or condemn it. I wanted to build the tension into the film itself — so the audience feels the trade at the exact moment they take the helm."</div>
+  </div>
+
+  <!-- ══════════ ACT I — THE INTERVIEWS ══════════ -->
+  <div id="s-pre" data-screen-label="Interviews" style="max-width:1080px;margin:0 auto;padding:84px 40px 0">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:30px">
+      <span style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#e5484d">ACT I — THREE VOICES, ONE CONVERSATION</span>
+      <div style="flex:1;height:1px;background:rgba(255,255,255,.1)"></div>
+      <span style="font:600 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">TC 02:05</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:44px">
+      <div style="border-top:2px solid #e5484d;padding-top:16px">
+        <div style="font:600 11px ui-monospace,Menlo,monospace;color:#e5484d;margin-bottom:10px">KARL ROEDER</div>
+        <div style="font-size:16.5px;font-weight:600;line-height:1.4">Cinematographer / DP</div>
+        <div style="font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.55);margin-top:8px">Traditional film industry — the voice of composed frames, lens language, and camera-held control.</div>
+      </div>
+      <div style="border-top:2px solid #e5484d;padding-top:16px">
+        <div style="font:600 11px ui-monospace,Menlo,monospace;color:#e5484d;margin-bottom:10px">KATIE GRAHAM</div>
+        <div style="font-size:16.5px;font-weight:600;line-height:1.4">Professor &amp; mentor, Carleton</div>
+        <div style="font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.55);margin-top:8px">Researches immersive and interactive media, digital technologies, and hybrid forms between them.</div>
+      </div>
+      <div style="border-top:2px solid #e5484d;padding-top:16px">
+        <div style="font:600 11px ui-monospace,Menlo,monospace;color:#e5484d;margin-bottom:10px">VICKY MACARTHUR</div>
+        <div style="font-size:16.5px;font-weight:600;line-height:1.4">MPAD program director</div>
+        <div style="font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.55);margin-top:8px">Game design, digital humanities, and AR/VR narrative — the voice of designed agency.</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:36px;align-items:center;margin-bottom:44px">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:27px;line-height:1.25;color:#f2f2f4">Cut the questions. Keep the argument.</div>
+        <div style="font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.55);margin-top:14px">I planned and led all three interviews, then removed my own questions in the edit — so three separate sessions play as one continuous discussion about narrative, agency, immersion, and where 360 belongs.</div>
+        <div style="font:500 12px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.45);line-height:1.7;border-left:2px solid #e5484d;padding-left:12px;margin-top:18px"><span style="color:#e5484d">director's note</span> — the interviewer disappears for the same reason the questions do: the experts should seem to answer each other.</div>
+      </div>
+      <div data-cursor="Karl Roeder on camera">
+        <div style="position:relative;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.16);overflow:hidden">
+          <img src="assets/karl-interview.png" alt="Karl Roeder interview still" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          <div style="position:absolute;inset:0;background:linear-gradient(#050506 0 12%,transparent 12% 88%,#050506 88%);opacity:0;transition:opacity .3s ease" style-hover="opacity:1"></div>
+        </div>
+        <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">FRAME 1A — Karl Roeder in the composed interview frame: the tradition the film interrogates</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:44px">
+      <div>
+        <div style="position:relative;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.16);overflow:hidden">
+          <img src="assets/lecture-hall-interview.jpg" alt="Interview setup in the lecture hall" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">FRAME 1B — the lecture-hall interview setup, lit and framed like the cinema it questions</div>
+      </div>
+      <div>
+        <div style="position:relative;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.16);overflow:hidden">
+          <img src="assets/edit-timeline.png" alt="Premiere Pro editing timeline" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">FRAME 1C — the dialogue cut in Premiere Pro: three sessions interleaved into one track</div>
+      </div>
+    </div>
+
+    <div style="border:1px solid rgba(255,255,255,.14);padding:18px 24px;display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center">
+      <span style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.12em;color:#e5484d">SHOOTING LOG</span>
+      <span style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)">10.24 B-ROLL</span>
+      <span style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)">10.31 INT. KARL</span>
+      <span style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)">11.01 INT. KATIE</span>
+      <span style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)">11.11 INT. VICKY</span>
+      <span style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)">11.20 ROUGH CUT</span>
+      <span style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)">11.25–28 CODE + 360</span>
+      <span style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.5)">12.21 FINAL REFLECTION</span>
+    </div>
+  </div>
+
+  <!-- ══════════ ACT II — THE HANDOVER ══════════ -->
+  <div id="s-prod" data-screen-label="Handover" style="max-width:1080px;margin:0 auto;padding:84px 40px 0">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:30px">
+      <span style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#e5484d">ACT II — THE HANDOVER MECHANISM</span>
+      <div style="flex:1;height:1px;background:rgba(255,255,255,.1)"></div>
+      <span style="font:600 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">TC 03:20</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:36px;align-items:center;margin-bottom:44px">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:27px;line-height:1.25;color:#f2f2f4">Two streams run in parallel. The viewer picks the helm.</div>
+        <div style="font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.55);margin-top:14px">At selected moments a button surfaces in the player. Take it, and the composed frame gives way to the 360 record of the same moment — drag to look at the crew, the lights, the room outside the director's cut. Ignore it, and the film simply continues.</div>
+        <div style="font:500 12px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.45);line-height:1.7;border-left:2px solid #e5484d;padding-left:12px;margin-top:18px"><span style="color:#e5484d">director's note</span> — the interaction is optional on purpose. Agency you're forced to use isn't agency.</div>
+      </div>
+      <div style="display:grid;gap:22px">
+        <div data-cursor="The button that offers the helm">
+          <div style="position:relative;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.16);overflow:hidden">
+            <img src="assets/player-switch-button.png" alt="Linear player with the 360 switch button" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">FRAME 2A — the director's frame, with the way out visible in the player</div>
+        </div>
+        <div data-cursor="Drag to look anywhere">
+          <div style="position:relative;aspect-ratio:16/9;border:1px solid #e5484d;overflow:hidden">
+            <img src="assets/360-field.png" alt="360 view revealing the whole interview room" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">FRAME 2B — the same moment in 360: crew, rig, and room the cut never shows</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border:1px solid rgba(255,255,255,.16);background:#101014;padding:30px 34px;margin-bottom:44px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:14px;margin-bottom:20px">
+        <span style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#e5484d">THE LAST NODE — THE FINAL QUESTION IS YOURS</span>
+        <span style="font:600 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">END OF FILM</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:28px;align-items:center">
+        <div data-cursor="Ask Karl, Katie, or Vicky">
+          <div style="position:relative;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.16);overflow:hidden">
+            <img src="assets/final-question-node.gif" alt="Final interaction node — choose who answers the last question" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">FRAME 2C — ASK KARL · ASK KATIE · ASK VICKY: the film ends on the viewer's choice</div>
+        </div>
+        <div>
+          <div style="font-size:15px;font-weight:600;line-height:1.5">At the end, one question remains — and the viewer decides who answers it.</div>
+          <div style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.55);margin-top:10px">"Do you think it's a good idea to use a 360 camera to make this documentary?" Each expert gives a different answer. Which one you hear last is up to you — the film's structure practices what its argument preaches.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:rgba(255,255,255,.4);margin-bottom:18px">SCREEN RECORDINGS — THE WORKING BUILD</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+      <div>
+        <div style="position:relative;border:1px solid rgba(255,255,255,.16);overflow:hidden;background:#000">
+          <video data-blob-src="assets/demo-a.mp4" autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" preload="auto" style="display:block;width:100%;aspect-ratio:16/9;object-fit:contain"></video>
+        </div>
+        <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">DEMO A — interaction capture from the HTML build</div>
+      </div>
+      <div>
+        <div style="position:relative;border:1px solid rgba(255,255,255,.16);overflow:hidden;background:#000">
+          <video data-blob-src="assets/demo-b.mp4" autoPlay="{{ true }}" loop="{{ true }}" muted="{{ true }}" playsInline="{{ true }}" preload="auto" style="display:block;width:100%;aspect-ratio:16/9;object-fit:contain"></video>
+        </div>
+        <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">DEMO B — switching between the cut and the 360 field</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ ACT III — THE BUILD ══════════ -->
+  <div id="s-post" data-screen-label="The Build" style="max-width:1080px;margin:0 auto;padding:84px 40px 0">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:30px">
+      <span style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#e5484d">ACT III — THE BUILD, THREE VERSIONS DEEP</span>
+      <div style="flex:1;height:1px;background:rgba(255,255,255,.1)"></div>
+      <span style="font:600 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">TC 04:35</span>
+    </div>
+
+    <div style="border:1px solid rgba(255,255,255,.16);background:#101014;padding:30px 34px;margin-bottom:44px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:14px;margin-bottom:20px">
+        <span style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#e5484d">TECHNICAL REPORT — THE 8K PROBLEM</span>
+        <span style="font:600 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">INT. BROWSER — NIGHT</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:28px">
+        <div>
+          <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:8px">STATUS</div>
+          <div style="font-size:15px;font-weight:600;line-height:1.5">8K 360 footage loaded locally eats ~3GB of memory — color degrades, playback stutters.</div>
+        </div>
+        <div>
+          <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:8px">OPTIONS ON THE TABLE</div>
+          <div style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.55)">Rebuild in Unreal Engine 5. Compress the footage and lose the point of 8K. Or move playback off the machine entirely.</div>
+        </div>
+        <div>
+          <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#e5484d;margin-bottom:8px">DECISION</div>
+          <div style="font-size:15px;font-weight:600;line-height:1.5">Host the video on YouTube and embed it — Katie's suggestion. Playback holds; the trade is preset quality settings, autoplay limits, and a dependency on the network.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:rgba(255,255,255,.4);margin-bottom:18px">VERSION HISTORY — FROM PROOF OF CONCEPT TO WORKING FILM</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:44px">
+      <div>
+        <div style="position:relative;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.16);overflow:hidden">
+          <img src="assets/build-v1.png" alt="Version 1 — local playback proof of concept" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">V1 — local HTML playback: the mechanism works, the footage doesn't yet</div>
+      </div>
+      <div>
+        <div style="position:relative;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.16);overflow:hidden">
+          <img src="assets/build-v2.png" alt="Version 2 — stress test with stock 360 footage" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">V2 — stress-testing with stock footage: where the memory wall appeared</div>
+      </div>
+      <div>
+        <div style="position:relative;aspect-ratio:16/10;border:1px solid #e5484d;overflow:hidden">
+          <img src="assets/build-v3.png" alt="Version 3 — final build with YouTube embeds" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">V3 — the shipped logic: YouTube-hosted streams inside the HTML player</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:36px;align-items:center">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:27px;line-height:1.25;color:#f2f2f4">Function beat chrome, every time they fought.</div>
+        <div style="font-size:14.5px;line-height:1.7;color:rgba(255,255,255,.55);margin-top:14px">CSS styling on the interaction buttons kept shoving the small video window out of position. I simplified the button treatment and kept the playback solid — built with Tianyu Zhang on code support and bug fixes, leaning on W3Schools and ChatGPT for syntax and debugging.</div>
+        <div style="font:500 12px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.45);line-height:1.7;border-left:2px solid #e5484d;padding-left:12px;margin-top:18px"><span style="color:#e5484d">director's note</span> — a prettier button that breaks the player is a worse button.</div>
+      </div>
+      <div>
+        <div style="position:relative;aspect-ratio:16/10;border:1px solid rgba(255,255,255,.16);overflow:hidden">
+          <img src="assets/player-switch-button.png" alt="The shipped player interface" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        </div>
+        <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">FRAME 3A — the shipped player: plain controls, unbroken playback</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ WHAT THE FILM ARGUES ══════════ -->
+  <div id="s-out" data-screen-label="What It Argues" style="max-width:1080px;margin:0 auto;padding:84px 40px 0">
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:30px">
+      <span style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#e5484d">FINAL REEL — WHAT THE FILM ARGUES</span>
+      <div style="flex:1;height:1px;background:rgba(255,255,255,.1)"></div>
+      <span style="font:600 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">TC 05:30</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:44px">
+      <div style="border-top:2px solid #e5484d;padding-top:16px">
+        <div style="font:600 11px ui-monospace,Menlo,monospace;color:#e5484d;margin-bottom:10px">01 — THE MEDIUM SERVES</div>
+        <div style="font-size:16.5px;font-weight:600;line-height:1.4">Not every story wants a helm to hand over</div>
+        <div style="font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.55);margin-top:8px">Interactivity added for its own sake is decoration. It earns its place only when the choice it offers is meaningful.</div>
+      </div>
+      <div style="border-top:2px solid #e5484d;padding-top:16px">
+        <div style="font:600 11px ui-monospace,Menlo,monospace;color:#e5484d;margin-bottom:10px">02 — THE TRADE IS REAL</div>
+        <div style="font-size:16.5px;font-weight:600;line-height:1.4">360 buys presence with authorship</div>
+        <div style="font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.55);margin-top:8px">Karl's position: 360 suits experience and showcase more than strong narrative — the frame is the director's instrument, and 360 gives it up.</div>
+      </div>
+      <div style="border-top:2px solid #e5484d;padding-top:16px">
+        <div style="font:600 11px ui-monospace,Menlo,monospace;color:#e5484d;margin-bottom:10px">03 — GUIDANCE SURVIVES</div>
+        <div style="font-size:16.5px;font-weight:600;line-height:1.4">Attention can still be designed</div>
+        <div style="font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.55);margin-top:8px">Katie and Vicky's counter: visual cues, leading lines, and composition keep steering the eye — even inside a frame the viewer controls.</div>
+      </div>
+    </div>
+    <div data-cursor="The frame the director never showed you">
+      <div style="position:relative;aspect-ratio:21/9;border:1px solid rgba(255,255,255,.16);overflow:hidden">
+        <img src="assets/360-field.png" alt="The full 360 field of the interview room" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <div style="position:absolute;inset:0;background:linear-gradient(#050506 0 12%,transparent 12% 88%,#050506 88%);opacity:0;transition:opacity .3s ease" style-hover="opacity:1"></div>
+      </div>
+      <div style="font:500 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4);margin-top:12px">FRAME 4A — the whole room, crew and all: everything a composed frame is built to leave out</div>
+    </div>
+  </div>
+
+  <!-- ══════════ DIRECTOR'S CUT — commentary track ══════════ -->
+  <sc-if value="{{ showCommentary }}" hint-placeholder-val="{{ true }}">
+    <div id="s-dc" data-screen-label="Commentary" style="max-width:1080px;margin:0 auto;padding:84px 40px 0">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:30px">
+        <span style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#e5484d">DIRECTOR'S CUT — COMMENTARY TRACK</span>
+        <div style="flex:1;height:1px;background:rgba(255,255,255,.1)"></div>
+        <span style="font:600 11px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">TC 06:10</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+        <div style="border:1px solid rgba(255,255,255,.14);padding:26px 28px">
+          <div style="font:600 11px ui-monospace,Menlo,monospace;color:#e5484d;margin-bottom:12px">TRACK 01</div>
+          <div style="font-size:17px;font-weight:700;line-height:1.3">Agency is a design material</div>
+          <div style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.55);margin-top:10px">Deciding when the viewer gets control — and when they don't — is the same judgment as deciding what a user can touch in an interface.</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,.14);padding:26px 28px">
+          <div style="font:600 11px ui-monospace,Menlo,monospace;color:#e5484d;margin-bottom:12px">TRACK 02</div>
+          <div style="font-size:17px;font-weight:700;line-height:1.3">Constraints wrote the architecture</div>
+          <div style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.55);margin-top:10px">A 3GB memory wall turned into a hosting decision, a UI compromise, and a network dependency — engineering trades made to protect the experience.</div>
+        </div>
+        <div style="border:1px solid rgba(255,255,255,.14);padding:26px 28px">
+          <div style="font:600 11px ui-monospace,Menlo,monospace;color:#e5484d;margin-bottom:12px">TRACK 03</div>
+          <div style="font-size:17px;font-weight:700;line-height:1.3">The director never disappears</div>
+          <div style="font-size:13.5px;line-height:1.7;color:rgba(255,255,255,.55);margin-top:10px">Even in 360, someone chose the nodes, the room, the question. Handing over the helm is itself a directed act — that's the film's answer.</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:52px">
+        <div style="font-family:'Newsreader',serif;font-style:italic;font-size:20px;line-height:1.6;color:#e8e8ec;max-width:640px;margin:0 auto">"Interaction isn't a feature you add. It's control you choose to give away — on purpose, at the right moment."</div>
+        <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:rgba(255,255,255,.4);margin-top:14px">— WHY THIS REEL LIVES IN A UX PORTFOLIO</div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ══════════ END CREDITS ══════════ -->
+  <div data-screen-label="End Credits" style="max-width:1080px;margin:0 auto;padding:84px 40px 56px">
+    <div style="display:grid;place-items:center;gap:22px;border-top:1px solid rgba(255,255,255,.1);padding-top:52px">
+      <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.22em;line-height:2.2;color:rgba(255,255,255,.38);text-align:center">DIRECTED &amp; EDITED BY BOYI TAN · CAM A BOYI TAN<br>CREW OWEN WALLACE · ARUSH PERERA — CODE SUPPORT &amp; BUG FIXES TIANYU ZHANG<br>MENTORED BY KATIE GRAHAM · MPAD4400 DIRECTED STUDIES · CARLETON UNIVERSITY</div>
+      <button data-cursor="Back to the design work" style="all:unset;cursor:pointer;font:600 11.5px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#f5f5f7;border:1px solid rgba(255,255,255,.3);padding:12px 22px" style-hover="border-color:#fff">CUT BACK TO: UX WORK →</button>
+    </div>
+    <div style="margin-top:52px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font:500 12px ui-monospace,Menlo,monospace;color:rgba(255,255,255,.4)">Hold the frame <span style="color:#e5484d">×</span> Hand over the helm <span style="color:#e5484d">×</span> Keep the story</div>
+    <div style="display:flex;justify-content:space-between;padding:14px 0 4px;font-size:12.5px;color:rgba(255,255,255,.35)">
+      <span>© 2026 Boyi Tan</span>
+      <span>Roll credits: <a href="../About.html" style="color:inherit;text-decoration:none">About</a> · <a href="../Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">Resume</a> · <a href="mailto:boyitan0011@gmail.com" style="color:inherit;text-decoration:none">boyitan0011@gmail.com</a> · <a href="https://www.linkedin.com/in/boyi-tan-719230285/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">LinkedIn</a></span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;grain&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Film chrome&quot;}, &quot;showTimecode&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Film chrome&quot;}, &quot;showCommentary&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Content&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.rootRef = React.createRef();
+    this.tcRef = React.createRef();
+    this.grainRef = React.createRef();
+    this._chapters = [
+      { id: "s-feat", label: "FEATURE" },
+      { id: "s-log", label: "PARADOX" },
+      { id: "s-pre", label: "ACT I — INTERVIEWS" },
+      { id: "s-prod", label: "ACT II — HANDOVER" },
+      { id: "s-post", label: "ACT III — BUILD" },
+      { id: "s-out", label: "FINAL REEL" },
+      { id: "s-dc", label: "COMMENTARY" }
+    ].map((c) => ({ ...c, onClick: () => this.jumpTo(c.id) }));
+  }
+
+  componentDidMount() {
+    const label = document.createElement("div");
+    label.style.cssText = "position:fixed;left:0;top:0;z-index:900;pointer-events:none;padding:7px 12px;border-radius:999px;background:#17171a;color:#fff;border:1px solid rgba(255,255,255,.35);font:600 11px ui-monospace,Menlo,monospace;white-space:nowrap;opacity:0;transition:opacity .15s ease;box-shadow:0 10px 28px rgba(0,0,0,.25)";
+    document.body.appendChild(label);
+    this._label = label;
+    this._over = (e) => {
+      const t = e.target.closest("[data-cursor]");
+      if (t) { label.textContent = t.getAttribute("data-cursor"); label.style.opacity = "1"; }
+      else { label.style.opacity = "0"; }
+    };
+    this._move = (e) => {
+      const x = Math.min(e.clientX + 16, window.innerWidth - label.offsetWidth - 12);
+      const y = Math.min(e.clientY + 18, window.innerHeight - label.offsetHeight - 12);
+      label.style.transform = "translate(" + x + "px," + y + "px)";
+    };
+    document.addEventListener("pointerover", this._over);
+    document.addEventListener("pointermove", this._move);
+
+    this._grainUrl = this.makeGrainUrl();
+    this.syncGrain();
+
+    this._raf = 0;
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => { this._raf = 0; this.update(); });
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    window.addEventListener("resize", this._onScroll, { passive: true });
+    this.update();
+
+    this._blobUrls = [];
+    document.querySelectorAll("video[data-blob-src]").forEach((v) => {
+      const u = v.getAttribute("data-blob-src");
+      fetch(u).then((r) => r.blob()).then((b) => {
+        const bu = URL.createObjectURL(b);
+        this._blobUrls.push(bu);
+        v.src = bu;
+        v.muted = true;
+        v.play().catch(() => {});
+      }).catch(() => { v.src = u; });
+    });
+
+    this._vidObs = new IntersectionObserver((entries) => {
+      for (const en of entries) {
+        const v = en.target;
+        if (en.isIntersecting) { v.muted = true; v.play().catch(() => {}); }
+        else { v.pause(); }
+      }
+    }, { threshold: 0.15 });
+    this._vidTimer = setInterval(() => {
+      document.querySelectorAll("video").forEach((v) => {
+        if (!v._helmObserved) { v._helmObserved = true; this._vidObs.observe(v); }
+      });
+    }, 700);
+  }
+
+  componentDidUpdate() {
+    this.syncGrain();
+  }
+
+  makeGrainUrl() {
+    const c = document.createElement("canvas");
+    c.width = 180; c.height = 180;
+    const ctx = c.getContext("2d");
+    const d = ctx.createImageData(180, 180);
+    for (let i = 0; i < d.data.length; i += 4) {
+      const v = (Math.random() * 255) | 0;
+      d.data[i] = d.data[i + 1] = d.data[i + 2] = v;
+      d.data[i + 3] = 255;
+    }
+    ctx.putImageData(d, 0, 0);
+    return "url(" + c.toDataURL() + ")";
+  }
+
+  syncGrain() {
+    if (this.grainRef.current && this._grainUrl) {
+      this.grainRef.current.style.backgroundImage = this._grainUrl;
+    }
+  }
+
+  jumpTo(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 118;
+    window.scrollTo({ top: top, behavior: "smooth" });
+  }
+
+  update() {
+    const doc = document.documentElement;
+    const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+    const p = Math.min(1, Math.max(0, window.scrollY / max));
+    if (this.rootRef.current) this.rootRef.current.style.setProperty("--prog", p);
+    const el = this.tcRef.current;
+    if (el) {
+      const t = p * 420; // 07:00 runtime conceit
+      const mm = String(Math.floor(t / 60)).padStart(2, "0");
+      const ss = String(Math.floor(t % 60)).padStart(2, "0");
+      const ff = String(Math.floor((t % 1) * 24)).padStart(2, "0");
+      el.textContent = mm + ":" + ss + ":" + ff;
+    }
+    let active = "";
+    for (const c of this._chapters) {
+      const s = document.getElementById(c.id);
+      if (s && s.getBoundingClientRect().top <= 150) active = c.id;
+    }
+    document.querySelectorAll("[data-ch]").forEach((b) => {
+      const on = b.getAttribute("data-ch") === active;
+      b.style.color = on ? "#fff" : "";
+      b.style.background = on ? "#e5484d" : "";
+    });
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("pointerover", this._over);
+    document.removeEventListener("pointermove", this._move);
+    if (this._label) this._label.remove();
+    window.removeEventListener("scroll", this._onScroll);
+    window.removeEventListener("resize", this._onScroll);
+    if (this._raf) cancelAnimationFrame(this._raf);
+    if (this._vidTimer) clearInterval(this._vidTimer);
+    if (this._vidObs) this._vidObs.disconnect();
+    (this._blobUrls || []).forEach((u) => URL.revokeObjectURL(u));
+  }
+
+  renderVals() {
+    return {
+      rootRef: this.rootRef,
+      tcRef: this.tcRef,
+      grainRef: this.grainRef,
+      chapters: this._chapters,
+      grainOn: this.props.grain ?? true,
+      showTimecode: this.props.showTimecode ?? true,
+      showCommentary: this.props.showCommentary ?? true
+    };
+  }
+}
+</script>
+<script data-helm-progress-fallback>
+(function () {
+  var chapters = ["s-feat", "s-log", "s-pre", "s-prod", "s-post", "s-out", "s-dc"];
+  var raf = 0;
+
+  function scrollTop() {
+    return window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
+
+  function maxScroll() {
+    var doc = document.documentElement;
+    var body = document.body;
+    var height = Math.max(doc.scrollHeight, body ? body.scrollHeight : 0);
+    return Math.max(1, height - window.innerHeight);
+  }
+
+  function setTimecode(p) {
+    var el = document.querySelector("[data-helm-timecode]");
+    if (!el) return;
+    var t = p * 420;
+    var mm = String(Math.floor(t / 60)).padStart(2, "0");
+    var ss = String(Math.floor(t % 60)).padStart(2, "0");
+    var ff = String(Math.floor((t % 1) * 24)).padStart(2, "0");
+    el.textContent = mm + ":" + ss + ":" + ff;
+  }
+
+  function setActiveChapter() {
+    var active = "";
+    chapters.forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section && section.getBoundingClientRect().top <= 150) active = id;
+    });
+    document.querySelectorAll("[data-ch]").forEach(function (button) {
+      var on = button.getAttribute("data-ch") === active;
+      button.style.color = on ? "#fff" : "";
+      button.style.background = on ? "#e5484d" : "";
+    });
+  }
+
+  function syncHelmProgress() {
+    raf = 0;
+    var p = Math.min(1, Math.max(0, scrollTop() / maxScroll()));
+    var root = document.querySelector("[data-helm-case-root]") || document.documentElement;
+    root.style.setProperty("--prog", p);
+    document.documentElement.style.setProperty("--prog", p);
+    setTimecode(p);
+    setActiveChapter();
+  }
+
+  function requestSync() {
+    if (raf) return;
+    raf = window.requestAnimationFrame(syncHelmProgress);
+  }
+
+  document.addEventListener("click", function (event) {
+    var button = event.target.closest("[data-ch]");
+    if (!button) return;
+    var section = document.getElementById(button.getAttribute("data-ch"));
+    if (!section) return;
+    event.preventDefault();
+    window.scrollTo({
+      top: section.getBoundingClientRect().top + scrollTop() - 118,
+      behavior: "smooth"
+    });
+  });
+
+  window.addEventListener("scroll", requestSync, { passive: true });
+  window.addEventListener("resize", requestSync, { passive: true });
+  document.addEventListener("DOMContentLoaded", requestSync);
+  requestSync();
+})();
+</script>
+</body>
+</html>

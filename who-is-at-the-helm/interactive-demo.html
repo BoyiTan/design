@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Who Is at the Helm? Interactive Demo</title>
+<link rel="stylesheet" href="../assets/portfolio-nav.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0a0a0c;color:#f4f4f6;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,a{font:inherit}
+.shell{min-height:100vh;display:grid;grid-template-rows:auto 1fr;overflow-x:hidden;background:radial-gradient(circle at 18% 8%,rgba(229,72,77,.18),transparent 32%),#0a0a0c}
+.topbar{min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 clamp(18px,3vw,44px);border-bottom:1px solid rgba(255,255,255,.12);background:rgba(10,10,12,.9);backdrop-filter:blur(10px)}
+.brand{font-weight:700;font-size:14px;letter-spacing:.02em}
+.demo-links{display:flex;align-items:center;gap:18px;min-width:0;overflow-x:auto;scrollbar-width:none}
+.demo-links::-webkit-scrollbar{display:none}
+.demo-link{color:rgba(255,255,255,.7);text-decoration:none;font-size:13px;white-space:nowrap}
+.demo-link:hover{color:#fff}
+.back-link{color:rgba(255,255,255,.72);text-decoration:none;font:700 11px ui-monospace,Menlo,monospace;letter-spacing:.1em;border:1px solid rgba(255,255,255,.22);padding:9px 13px;white-space:nowrap}
+.back-link:hover{border-color:#fff;color:#fff}
+.stage{width:min(100%,1680px);margin:0 auto;display:grid;grid-template-columns:minmax(640px,1fr) minmax(360px,430px);gap:clamp(22px,2.4vw,40px);padding:clamp(20px,2.6vw,42px);align-items:start}
+.viewer{position:relative;height:clamp(460px,68vh,720px);min-height:0;background:#000;border:1px solid rgba(255,255,255,.16);overflow:hidden}
+.player-layer{position:absolute;inset:0;background:#000}
+.player-layer iframe{width:100%;height:100%;border:0;display:block}
+.preload-players{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none}
+.hidden{display:none}
+.corner{position:absolute;width:34px;height:34px;pointer-events:none;z-index:5}
+.corner.tl{top:0;left:0;border-top:2px solid #fff;border-left:2px solid #fff}
+.corner.tr{top:0;right:0;border-top:2px solid #fff;border-right:2px solid #fff}
+.corner.bl{bottom:0;left:0;border-bottom:2px solid #fff;border-left:2px solid #fff}
+.corner.br{bottom:0;right:0;border-bottom:2px solid #fff;border-right:2px solid #fff}
+.pan-layer{position:absolute;inset:0;z-index:8;cursor:grab;touch-action:none;user-select:none}
+.pan-layer.dragging{cursor:grabbing}
+.mode-badge{position:absolute;left:18px;top:18px;z-index:9;font:700 11px ui-monospace,Menlo,monospace;letter-spacing:.12em;color:#fff;background:rgba(10,10,12,.78);border:1px solid rgba(255,255,255,.22);padding:9px 12px}
+.node-button{position:absolute;left:50%;bottom:clamp(76px,9vh,104px);transform:translateX(-50%);z-index:10;border:1px solid rgba(255,255,255,.38);background:#e5484d;color:#fff;padding:13px 18px;font:800 12px ui-monospace,Menlo,monospace;letter-spacing:.1em;cursor:pointer;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.node-button:hover{background:#ff5d62}
+.side{min-width:0;border-left:1px solid rgba(255,255,255,.12);padding-left:clamp(22px,2vw,34px);display:flex;flex-direction:column;justify-content:flex-start;gap:24px}
+.intro{display:grid;gap:18px}
+.eyebrow{font:800 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#e5484d;margin:0}
+h1{max-width:11.5em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:800;font-size:clamp(30px,3vw,44px);line-height:1.08;margin:0;letter-spacing:0;text-wrap:balance}
+.lede{max-width:32rem;font-size:15px;line-height:1.52;color:rgba(255,255,255,.68);margin:0}
+.controls{display:grid;gap:10px}
+.control-button{width:100%;border:1px solid rgba(255,255,255,.18);background:#111116;color:#f4f4f6;text-align:left;padding:13px 14px;cursor:pointer}
+.control-button:hover,.control-button.active{border-color:#e5484d;background:#17171e}
+.control-kicker{display:block;font:800 10px ui-monospace,Menlo,monospace;letter-spacing:.12em;color:#e5484d;margin-bottom:5px}
+.control-title{font-size:14px;font-weight:700}
+.status{border-top:1px solid rgba(255,255,255,.12);padding-top:18px}
+.status-line{display:flex;justify-content:space-between;gap:16px;margin:10px 0;color:rgba(255,255,255,.62);font:700 11px ui-monospace,Menlo,monospace;letter-spacing:.08em}
+.note{font-size:13px;line-height:1.65;color:rgba(255,255,255,.55)}
+.contact-line{font-size:12px;line-height:1.7;color:rgba(255,255,255,.46)}
+.contact-line a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.18)}
+.contact-line a:hover{color:#fff;border-bottom-color:#fff}
+@media(max-width:1120px){
+  .stage{grid-template-columns:1fr;max-width:960px}
+  .viewer{height:clamp(420px,56vw,620px)}
+  .side{border-left:0;border-top:1px solid rgba(255,255,255,.12);padding:24px 0 0}
+  h1{max-width:16em;font-size:clamp(32px,5vw,46px)}
+}
+@media(max-width:640px){
+  .topbar{align-items:flex-start;flex-direction:column;padding-top:14px;padding-bottom:14px}
+  .demo-links{width:100%;gap:14px}
+  .stage{padding:14px}
+  .viewer{height:58vh;min-height:330px}
+  .node-button{bottom:clamp(76px,13vh,112px);max-width:calc(100% - 48px);white-space:nowrap}
+  h1{font-size:clamp(30px,10vw,42px)}
+  .status-line{align-items:flex-start;flex-direction:column;gap:4px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar portfolio-nav portfolio-nav-demo portfolio-nav-dark">
+    <div class="brand">Who Is at the Helm? · Interactive Demo</div>
+    <div class="demo-links">
+      <a class="back-link" href="./index.html">BACK TO CASE STUDY</a>
+      <a class="demo-link" href="../index.html#film">FILM</a>
+      <a class="demo-link" href="../About.html">About</a>
+      <a class="demo-link" href="../Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </header>
+
+  <main class="stage">
+    <section class="viewer" aria-label="Interactive documentary demo player">
+      <div id="linear-layer" class="player-layer">
+        <div id="linear-player"></div>
+      </div>
+      <div id="sphere-layer" class="player-layer hidden">
+        <div id="sphere-player"></div>
+        <div id="pan-layer" class="pan-layer" aria-label="Drag to look around the 360 scene"></div>
+      </div>
+      <div id="preload-players" class="preload-players" aria-hidden="true"></div>
+      <div class="mode-badge" id="mode-label">DIRECTOR'S FRAME</div>
+      <button class="node-button hidden" id="enter-360">ENTER 360 FIELD</button>
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+    </section>
+
+    <aside class="side">
+      <div class="intro">
+        <div class="eyebrow">A LIGHTWEIGHT ONLINE RECONSTRUCTION</div>
+        <h1>Interactive 360 handoff demo</h1>
+        <p class="lede">Play the documentary cut, jump to a handoff node, then enter a synchronized 360 view and drag to look around.</p>
+
+        <div class="controls" aria-label="Demo cue controls">
+          <button class="control-button active" data-node="karl">
+            <span class="control-kicker">NODE 01 · TC 03:06</span>
+            <span class="control-title">Karl interview handoff</span>
+          </button>
+          <button class="control-button" data-node="katie">
+            <span class="control-kicker">NODE 02 · TC 03:31</span>
+            <span class="control-title">Katie interview handoff</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="status">
+        <div class="status-line"><span>ACTIVE STREAM</span><span id="stream-status">LINEAR CUT</span></div>
+        <div class="status-line"><span>SYNC TARGET</span><span id="sync-status">00:03</span></div>
+        <div class="status-line"><span>VIEWER PERMISSION</span><span id="permission-status">WAITING FOR NODE</span></div>
+        <p class="note" id="scene-note">Jump to a handoff node, enter the 360 field, and drag across the frame. The YouTube-hosted 360 video is synchronized to the documentary moment instead of loading the original local 8K files.</p>
+        <p class="contact-line">Boyi Tan · <a href="mailto:boyitan0011@gmail.com">boyitan0011@gmail.com</a> · <a href="https://www.linkedin.com/in/boyi-tan-719230285/" target="_blank" rel="noopener">LinkedIn</a></p>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<script>
+const nodes = {
+  karl: { label: 'Karl interview handoff', linearTime: 186, baseTime: 183, videoId: 'iUVqCfT_4kg', note: 'The composed interview frame gives way to the room around Karl: lights, crew, and the frame outside the frame.' },
+  katie: { label: 'Katie interview handoff', linearTime: 211, baseTime: 208, videoId: 'jYxUw1mAr8U', note: 'The second node shifts from directed lecture-room composition into a 360 field that reveals the production setup.' }
+};
+
+const preloadVideoIds = [...new Set(Object.values(nodes).map((node) => node.videoId))];
+const preloaded360Players = {};
+
+let linearPlayer;
+let spherePlayer;
+let activeNode = 'karl';
+let in360 = false;
+let yaw = 0;
+let pitch = 0;
+let panning = false;
+let lastX = 0;
+let lastY = 0;
+
+const linearLayer = document.getElementById('linear-layer');
+const sphereLayer = document.getElementById('sphere-layer');
+const enterButton = document.getElementById('enter-360');
+const modeLabel = document.getElementById('mode-label');
+const streamStatus = document.getElementById('stream-status');
+const syncStatus = document.getElementById('sync-status');
+const permissionStatus = document.getElementById('permission-status');
+const sceneNote = document.getElementById('scene-note');
+const panLayer = document.getElementById('pan-layer');
+
+window.onYouTubeIframeAPIReady = function () {
+  linearPlayer = new YT.Player('linear-player', {
+    videoId: 'gQwMz0cdapg',
+    playerVars: { playsinline: 1, rel: 0, modestbranding: 1 },
+    events: { onReady: handleLinearReady, onStateChange: updateNodeVisibility }
+  });
+
+  spherePlayer = new YT.Player('sphere-player', {
+    videoId: nodes[activeNode].videoId,
+    playerVars: { playsinline: 1, controls: 0, disablekb: 1, fs: 0, iv_load_policy: 3, rel: 0, modestbranding: 1, mute: 1 },
+    events: { onReady: handleSphereReady, onStateChange: handleSphereStateChange }
+  });
+
+  preload360Players();
+};
+
+function handleLinearReady() {
+  selectNode('karl');
+  window.setInterval(updateNodeVisibility, 500);
+}
+
+function handleSphereReady() {
+  spherePlayer.mute();
+  cue360Video(spherePlayer, nodes[activeNode].videoId, sync360Player());
+  primeSphericalView();
+}
+
+function handleSphereStateChange(event) {
+  if (!in360 || !window.YT) return;
+  if (event.data === YT.PlayerState.ENDED) {
+    returnToLinearCut();
+  }
+}
+
+function selectNode(nodeId) {
+  activeNode = nodeId;
+  const node = nodes[nodeId];
+  const targetSeconds = getNodeStartSeconds(node);
+  document.querySelectorAll('[data-node]').forEach((button) => {
+    button.classList.toggle('active', button.dataset.node === nodeId);
+  });
+  if (linearPlayer && typeof linearPlayer.seekTo === 'function') {
+    linearPlayer.seekTo(node.linearTime, true);
+    linearPlayer.playVideo();
+  }
+  cue360Video(spherePlayer, node.videoId, targetSeconds);
+  sceneNote.textContent = node.note;
+  syncStatus.textContent = formatTime(targetSeconds);
+  exit360();
+  updateNodeVisibility();
+}
+
+function updateNodeVisibility() {
+  if (!linearPlayer || in360) return;
+  const node = nodes[activeNode];
+  let currentTime = node.linearTime;
+  try {
+    currentTime = linearPlayer.getCurrentTime();
+  } catch (error) {}
+  const nearNode = Math.abs(currentTime - node.linearTime) < 10 || currentTime >= node.linearTime;
+  enterButton.classList.toggle('hidden', !nearNode);
+  permissionStatus.textContent = nearNode ? '360 AVAILABLE' : 'WAITING FOR NODE';
+}
+
+function enter360(startSeconds = sync360Player()) {
+  const node = nodes[activeNode];
+  in360 = true;
+  linearLayer.classList.add('hidden');
+  sphereLayer.classList.remove('hidden');
+  modeLabel.textContent = 'VIEWER-CONTROLLED 360 FIELD';
+  streamStatus.textContent = 'SYNCHRONIZED 360';
+  permissionStatus.textContent = 'DRAG TO LOOK';
+  enterButton.textContent = 'RETURN TO LINEAR CUT';
+  enterButton.classList.remove('hidden');
+
+  const target = startSeconds;
+  if (spherePlayer) {
+    if (typeof spherePlayer.loadVideoById === 'function') {
+      spherePlayer.loadVideoById({ videoId: node.videoId, startSeconds: target, suggestedQuality: 'highres' });
+    } else if (typeof spherePlayer.seekTo === 'function') {
+      spherePlayer.seekTo(target, true);
+    }
+    spherePlayer.mute();
+    requestHighQuality(spherePlayer);
+    if (typeof spherePlayer.playVideo === 'function') spherePlayer.playVideo();
+    window.setTimeout(() => requestHighQuality(spherePlayer), 1200);
+  }
+  syncStatus.textContent = formatTime(target);
+}
+
+function exit360() {
+  in360 = false;
+  if (spherePlayer && typeof spherePlayer.pauseVideo === 'function') {
+    try {
+      spherePlayer.pauseVideo();
+    } catch (error) {}
+  }
+  sphereLayer.classList.add('hidden');
+  linearLayer.classList.remove('hidden');
+  modeLabel.textContent = "DIRECTOR'S FRAME";
+  streamStatus.textContent = 'LINEAR CUT';
+  enterButton.textContent = 'ENTER 360 FIELD';
+}
+
+function returnToLinearCut() {
+  exit360();
+  permissionStatus.textContent = '360 COMPLETE';
+  if (linearPlayer && typeof linearPlayer.playVideo === 'function') {
+    try {
+      linearPlayer.playVideo();
+    } catch (error) {}
+  }
+  updateNodeVisibility();
+}
+
+function sync360Player() {
+  const node = nodes[activeNode];
+  let linearTime = node.linearTime;
+  if (linearPlayer && typeof linearPlayer.getCurrentTime === 'function') {
+    try {
+      linearTime = linearPlayer.getCurrentTime();
+    } catch (error) {}
+  }
+  return Math.max(0, linearTime - node.baseTime);
+}
+
+function getNodeStartSeconds(node) {
+  return Math.max(0, node.linearTime - node.baseTime);
+}
+
+function preload360Players() {
+  const mount = document.getElementById('preload-players');
+  if (!mount || !window.YT) return;
+  preloadVideoIds.forEach((videoId) => {
+    if (preloaded360Players[videoId]) return;
+    const slot = document.createElement('div');
+    slot.id = `preload-${videoId}`;
+    mount.appendChild(slot);
+    preloaded360Players[videoId] = new YT.Player(slot.id, {
+      width: '1',
+      height: '1',
+      videoId,
+      playerVars: { playsinline: 1, controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, mute: 1 },
+      events: { onReady: (event) => warmUp360Player(event.target, videoId) }
+    });
+  });
+}
+
+function warmUp360Player(player, videoId) {
+  cue360Video(player, videoId, 0);
+  window.setTimeout(() => {
+    try {
+      player.mute();
+      player.playVideo();
+      window.setTimeout(() => {
+        player.pauseVideo();
+        requestHighQuality(player);
+      }, 900);
+    } catch (error) {}
+  }, 350);
+}
+
+function cue360Video(player, videoId, startSeconds) {
+  if (!player || typeof player.cueVideoById !== 'function') return;
+  try {
+    player.mute();
+    player.cueVideoById({ videoId, startSeconds, suggestedQuality: 'highres' });
+    requestHighQuality(player);
+  } catch (error) {}
+}
+
+function requestHighQuality(player) {
+  if (!player || typeof player.setPlaybackQuality !== 'function') return;
+  try {
+    player.setPlaybackQuality('highres');
+    window.setTimeout(() => player.setPlaybackQuality('highres'), 700);
+    window.setTimeout(() => player.setPlaybackQuality('hd1080'), 1500);
+  } catch (error) {}
+}
+
+function primeSphericalView() {
+  if (!spherePlayer || typeof spherePlayer.setSphericalProperties !== 'function') return;
+  try {
+    spherePlayer.setSphericalProperties({ yaw, pitch, enableOrientationSensor: false });
+  } catch (error) {}
+}
+
+function applyPan(deltaX, deltaY) {
+  if (!spherePlayer || typeof spherePlayer.setSphericalProperties !== 'function') return;
+  yaw = ((yaw + deltaX * 0.16) % 360 + 360) % 360;
+  pitch = Math.max(-85, Math.min(85, pitch + deltaY * 0.16));
+  try {
+    spherePlayer.setSphericalProperties({ yaw, pitch, enableOrientationSensor: false });
+  } catch (error) {}
+}
+
+function formatTime(value) {
+  const seconds = Math.max(0, Math.round(value));
+  const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+  const secs = String(seconds % 60).padStart(2, '0');
+  return `${mins}:${secs}`;
+}
+
+document.querySelectorAll('[data-node]').forEach((button) => {
+  button.addEventListener('click', () => selectNode(button.dataset.node));
+});
+
+enterButton.addEventListener('click', () => {
+  if (in360) {
+    exit360();
+  } else {
+    enter360();
+  }
+});
+
+panLayer.addEventListener('pointerdown', (event) => {
+  event.preventDefault();
+  panning = true;
+  lastX = event.clientX;
+  lastY = event.clientY;
+  panLayer.classList.add('dragging');
+  panLayer.setPointerCapture?.(event.pointerId);
+});
+
+window.addEventListener('pointermove', (event) => {
+  if (!panning) return;
+  event.preventDefault();
+  applyPan(event.clientX - lastX, event.clientY - lastY);
+  lastX = event.clientX;
+  lastY = event.clientY;
+});
+
+window.addEventListener('pointerup', () => {
+  panning = false;
+  panLayer.classList.remove('dragging');
+});
+
+window.addEventListener('pointercancel', () => {
+  panning = false;
+  panLayer.classList.remove('dragging');
+});
+</script>
+<script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
