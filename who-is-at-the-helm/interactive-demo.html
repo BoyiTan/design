@@ -35,6 +35,8 @@ button,a{font:inherit}
 .mode-badge{position:absolute;left:18px;top:18px;z-index:9;font:700 11px ui-monospace,Menlo,monospace;letter-spacing:.12em;color:#fff;background:rgba(10,10,12,.78);border:1px solid rgba(255,255,255,.22);padding:9px 12px}
 .node-button{position:absolute;left:50%;bottom:clamp(76px,9vh,104px);transform:translateX(-50%);z-index:10;border:1px solid rgba(255,255,255,.38);background:#e5484d;color:#fff;padding:13px 18px;font:800 12px ui-monospace,Menlo,monospace;letter-spacing:.1em;cursor:pointer;box-shadow:0 14px 40px rgba(0,0,0,.35)}
 .node-button:hover{background:#ff5d62}
+.node-button-secondary{background:#111116;border-color:rgba(255,255,255,.5)}
+.node-button-secondary:hover{background:#24242c}
 .side{min-width:0;border-left:1px solid rgba(255,255,255,.12);padding-left:clamp(22px,2vw,34px);display:flex;flex-direction:column;justify-content:flex-start;gap:24px}
 .intro{display:grid;gap:18px}
 .eyebrow{font:800 11px ui-monospace,Menlo,monospace;letter-spacing:.18em;color:#e5484d;margin:0}
@@ -91,7 +93,9 @@ h1{max-width:11.5em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Blin
       </div>
       <div id="preload-players" class="preload-players" aria-hidden="true"></div>
       <div class="mode-badge" id="mode-label">DIRECTOR'S FRAME</div>
-      <button class="node-button hidden" id="enter-360">ENTER 360 FIELD</button>
+      <button class="node-button hidden" id="enter-karl-360" data-enter-node="karl">ENTER KARL 360 FIELD</button>
+      <button class="node-button hidden" id="enter-katie-360" data-enter-node="katie">ENTER KATIE 360 FIELD</button>
+      <button class="node-button node-button-secondary hidden" id="return-linear">RETURN TO LINEAR CUT</button>
       <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
     </section>
 
@@ -127,8 +131,8 @@ h1{max-width:11.5em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Blin
 
 <script>
 const nodes = {
-  karl: { label: 'Karl interview handoff', linearTime: 186, baseTime: 183, videoId: 'iUVqCfT_4kg', note: 'The composed interview frame gives way to the room around Karl: lights, crew, and the frame outside the frame.' },
-  katie: { label: 'Katie interview handoff', linearTime: 211, baseTime: 208, videoId: 'jYxUw1mAr8U', note: 'The second node shifts from directed lecture-room composition into a 360 field that reveals the production setup.' }
+  karl: { label: 'Karl interview handoff', linearTime: 186, baseTime: 183, windowStart: 186, windowEnd: 210, videoId: 'iUVqCfT_4kg', note: 'The composed interview frame gives way to the room around Karl: lights, crew, and the frame outside the frame.' },
+  katie: { label: 'Katie interview handoff', linearTime: 211, baseTime: 208, windowStart: 210, windowEnd: 230, videoId: 'jYxUw1mAr8U', note: 'The second node shifts from directed lecture-room composition into a 360 field that reveals the production setup.' }
 };
 
 const linearVideoId = 'gQwMz0cdapg';
@@ -149,7 +153,8 @@ let lastY = 0;
 
 const linearLayer = document.getElementById('linear-layer');
 const sphereLayer = document.getElementById('sphere-layer');
-const enterButton = document.getElementById('enter-360');
+const entryButtons = Array.from(document.querySelectorAll('[data-enter-node]'));
+const returnButton = document.getElementById('return-linear');
 const modeLabel = document.getElementById('mode-label');
 const streamStatus = document.getElementById('stream-status');
 const syncStatus = document.getElementById('sync-status');
@@ -160,7 +165,7 @@ const panLayer = document.getElementById('pan-layer');
 window.onYouTubeIframeAPIReady = function () {
   linearPlayer = new YT.Player('linear-player', {
     videoId: linearVideoId,
-    playerVars: { autoplay: 0, playsinline: 1, rel: 0, modestbranding: 1 },
+    playerVars: { autoplay: 0, playsinline: 1, controls: 0, disablekb: 1, rel: 0, modestbranding: 1 },
     events: { onReady: handleLinearReady, onStateChange: updateNodeVisibility }
   });
 
@@ -190,6 +195,18 @@ function handleSphereStateChange(event) {
   if (event.data === YT.PlayerState.ENDED) {
     returnToLinearCut();
   }
+}
+
+function showButton(button) {
+  if (button) button.classList.remove('hidden');
+}
+
+function hideButton(button) {
+  if (button) button.classList.add('hidden');
+}
+
+function getActiveEntryNode(currentTime) {
+  return Object.entries(nodes).find(([, node]) => currentTime >= node.windowStart && currentTime < node.windowEnd)?.[0] || null;
 }
 
 function selectNode(nodeId, options = {}) {
@@ -227,30 +244,52 @@ function selectNode(nodeId, options = {}) {
 }
 
 function updateNodeVisibility() {
-  if (!linearPlayer || in360) return;
-  const node = nodes[activeNode];
-  let currentTime = node.linearTime;
+  if (!linearPlayer) return;
+
+  if (in360) {
+    entryButtons.forEach(hideButton);
+    showButton(returnButton);
+    return;
+  }
+
+  let currentTime = nodes[activeNode].linearTime;
   try {
     currentTime = linearPlayer.getCurrentTime();
   } catch (error) {}
-  const nearNode = Math.abs(currentTime - node.linearTime) < 10 || currentTime >= node.linearTime;
-  const isComplete = completed360Nodes.has(activeNode);
-  enterButton.classList.toggle('hidden', !nearNode || isComplete);
-  permissionStatus.textContent = isComplete ? '360 COMPLETE' : nearNode ? '360 AVAILABLE' : 'WAITING FOR NODE';
+  const availableNodeId = getActiveEntryNode(currentTime);
+  entryButtons.forEach((button) => {
+    const nodeId = button.dataset.enterNode;
+    const visible = nodeId === availableNodeId && !completed360Nodes.has(nodeId);
+    button.classList.toggle('hidden', !visible);
+  });
+  hideButton(returnButton);
+
+  if (availableNodeId && completed360Nodes.has(availableNodeId)) {
+    permissionStatus.textContent = '360 COMPLETE';
+  } else if (availableNodeId) {
+    permissionStatus.textContent = '360 AVAILABLE';
+  } else {
+    permissionStatus.textContent = 'WAITING FOR NODE';
+  }
 }
 
-function enter360(startSeconds = sync360Player()) {
+function enter360(nodeId = activeNode, startSeconds) {
+  activeNode = nodeId;
   const node = nodes[activeNode];
+  document.querySelectorAll('[data-node]').forEach((button) => {
+    button.classList.toggle('active', button.dataset.node === activeNode);
+  });
+  sceneNote.textContent = node.note;
   in360 = true;
   linearLayer.classList.add('hidden');
   sphereLayer.classList.remove('hidden');
   modeLabel.textContent = 'VIEWER-CONTROLLED 360 FIELD';
   streamStatus.textContent = 'SYNCHRONIZED 360';
   permissionStatus.textContent = 'DRAG TO LOOK';
-  enterButton.textContent = 'ENTER 360 FIELD';
-  enterButton.classList.add('hidden');
+  entryButtons.forEach(hideButton);
+  showButton(returnButton);
 
-  const target = startSeconds;
+  const target = typeof startSeconds === 'number' ? startSeconds : sync360Player();
   if (spherePlayer) {
     if (typeof spherePlayer.loadVideoById === 'function') {
       spherePlayer.loadVideoById({ videoId: node.videoId, startSeconds: target, suggestedQuality: 'highres' });
@@ -276,7 +315,7 @@ function exit360() {
   linearLayer.classList.remove('hidden');
   modeLabel.textContent = "DIRECTOR'S FRAME";
   streamStatus.textContent = 'LINEAR CUT';
-  enterButton.textContent = 'ENTER 360 FIELD';
+  hideButton(returnButton);
 }
 
 function returnToLinearCut() {
@@ -424,9 +463,17 @@ document.querySelectorAll('[data-node]').forEach((button) => {
   button.addEventListener('click', () => selectNode(button.dataset.node));
 });
 
-enterButton.addEventListener('click', () => {
-  if (!in360) {
-    enter360();
+entryButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    if (!in360) {
+      enter360(button.dataset.enterNode);
+    }
+  });
+});
+
+returnButton.addEventListener('click', () => {
+  if (in360) {
+    returnToLinearCut();
   }
 });
 
