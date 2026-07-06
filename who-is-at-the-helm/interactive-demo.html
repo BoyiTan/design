@@ -131,11 +131,14 @@ const nodes = {
   katie: { label: 'Katie interview handoff', linearTime: 211, baseTime: 208, videoId: 'jYxUw1mAr8U', note: 'The second node shifts from directed lecture-room composition into a 360 field that reveals the production setup.' }
 };
 
+const linearVideoId = 'gQwMz0cdapg';
 const preloadVideoIds = [...new Set(Object.values(nodes).map((node) => node.videoId))];
 const preloaded360Players = {};
+const completed360Nodes = new Set();
 
 let linearPlayer;
 let spherePlayer;
+let preloadedLinearPlayer;
 let activeNode = 'karl';
 let in360 = false;
 let yaw = 0;
@@ -156,8 +159,8 @@ const panLayer = document.getElementById('pan-layer');
 
 window.onYouTubeIframeAPIReady = function () {
   linearPlayer = new YT.Player('linear-player', {
-    videoId: 'gQwMz0cdapg',
-    playerVars: { playsinline: 1, rel: 0, modestbranding: 1 },
+    videoId: linearVideoId,
+    playerVars: { autoplay: 0, playsinline: 1, rel: 0, modestbranding: 1 },
     events: { onReady: handleLinearReady, onStateChange: updateNodeVisibility }
   });
 
@@ -167,11 +170,12 @@ window.onYouTubeIframeAPIReady = function () {
     events: { onReady: handleSphereReady, onStateChange: handleSphereStateChange }
   });
 
+  preloadLinearPlayer();
   preload360Players();
 };
 
 function handleLinearReady() {
-  selectNode('karl');
+  selectNode('karl', { autoplay: false });
   window.setInterval(updateNodeVisibility, 500);
 }
 
@@ -188,16 +192,32 @@ function handleSphereStateChange(event) {
   }
 }
 
-function selectNode(nodeId) {
+function selectNode(nodeId, options = {}) {
+  const shouldAutoplay = options.autoplay !== false;
   activeNode = nodeId;
   const node = nodes[nodeId];
   const targetSeconds = getNodeStartSeconds(node);
+  completed360Nodes.delete(nodeId);
   document.querySelectorAll('[data-node]').forEach((button) => {
     button.classList.toggle('active', button.dataset.node === nodeId);
   });
-  if (linearPlayer && typeof linearPlayer.seekTo === 'function') {
-    linearPlayer.seekTo(node.linearTime, true);
-    linearPlayer.playVideo();
+  if (linearPlayer) {
+    try {
+      if (shouldAutoplay) {
+        if (typeof linearPlayer.seekTo === 'function') {
+          linearPlayer.seekTo(node.linearTime, true);
+        }
+        if (typeof linearPlayer.playVideo === 'function') {
+          linearPlayer.playVideo();
+        }
+      } else if (typeof linearPlayer.cueVideoById === 'function') {
+        linearPlayer.cueVideoById({ videoId: linearVideoId, startSeconds: node.linearTime, suggestedQuality: 'hd1080' });
+        requestHighQuality(linearPlayer);
+      } else if (typeof linearPlayer.seekTo === 'function') {
+        linearPlayer.seekTo(node.linearTime, true);
+        if (typeof linearPlayer.pauseVideo === 'function') linearPlayer.pauseVideo();
+      }
+    } catch (error) {}
   }
   cue360Video(spherePlayer, node.videoId, targetSeconds);
   sceneNote.textContent = node.note;
@@ -214,8 +234,9 @@ function updateNodeVisibility() {
     currentTime = linearPlayer.getCurrentTime();
   } catch (error) {}
   const nearNode = Math.abs(currentTime - node.linearTime) < 10 || currentTime >= node.linearTime;
-  enterButton.classList.toggle('hidden', !nearNode);
-  permissionStatus.textContent = nearNode ? '360 AVAILABLE' : 'WAITING FOR NODE';
+  const isComplete = completed360Nodes.has(activeNode);
+  enterButton.classList.toggle('hidden', !nearNode || isComplete);
+  permissionStatus.textContent = isComplete ? '360 COMPLETE' : nearNode ? '360 AVAILABLE' : 'WAITING FOR NODE';
 }
 
 function enter360(startSeconds = sync360Player()) {
@@ -226,8 +247,8 @@ function enter360(startSeconds = sync360Player()) {
   modeLabel.textContent = 'VIEWER-CONTROLLED 360 FIELD';
   streamStatus.textContent = 'SYNCHRONIZED 360';
   permissionStatus.textContent = 'DRAG TO LOOK';
-  enterButton.textContent = 'RETURN TO LINEAR CUT';
-  enterButton.classList.remove('hidden');
+  enterButton.textContent = 'ENTER 360 FIELD';
+  enterButton.classList.add('hidden');
 
   const target = startSeconds;
   if (spherePlayer) {
@@ -259,6 +280,7 @@ function exit360() {
 }
 
 function returnToLinearCut() {
+  completed360Nodes.add(activeNode);
   exit360();
   permissionStatus.textContent = '360 COMPLETE';
   if (linearPlayer && typeof linearPlayer.playVideo === 'function') {
@@ -289,6 +311,7 @@ function preload360Players() {
   if (!mount || !window.YT) return;
   preloadVideoIds.forEach((videoId) => {
     if (preloaded360Players[videoId]) return;
+    const node = Object.values(nodes).find((item) => item.videoId === videoId);
     const slot = document.createElement('div');
     slot.id = `preload-${videoId}`;
     mount.appendChild(slot);
@@ -296,14 +319,45 @@ function preload360Players() {
       width: '1',
       height: '1',
       videoId,
-      playerVars: { playsinline: 1, controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, mute: 1 },
-      events: { onReady: (event) => warmUp360Player(event.target, videoId) }
+      playerVars: { autoplay: 0, playsinline: 1, controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, mute: 1 },
+      events: { onReady: (event) => warmUp360Player(event.target, videoId, node ? getNodeStartSeconds(node) : 0) }
     });
   });
 }
 
-function warmUp360Player(player, videoId) {
-  cue360Video(player, videoId, 0);
+function preloadLinearPlayer() {
+  const mount = document.getElementById('preload-players');
+  if (!mount || !window.YT || preloadedLinearPlayer) return;
+  const slot = document.createElement('div');
+  slot.id = 'preload-linear-cut';
+  mount.appendChild(slot);
+  preloadedLinearPlayer = new YT.Player(slot.id, {
+    width: '1',
+    height: '1',
+    videoId: linearVideoId,
+    playerVars: { autoplay: 0, playsinline: 1, controls: 0, disablekb: 1, fs: 0, rel: 0, modestbranding: 1, mute: 1 },
+    events: { onReady: (event) => warmUpLinearPlayer(event.target) }
+  });
+}
+
+function warmUpLinearPlayer(player) {
+  const startSeconds = Math.max(0, nodes.karl.linearTime - 2);
+  cueLinearVideo(player, startSeconds);
+  window.setTimeout(() => {
+    try {
+      player.mute();
+      player.playVideo();
+      window.setTimeout(() => {
+        player.pauseVideo();
+        cueLinearVideo(player, nodes.karl.linearTime);
+        requestHighQuality(player);
+      }, 900);
+    } catch (error) {}
+  }, 350);
+}
+
+function warmUp360Player(player, videoId, startSeconds = 0) {
+  cue360Video(player, videoId, startSeconds);
   window.setTimeout(() => {
     try {
       player.mute();
@@ -321,6 +375,15 @@ function cue360Video(player, videoId, startSeconds) {
   try {
     player.mute();
     player.cueVideoById({ videoId, startSeconds, suggestedQuality: 'highres' });
+    requestHighQuality(player);
+  } catch (error) {}
+}
+
+function cueLinearVideo(player, startSeconds) {
+  if (!player || typeof player.cueVideoById !== 'function') return;
+  try {
+    player.mute();
+    player.cueVideoById({ videoId: linearVideoId, startSeconds, suggestedQuality: 'hd1080' });
     requestHighQuality(player);
   } catch (error) {}
 }
@@ -362,9 +425,7 @@ document.querySelectorAll('[data-node]').forEach((button) => {
 });
 
 enterButton.addEventListener('click', () => {
-  if (in360) {
-    exit360();
-  } else {
+  if (!in360) {
     enter360();
   }
 });
