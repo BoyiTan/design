@@ -76,6 +76,17 @@
     if (!isEligible(img)) return;
     img.dataset.caseLightbox = "true";
     img.classList.add("portfolio-lightbox-target");
+    img.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      openOverlay(img);
+    });
+    img.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      event.stopPropagation();
+      openOverlay(img);
+    });
 
     const frame = img.closest(".media, .artfac-image-shot, .artfac-take-visual, .artfac-cast-avatar, [data-cursor]") || img.parentElement;
     if (!frame || frame.dataset.caseLightboxFrame === "true") return;

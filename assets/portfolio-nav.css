@@ -264,6 +264,26 @@ main,
   background: rgba(255, 255, 255, .2);
 }
 
+@media (hover: none), (pointer: coarse), (max-width: 820px) {
+  [data-case-cursor-label],
+  .case-cursor {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  .portfolio-lightbox-target,
+  [data-case-lightbox-frame="true"]:hover .portfolio-lightbox-target,
+  [data-case-lightbox-frame="true"]:focus-visible .portfolio-lightbox-target {
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  [data-case-lightbox-frame="true"] {
+    cursor: default !important;
+  }
+}
+
 [data-screen-label] p,
 main p,
 .side p,

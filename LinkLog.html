@@ -321,6 +321,18 @@
       object-fit: contain;
     }
 
+    .solution-shot {
+      background: #f8f9fb;
+    }
+
+    .context-filter-shot {
+      aspect-ratio: 1674 / 1000;
+    }
+
+    .interaction-log-shot {
+      aspect-ratio: 1348 / 1296;
+    }
+
     .synthesis-cut {
       margin-top: 42px;
     }
@@ -870,6 +882,7 @@
     @media (hover: none), (pointer: coarse), (max-width: 820px) {
       .case-cursor { display: none; }
       .film-strip { display: none; }
+      .media:hover img { transform: none !important; filter: none !important; }
       * { animation: none !important; }
     }
   </style>
@@ -1163,8 +1176,8 @@
         </article>
 
         <article class="card solution-card">
-          <div class="media" style="aspect-ratio: 16 / 10;" data-cursor="Client profile context filter">
-            <img src="./assets/linklog-images/linklog-context-filter.png" alt="LinkLog client profile context filter for barriers preferences programs transportation and notes">
+          <div class="media contain solution-shot context-filter-shot" data-cursor="Client profile context filter">
+            <img src="./assets/linklog-images/linklog-context-filter.png?v=20260708-context" alt="LinkLog client profile context filter for barriers preferences programs transportation and notes">
             <div class="film-strip" data-tc="04:19"></div>
           </div>
           <div class="solution-copy">
@@ -1188,8 +1201,8 @@
               <div><b>Why it matters:</b> The system supports reporting while preserving richer service evidence.</div>
             </div>
           </div>
-          <div class="media" style="aspect-ratio: 16 / 10;" data-cursor="Guided interaction log">
-            <img src="./assets/linklog-images/linklog-log-interaction.png" alt="LinkLog interaction log screen with structured fields and notes">
+          <div class="media contain solution-shot interaction-log-shot" data-cursor="Guided interaction log">
+            <img src="./assets/linklog-images/linklog-log-interaction.png?v=20260708-log" alt="LinkLog interaction log screen with structured fields and notes">
             <div class="film-strip" data-tc="04:33"></div>
           </div>
         </article>
@@ -1381,7 +1394,7 @@
     </div>
   </footer>
 
-  <div class="case-cursor" aria-hidden="true"></div>
+  <div class="case-cursor" data-case-cursor-label="true" aria-hidden="true"></div>
 
   <script>
     const root = document.documentElement;
@@ -1433,8 +1446,14 @@
     window.addEventListener("resize", requestUpdate);
     updateProgress();
 
+    const cursorHoverEnabled = window.matchMedia("(min-width: 821px) and (hover: hover) and (pointer: fine)");
+
     if (cursor) {
       document.addEventListener("pointerover", (event) => {
+        if (!cursorHoverEnabled.matches) {
+          cursor.style.opacity = "0";
+          return;
+        }
         const target = event.target.closest("[data-cursor]");
         if (!target) {
           cursor.style.opacity = "0";
@@ -1444,6 +1463,10 @@
         cursor.style.opacity = "1";
       });
       document.addEventListener("pointermove", (event) => {
+        if (!cursorHoverEnabled.matches) {
+          cursor.style.opacity = "0";
+          return;
+        }
         const x = Math.min(event.clientX + 16, window.innerWidth - cursor.offsetWidth - 12);
         const y = Math.min(event.clientY + 18, window.innerHeight - cursor.offsetHeight - 12);
         cursor.style.transform = `translate(${x}px, ${y}px)`;
