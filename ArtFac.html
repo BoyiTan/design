@@ -5,6 +5,7 @@
 <title>ArtFac Case Study — Boyi Tan</title>
 <script src="./support.js"></script>
 <link rel="stylesheet" href="./assets/portfolio-nav.css">
+<script defer src="./assets/portfolio-case-lightbox.js"></script>
 
 </head>
 <body>
@@ -275,11 +276,11 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
 .artfac-shot-note{font:500 10.5px ui-monospace,Menlo,monospace;line-height:1.55;color:#6b6b73;background:rgba(255,255,255,.82);border:1px solid #ececef;border-radius:7px;padding:8px 10px;align-self:flex-start}
 .artfac-image-shot{position:relative;border:1px solid #ececef;border-radius:10px;background:#fff;overflow:hidden;box-shadow:0 14px 34px rgba(23,23,26,.06);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
 .artfac-image-shot:hover{transform:translateY(-2px);border-color:color-mix(in srgb,oklch(0.52 0.14 255) 28%,#ececef);box-shadow:0 20px 46px rgba(23,23,26,.10)}
-.artfac-image-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;transition:transform .35s ease}
-.artfac-image-shot:hover img{transform:scale(1.018)}
+.artfac-image-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;transition:transform .35s ease,filter .35s ease}
+.artfac-image-shot:hover img{transform:scale(1.018);filter:contrast(1.03) saturate(1.05)}
 .artfac-image-shot.cover img{object-fit:cover}
-.artfac-film-bars:before,.artfac-film-bars:after{content:"";position:absolute;left:0;right:0;height:11%;z-index:4;background:#0e0e10;opacity:0;transition:opacity .3s ease;pointer-events:none}
-.artfac-film-bars:before{top:0}.artfac-film-bars:after{bottom:0}.artfac-film-bars:hover:before,.artfac-film-bars:hover:after{opacity:1}
+.artfac-film-bars:before{content:"";position:absolute;inset:0;z-index:4;opacity:0;transition:opacity .3s ease;pointer-events:none;background:radial-gradient(140% 140% at 50% 50%,transparent 64%,rgba(15,22,38,.14) 100%),linear-gradient(oklch(0.52 0.14 255),oklch(0.52 0.14 255)) left 12px top 12px/20px 2px,linear-gradient(oklch(0.52 0.14 255),oklch(0.52 0.14 255)) left 12px top 12px/2px 20px,linear-gradient(oklch(0.52 0.14 255),oklch(0.52 0.14 255)) right 12px top 12px/20px 2px,linear-gradient(oklch(0.52 0.14 255),oklch(0.52 0.14 255)) right 12px top 12px/2px 20px,linear-gradient(oklch(0.52 0.14 255),oklch(0.52 0.14 255)) left 12px bottom 12px/20px 2px,linear-gradient(oklch(0.52 0.14 255),oklch(0.52 0.14 255)) left 12px bottom 12px/2px 20px,linear-gradient(oklch(0.52 0.14 255),oklch(0.52 0.14 255)) right 12px bottom 12px/20px 2px,linear-gradient(oklch(0.52 0.14 255),oklch(0.52 0.14 255)) right 12px bottom 12px/2px 20px;background-repeat:no-repeat}
+.artfac-film-bars:hover:before{opacity:1}
 .artfac-image-label{position:absolute;right:14px;top:14px;z-index:5;border:1px solid rgba(255,255,255,.34);border-radius:999px;background:#17171a;color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.16);font:700 10.5px ui-monospace,Menlo,monospace;letter-spacing:.04em;padding:7px 10px}
 .artfac-image-caption{font:500 11px ui-monospace,Menlo,monospace;color:#96969e;line-height:1.55;margin-top:11px}
 .artfac-image-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -289,12 +290,16 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
 .artfac-image-medium{aspect-ratio:16/10}
 .artfac-image-small{aspect-ratio:16/9}
 .artfac-flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.artfac-flow span{font:600 10.5px ui-monospace,Menlo,monospace;color:#003785;background:rgba(36,126,255,.12);border:1px solid rgba(36,126,255,.16);border-radius:999px;padding:7px 10px}.artfac-flow i{font-style:normal;color:#96969e}
-.artfac-mini-compare{display:grid;grid-template-columns:1fr 40px 1fr;gap:12px;align-items:center}.artfac-compare-card{border:1px solid #ececef;border-radius:8px;background:rgba(255,255,255,.86);padding:14px;min-height:112px}.artfac-compare-card b{display:block;font-size:13px;margin-bottom:8px}.artfac-compare-card p{font-size:12px;line-height:1.5;color:#6b6b73;margin:0}.artfac-arrow{text-align:center;color:#96969e;font-weight:700}
 .artfac-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.artfac-gallery .artfac-phone{min-height:180px;border-radius:18px;box-shadow:0 10px 24px rgba(23,23,26,.08)}
+.artfac-cast-card{border:1px solid #ececef;border-radius:12px;padding:26px 28px;display:grid;grid-template-columns:112px 1fr;gap:24px;align-items:start}
+.artfac-cast-avatar{width:112px;height:112px;border-radius:50%;border:1px solid #ececef;overflow:hidden;background:#fff;box-shadow:0 12px 28px rgba(23,23,26,.06)}
+.artfac-cast-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .artfac-question-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.artfac-question-list div{border:1px solid #ececef;border-radius:10px;padding:18px 20px;background:#fff}.artfac-question-list b{display:block;font-size:13px;margin-bottom:9px}.artfac-question-list p{margin:0;font-size:12.5px;line-height:1.65;color:#6b6b73}
 .artfac-asset-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.artfac-asset-list span{font:500 10.5px ui-monospace,Menlo,monospace;color:#6b6b73;border:1px solid #ececef;border-radius:7px;padding:8px;background:#fff}
 .artfac-prototype-layout{display:grid;grid-template-columns:minmax(230px,300px) minmax(360px,420px);justify-content:center;align-items:center;gap:36px;border-bottom:1px solid #ececef;padding:26px 28px;background:#fff}.artfac-prototype-copy{padding:6px 4px;display:flex;flex-direction:column;justify-content:center;gap:24px}.artfac-prototype-points{display:grid;gap:8px;margin-top:12px}.artfac-prototype-points span{font:600 10.5px ui-monospace,Menlo,monospace;color:#003785;background:rgba(36,126,255,.1);border:1px solid rgba(36,126,255,.16);border-radius:999px;padding:7px 10px;display:inline-flex;width:max-content}.artfac-prototype-wrap{padding:0;background:transparent;display:flex;justify-content:center;align-items:center}.artfac-prototype-stage{width:min(360px,100%);aspect-ratio:360/800;display:block;overflow:hidden}.artfac-prototype-frame{position:relative;width:100%;height:100%;aspect-ratio:360/800;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 18px 40px rgba(23,23,26,.08)}.artfac-prototype-frame:after{content:"";position:absolute;inset:0;border:1px solid #dfe4ea;border-radius:10px;box-sizing:border-box;pointer-events:none}
-@media (max-width:820px){.artfac-hero-composite{aspect-ratio:auto;min-height:720px}.artfac-hero-grid{inset:22px;grid-template-columns:1fr 1fr}.artfac-phone:nth-child(n){transform:none}.artfac-gallery,.artfac-question-list,.artfac-asset-list,.artfac-image-grid{grid-template-columns:1fr}.artfac-mini-compare{grid-template-columns:1fr}.artfac-arrow{display:none}.artfac-shot.wide,.artfac-shot.medium,.artfac-shot.small{aspect-ratio:auto;min-height:220px}.artfac-image-hero,.artfac-image-banner{aspect-ratio:16/9}.artfac-image-wide,.artfac-image-medium,.artfac-image-small{aspect-ratio:16/10}.artfac-prototype-layout{grid-template-columns:1fr;gap:18px;padding:16px}.artfac-prototype-copy{padding:0}.artfac-prototype-stage{width:min(360px,100%)}}
+.artfac-take-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,420px);gap:28px;align-items:end;margin-bottom:22px}.artfac-take-strip{display:grid;grid-template-columns:1fr 26px 1fr 26px 1fr;gap:16px;align-items:stretch}.artfac-take-card{border:1px solid #ececef;border-radius:12px;background:#fff;padding:18px 18px 16px;box-shadow:0 14px 34px rgba(23,23,26,.05);display:flex;flex-direction:column;min-width:0}.artfac-take-card.final{border-color:oklch(0.72 0.13 255);box-shadow:0 18px 42px rgba(36,126,255,.1)}.artfac-take-card h3{font:700 16px/1.25 'Instrument Sans',sans-serif;letter-spacing:-.01em;margin:4px 0 8px;color:#17171a}.artfac-take-card p{font-size:12.8px;line-height:1.58;color:#6b6b73;margin:0}.artfac-take-meta{font:700 10.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:oklch(0.52 0.14 255)}.artfac-take-visual{height:300px;margin-top:16px;border-radius:10px;overflow:hidden;background:#f8f9fb;border:1px solid #ececef}.artfac-take-visual img{width:100%;height:100%;object-fit:contain;display:block}.artfac-take-visual.wide{height:280px}.artfac-take-visual.crop img{object-fit:cover}.artfac-take-arrow{display:grid;place-items:center;color:#96969e;font-size:18px;font-weight:700}.artfac-take-note{display:flex;flex-wrap:wrap;gap:8px}.artfac-take-note span{font:600 10.5px ui-monospace,Menlo,monospace;color:#003785;background:rgba(36,126,255,.1);border:1px solid rgba(36,126,255,.16);border-radius:999px;padding:7px 10px}
+@media (max-width:980px){.artfac-take-intro{grid-template-columns:1fr}.artfac-take-strip{grid-template-columns:1fr}.artfac-take-arrow{display:none}.artfac-take-visual,.artfac-take-visual.wide{height:auto;aspect-ratio:16/10}}
+@media (max-width:820px){.artfac-hero-composite{aspect-ratio:auto;min-height:720px}.artfac-hero-grid{inset:22px;grid-template-columns:1fr 1fr}.artfac-phone:nth-child(n){transform:none}.artfac-gallery,.artfac-question-list,.artfac-asset-list,.artfac-image-grid{grid-template-columns:1fr}.artfac-cast-card{grid-template-columns:88px 1fr;padding:22px;gap:18px}.artfac-cast-avatar{width:88px;height:88px}.artfac-shot.wide,.artfac-shot.medium,.artfac-shot.small{aspect-ratio:auto;min-height:220px}.artfac-image-hero,.artfac-image-banner{aspect-ratio:16/9}.artfac-image-wide,.artfac-image-medium,.artfac-image-small{aspect-ratio:16/10}.artfac-prototype-layout{grid-template-columns:1fr;gap:18px;padding:16px}.artfac-prototype-copy{padding:0}.artfac-prototype-stage{width:min(360px,100%)}}
 @media (max-width:420px){.artfac-prototype-stage{width:100%}}
 /* ArtFac mobile motion reduction */
 @media (hover:none),(pointer:coarse),(max-width:1140px){.artfac-hero-composite,.artfac-image-shot,.artfac-prototype-frame{box-shadow:none!important;transition:none!important}.artfac-image-shot:hover{transform:none!important;border-color:#ececef!important;box-shadow:none!important}.artfac-image-shot img{transition:none!important}.artfac-image-shot:hover img{transform:none!important;transition:none!important}.artfac-film-bars:before,.artfac-film-bars:after{display:none!important;transition:none!important}.artfac-image-label{box-shadow:none!important}.artfac-phone{transition:none!important;box-shadow:0 8px 18px rgba(23,23,26,.06)!important}}
@@ -334,13 +339,13 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
       </div>
     </div>
     <div style="font-size:41px;line-height:1.16;letter-spacing:-0.025em;font-weight:700;max-width:760px;animation:fadeUp .6s .12s ease both">ArtFac — Designing <span style="background-image:linear-gradient(oklch(0.72 0.13 255),oklch(0.72 0.13 255));background-repeat:no-repeat;background-position:0 92%;background-size:100% 3px;animation:drawLine .9s .55s ease both">trust</span> in custom artwork commissions</div>
-    <div style="font-family:'Newsreader',serif;font-style:italic;font-size:20px;line-height:1.5;color:#3d3d44;max-width:700px;margin-top:20px;animation:fadeUp .6s .24s ease both">ArtFac redesigns the custom artwork commission process into a clearer workflow, helping clients and artists see what was requested, what was agreed, what stage the project is in, and when payment or revision actions are expected.</div>
+    <div style="font-family:'Newsreader',serif;font-style:italic;font-size:20px;line-height:1.5;color:#3d3d44;max-width:700px;margin-top:20px;animation:fadeUp .6s .24s ease both">ArtFac turns custom artwork commissions into a visible workflow: request details, agreed scope, project stage, payment timing, and revision actions become easier for clients and artists to understand.</div>
 
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid #ececef;border-bottom:1px solid #ececef;padding:20px 0;margin:38px 0 44px;animation:fadeUp .6s .36s ease both">
-      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">ROLE</div><div style="font-size:14px;font-weight:600">UX Designer / UI Designer</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Group mid-fi concept co-designed; individual high-fidelity refinement by Boyi, focusing on UI components, interaction states, and milestone-based commission flow.</div></div>
-      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">TIMELINE</div><div style="font-size:14px;font-weight:600">2026.02 - 2026.04 · 8 weeks</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Term likely Winter 2026; source-confirmed duration is February-April 2026.</div></div>
-      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">TEAM</div><div style="font-size:14px;font-weight:600">Group project foundation</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Collaborative mid-fi concept; individual high-fidelity Figma refinement. Exact team size not confirmed.</div></div>
-      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">SCOPE</div><div style="font-size:14px;font-weight:600">Research · flows · mid-fi · hi-fi prototype</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">User flow, task flow, screen flow, IA, design system, testing script, high-fidelity Figma prototype, and moderated / think-aloud usability testing with 5 participants, including 3 interviews conducted by Boyi.</div></div>
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">ROLE</div><div style="font-size:14px;font-weight:600">UX Designer / UI Designer</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Group mid-fi concept co-designed; individual high-fidelity refinement by Boyi across UI components, interaction states, and milestone-based commission flow.</div></div>
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">TIMELINE</div><div style="font-size:14px;font-weight:600">2026.02 - 2026.04 · 8 weeks</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Academic project completed across February-April 2026.</div></div>
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">TEAM</div><div style="font-size:14px;font-weight:600">Group project foundation</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Collaborative concept foundation, followed by Boyi's individual high-fidelity Figma refinement.</div></div>
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">SCOPE</div><div style="font-size:14px;font-weight:600">Research · flows · mid-fi · hi-fi prototype</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Flow mapping, IA, design system, hi-fi Figma prototype, and moderated / think-aloud usability testing with 5 participants. Boyi conducted 3 sessions.</div></div>
     </div>
 
     <div data-cursor="Opening frame — final ArtFac mobile flow" class="artfac-image-shot artfac-image-hero artfac-film-bars" style="animation:fadeUp .7s .45s ease both">
@@ -354,7 +359,7 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
           <div>
             <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:oklch(0.52 0.14 255);margin-bottom:10px">TRY THE PROTOTYPE</div>
             <div style="font-size:20px;font-weight:700;letter-spacing:-0.015em;line-height:1.25;color:#17171a">Click through the ArtFac mobile flow</div>
-            <div style="font-size:13px;line-height:1.6;color:#6b6b73;margin-top:10px">Use the embedded Figma prototype to test the client-side journey from artist discovery to commission creation and project tracking.</div>
+            <div style="font-size:13px;line-height:1.6;color:#6b6b73;margin-top:10px">Use the embedded Figma prototype to click through the client-side journey from artist discovery to commission creation and project tracking.</div>
           </div>
           <div>
             <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:10px">FLOW FOCUS</div>
@@ -387,21 +392,21 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px">
       <div>
         <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:10px">PROBLEM</div>
-        <div style="font-size:15.5px;line-height:1.6;font-weight:600">Money between strangers is awkward, especially when the artwork does not exist yet. Clients are asked to commit before they can see the final result, while artists are asked to protect their time before the relationship feels secure.</div>
+        <div style="font-size:15.5px;line-height:1.6;font-weight:600">Commissioning artwork requires trust before the final work exists. Clients need confidence before paying, while artists need enough structure to protect their time, scope, and creative labor.</div>
       </div>
       <div>
         <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:10px">DIRECTION</div>
-        <div style="font-size:14px;line-height:1.65;color:#3d3d44">How might the interface make request details, payment timing, revision boundaries, and delivery status visible before confusion turns into conflict?<br><span style="color:#6b6b73">How might both clients and artists know what is expected next during a commission?</span></div>
+        <div style="font-size:14px;line-height:1.65;color:#3d3d44">How might a commission interface make scope, payment timing, revision boundaries, and next steps visible enough for clients and artists to trust the process?</div>
       </div>
       <div>
         <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:10px">CHALLENGE</div>
-        <div style="font-size:14px;line-height:1.65;color:#3d3d44">Two users enter the same transaction with different risks: clients need clarity before paying, while artists need clear briefs, payment confidence, and boundaries around revisions.</div>
+        <div style="font-size:14px;line-height:1.65;color:#3d3d44">The same transaction creates different risks: clients need clarity before committing money, while artists need clear briefs, payment confidence, and boundaries around revision.</div>
       </div>
     </div>
     <div style="border-left:2px solid oklch(0.72 0.13 255);padding-left:22px;margin-top:36px">
       <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:oklch(0.52 0.14 255);margin-bottom:10px">SOLUTION</div>
-      <div style="font-size:23px;line-height:1.4;letter-spacing:-0.015em;font-weight:700;max-width:760px">The redesign aimed to make trust part of the workflow: guided request creation, shared project status, milestone-based payment, clearer revision moments, and visible delivery expectations.</div>
-      <div style="font-size:14px;line-height:1.65;color:#6b6b73;max-width:680px;margin-top:12px">The group mid-fi prototype established the core commission journey. My individual redesign focused on improving payment visibility, workflow transparency, interaction clarity, and the final mobile UI system.</div>
+      <div style="font-size:23px;line-height:1.4;letter-spacing:-0.015em;font-weight:700;max-width:760px">The redesign makes trust part of the workflow: guided request creation, shared project status, milestone-based payment, clearer revision moments, and visible delivery expectations.</div>
+      <div style="font-size:14px;line-height:1.65;color:#6b6b73;max-width:680px;margin-top:12px">The group mid-fi prototype established the core commission journey. My individual redesign clarified payment visibility, workflow transparency, interaction hierarchy, and the final mobile UI system.</div>
     </div>
     <div class="artfac-image-grid" style="margin-top:32px">
       <div data-cursor="Wireframe sequence — commission flow">
@@ -429,19 +434,23 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
       <span style="font:600 11px ui-monospace,Menlo,monospace;color:#96969e">TC 00:41</span>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px">
-      <div style="border:1px solid #ececef;border-radius:12px;padding:26px 28px;display:grid;grid-template-columns:88px 1fr;gap:22px;align-items:start">
-        <div style="width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,rgba(0,82,53,.12),rgba(36,126,255,.08));border:1px solid #ececef;display:grid;place-items:center;text-align:center;padding:8px"><span style="font:600 10px ui-monospace,Menlo,monospace;color:#005235">ARTIST<br>ASSUMPTION</span></div>
+      <div class="artfac-cast-card">
+        <div class="artfac-cast-avatar">
+          <img src="./assets/artfac-images/artfac-cast-artist.png" alt="Illustration of an artist holding a sketchbook and pen">
+        </div>
         <div>
           <div style="display:flex;align-items:baseline;gap:10px"><span style="font-size:18px;font-weight:700">Artist / Creator</span><span style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:oklch(0.52 0.14 255)">THE ARTIST SIDE</span></div>
-          <div style="font-family:'Newsreader',serif;font-style:italic;font-size:15.5px;line-height:1.55;color:#3d3d44;margin-top:10px">Design assumption: artists need enough detail to price the work, protect their time, and avoid repeated negotiation after the commission starts.</div>
+          <div style="font-family:'Newsreader',serif;font-style:italic;font-size:15.5px;line-height:1.55;color:#3d3d44;margin-top:10px">Working assumption: artists need enough detail to price the work, protect their time, and avoid repeated negotiation after the commission starts.</div>
           <div style="font-size:13px;line-height:1.65;color:#6b6b73;margin-top:10px">Needs:<br>Clear request details before accepting work<br>Payment confidence and visible stage expectations<br>Revision boundaries that reduce repeated communication<br></div>
         </div>
       </div>
-      <div style="border:1px solid #ececef;border-radius:12px;padding:26px 28px;display:grid;grid-template-columns:88px 1fr;gap:22px;align-items:start">
-        <div style="width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,rgba(36,126,255,.14),rgba(0,82,53,.08));border:1px solid #ececef;display:grid;place-items:center;text-align:center;padding:8px"><span style="font:600 10px ui-monospace,Menlo,monospace;color:#003785">CLIENT<br>SIDE</span></div>
+      <div class="artfac-cast-card">
+        <div class="artfac-cast-avatar">
+          <img src="./assets/artfac-images/artfac-cast-client.png" alt="Illustration of a client holding a phone while discussing a commission">
+        </div>
         <div>
           <div style="display:flex;align-items:baseline;gap:10px"><span style="font-size:18px;font-weight:700">Client / Commissioner</span><span style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:oklch(0.52 0.14 255)">THE CLIENT SIDE</span></div>
-          <div style="font-family:'Newsreader',serif;font-style:italic;font-size:15.5px;line-height:1.55;color:#3d3d44;margin-top:10px">The client side needs confidence before paying: what to ask for, where the commission is in the process, and how to request edits without starting an awkward conversation.</div>
+          <div style="font-family:'Newsreader',serif;font-style:italic;font-size:15.5px;line-height:1.55;color:#3d3d44;margin-top:10px">The client side needs confidence before paying: what details to provide, where the commission sits in the process, and how to request edits without turning feedback into an awkward conversation.</div>
           <div style="font-size:13px;line-height:1.65;color:#6b6b73;margin-top:10px">Needs:<br>Understand what details the artist needs<br>Know the current project stage and next action<br>Understand payment timing and revision options<br></div>
         </div>
       </div>
@@ -455,13 +464,13 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
       <div style="flex:1;height:1px;background:#ececef"></div>
       <span style="font:600 11px ui-monospace,Menlo,monospace;color:#96969e">TC 01:10</span>
     </div>
-    <div style="font-size:14px;color:#6b6b73;max-width:720px;margin-bottom:36px">The final design should be read as a set of UX decisions, not product marketing. Each highlight explains the design problem, the decision, and why it matters.</div>
+    <div style="font-size:14px;color:#6b6b73;max-width:720px;margin-bottom:36px">The final design is framed as UX decision-making, not product marketing. Each highlight connects a user risk to the interface change that reduces it.</div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;margin-bottom:52px">
       <div>
         <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:12px">HL 01</div>
         <div style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25">Request clarity before agreement</div>
-        <div style="font-size:14.5px;line-height:1.7;color:#3d3d44;margin-top:12px">Design problem: vague DM-style negotiation makes it hard for clients to explain a creative idea and hard for artists to evaluate scope. Design decision: structure the request around description, references, budget range, and preview before submission. Why it matters: the brief becomes something both sides can review before agreement.</div>
+        <div style="font-size:14.5px;line-height:1.7;color:#3d3d44;margin-top:12px">Vague DM-style negotiation makes it hard for clients to describe a creative idea and hard for artists to judge scope. The request flow turns that ambiguity into structured inputs: description, references, budget range, timeline, and preview before submission.</div>
       </div>
       <div data-cursor="Post a commission flow — description, references, budget, and timeline">
         <div class="artfac-image-shot artfac-image-medium artfac-film-bars">
@@ -483,7 +492,7 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
       <div>
         <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:12px">HL 02</div>
         <div style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25">Shared project status</div>
-        <div style="font-size:14.5px;line-height:1.7;color:#3d3d44;margin-top:12px">Design problem: once a commission starts, uncertainty shifts from "Can I trust this artist?" to "What is happening now?" Design decision: use My Commission, Project Details, and progress tracking to keep the current stage, next step, and project state visible. Why it matters: status becomes a shared reference point instead of a private guess.</div>
+        <div style="font-size:14.5px;line-height:1.7;color:#3d3d44;margin-top:12px">Once a commission starts, the trust question shifts from "Can I trust this artist?" to "What is happening now?" The My Commission and Project Details flow keeps current stage, next step, and payment status visible as a shared reference point.</div>
       </div>
     </div>
 
@@ -491,7 +500,7 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
       <div>
         <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:12px">HL 03</div>
         <div style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.25">Boundaries for payment, revisions, and delivery</div>
-        <div style="font-size:14.5px;line-height:1.7;color:#3d3d44;margin-top:12px">Design problem: payment, revision, and delivery are the moments where collaboration can become uncomfortable. Design decision: connect payment summary, Request Edit, draft review, and final delivery to visible project stages. Why it matters: users can see what they are approving, paying for, or sending back for changes.</div>
+        <div style="font-size:14.5px;line-height:1.7;color:#3d3d44;margin-top:12px">Payment, revision, and delivery are the moments where collaboration can become uncomfortable. The redesign ties payment summary, Request Edit, draft review, and final delivery to visible project stages so users can see what they are approving, paying for, or sending back for changes.</div>
       </div>
       <div data-cursor="Artist recommendations and trust signals">
         <div class="artfac-image-shot artfac-image-medium artfac-film-bars">
@@ -510,9 +519,9 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
       <div style="flex:1;height:1px;background:#ececef"></div>
       <span style="font:600 11px ui-monospace,Menlo,monospace;color:#96969e">TC 02:04</span>
     </div>
-    <div style="font-size:15px;line-height:1.75;color:#3d3d44;max-width:760px;margin-bottom:30px">I treated the early phase as a way to understand where trust breaks in art commissions. This was not final proof; it was a working map built from competitor analysis, peer critique, instructor feedback, project assumptions, and moderated / think-aloud usability testing with 5 participants.</div>
+    <div style="font-size:15px;line-height:1.75;color:#3d3d44;max-width:760px;margin-bottom:30px">I used the early phase as directional evidence: competitor analysis, peer critique, instructor feedback, project assumptions, and moderated / think-aloud testing helped locate where trust breaks in the commission workflow.</div>
     <div style="display:grid;grid-template-columns:1fr;gap:24px;border-top:1px solid #ececef;border-bottom:1px solid #ececef;padding:22px 0;margin-bottom:36px">
-      <div><div style="font-size:26px;font-weight:700;letter-spacing:-0.02em;color:oklch(0.52 0.14 255)">5</div><div style="font-size:13px;color:#6b6b73;margin-top:5px">testing participants; 3 interviews conducted by Boyi</div></div>
+      <div><div style="font-size:26px;font-weight:700;letter-spacing:-0.02em;color:oklch(0.52 0.14 255)">5</div><div style="font-size:13px;color:#6b6b73;margin-top:5px">moderated / think-aloud testing participants; Boyi conducted 3 sessions</div></div>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px">
@@ -539,37 +548,47 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
       <span style="font:600 11px ui-monospace,Menlo,monospace;color:#96969e">TC 03:20</span>
     </div>
     <div style="font-size:15px;line-height:1.75;color:#3d3d44;max-width:760px;margin-bottom:32px">Trust is not one screen. It is a sequence of small confirmations: what was requested, what was agreed, what stage the work is in, what can be revised, and what happens at delivery.</div>
-    <div data-cursor="System map — ArtFac final UI overview" style="margin-bottom:44px">
-      <div class="artfac-image-shot artfac-image-wide artfac-film-bars cover">
-        <img src="./assets/artfac-images/artfac-ui-overview.png" alt="ArtFac UI overview showing the design system and final mobile screens">
-        <div class="artfac-image-label">ACT II · UI OVERVIEW</div>
+    <div class="artfac-take-intro">
+      <div>
+        <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:10px">THE COMMISSION FLOW — THREE TAKES</div>
+        <div style="font-size:22px;font-weight:700;letter-spacing:-0.015em;line-height:1.28;max-width:620px">The core flow evolved from a rough commission journey into a readable payment-and-progress system.</div>
       </div>
-      <div class="artfac-image-caption">Visual map of the commission lifecycle, from discovery and request creation to payment, revision, delivery, and review.</div>
+      <div class="artfac-take-note">
+        <span>Discovery</span>
+        <span>Request</span>
+        <span>Milestone payment</span>
+        <span>Project tracking</span>
+      </div>
     </div>
-
-    <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:18px">THE COMMISSION FLOW — THREE TAKES</div>
-    <div style="display:grid;grid-template-columns:1fr 24px 1fr 24px 1fr;gap:14px;align-items:start">
-      <div>
-        <div style="font:600 11px ui-monospace,Menlo,monospace;color:oklch(0.52 0.14 255);margin:12px 0 6px">TAKE 01 — GROUP IDEA / EARLY FLOW</div>
-        <div style="font-size:13px;line-height:1.6;color:#6b6b73">The early direction explored how clients could discover artists, describe a commission, and move into an agreement.</div>
-      </div>
-      <div style="display:grid;place-items:center;padding-top:60px;color:#96969e;font-size:15px">→</div>
-      <div>
-        <div class="artfac-image-shot artfac-image-small artfac-film-bars">
-          <img src="./assets/artfac-images/artfac-project-details.png" alt="ArtFac project details screen for choosing category and timeline">
-          <div class="artfac-image-label">TAKE 02</div>
+    <div class="artfac-take-strip">
+      <div class="artfac-take-card" data-cursor="Take 01 — early commission journey map">
+        <div class="artfac-take-meta">TAKE 01</div>
+        <h3>Group idea / early flow</h3>
+        <p>The early direction mapped how a client could discover an artist, describe a commission, and move toward an agreement.</p>
+        <div class="artfac-take-visual wide artfac-film-bars">
+          <img src="./assets/artfac-images/artfac-wireframes.png" alt="Early ArtFac wireframes mapping the commission journey">
+          <div class="artfac-image-label">EARLY FLOW</div>
         </div>
-        <div style="font:600 11px ui-monospace,Menlo,monospace;color:oklch(0.52 0.14 255);margin:12px 0 6px">TAKE 02 — GROUP MID-FI</div>
-        <div style="font-size:13px;line-height:1.6;color:#6b6b73">The group mid-fi prototype established the core commission journey and introduced milestone-based collaboration. However, critique and testing suggested that payment visibility, workflow transparency, and action hierarchy needed to be clarified.</div>
       </div>
-      <div style="display:grid;place-items:center;padding-top:60px;color:#96969e;font-size:15px">→</div>
-      <div>
-        <div class="artfac-image-shot artfac-image-small artfac-film-bars" style="border:2px solid oklch(0.72 0.13 255)">
-          <img src="./assets/artfac-images/artfac-commission-summary.png" alt="ArtFac commission summary showing current commission and payment progress">
-          <div class="artfac-image-label">FINAL CUT</div>
+      <div class="artfac-take-arrow">→</div>
+      <div class="artfac-take-card" data-cursor="Take 02 — group mid-fi commission setup">
+        <div class="artfac-take-meta">TAKE 02</div>
+        <h3>Group mid-fi</h3>
+        <p>The group prototype established commission setup and milestone-based collaboration, but payment visibility and action hierarchy still needed refinement.</p>
+        <div class="artfac-take-visual artfac-film-bars">
+          <img src="./assets/artfac-images/artfac-project-details.png" alt="ArtFac mid-fi project details screen for choosing category and timeline">
+          <div class="artfac-image-label">MID-FI SCREEN</div>
         </div>
-        <div style="font:600 11px ui-monospace,Menlo,monospace;color:oklch(0.52 0.14 255);margin:12px 0 6px">FINAL CUT — INDIVIDUAL LOW-FI TO HI-FI REDESIGN</div>
-        <div style="font-size:13px;line-height:1.6;color:#6b6b73">My individual high-fidelity refinement focused on UI components, interaction states, and the milestone-based commission flow: stronger hierarchy, clearer milestone payment, visible project tracking, and more structured feedback actions.</div>
+      </div>
+      <div class="artfac-take-arrow">→</div>
+      <div class="artfac-take-card final" data-cursor="Final cut — full high-fidelity commission flow">
+        <div class="artfac-take-meta">FINAL CUT</div>
+        <h3>Individual hi-fi refinement</h3>
+        <p>My refinement clarified UI components, interaction states, payment timing, project tracking, and feedback actions across the client-side flow.</p>
+        <div class="artfac-take-visual wide crop artfac-film-bars">
+          <img src="./assets/artfac-images/artfac-flow-board.png" alt="Final ArtFac high-fidelity flow board showing discovery, commission creation, milestone payments, revisions, delivery, and review">
+          <div class="artfac-image-label">FINAL FLOW</div>
+        </div>
       </div>
     </div>
   </div>
@@ -582,25 +601,127 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
       <span style="font:600 11px ui-monospace,Menlo,monospace;color:#96969e">TC 04:35</span>
     </div>
 
-    <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:18px">RESHOOTS — WHAT FEEDBACK CHANGED</div>
-    <div style="font-size:15px;line-height:1.75;color:#3d3d44;max-width:760px;margin-bottom:24px">The before/after story centers on payment visibility, progress tracking, and revision workflow.</div>
-    <div style="display:grid;grid-template-columns:1fr 24px 1fr;gap:14px;align-items:start;margin-bottom:52px">
+    <style>
+      .artfac-ev-head{display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start;margin-bottom:26px}
+      .artfac-ev-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+      .artfac-ev-findings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+      .artfac-ev-proof{display:grid;grid-template-columns:1fr 56px 1fr;gap:18px;align-items:center}
+      .artfac-ev-bottom{display:grid;grid-template-columns:1.15fr 1fr;gap:20px;align-items:stretch}
+      @media (max-width:920px){
+        .artfac-ev-head{grid-template-columns:1fr}
+        .artfac-ev-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+        .artfac-ev-findings,.artfac-ev-proof,.artfac-ev-bottom{grid-template-columns:1fr}
+        .artfac-ev-proof .artfac-ev-arrow{transform:rotate(90deg);justify-self:center}
+      }
+    </style>
+    <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:18px">RESHOOTS — TESTING EVIDENCE BOARD</div>
+    <div class="artfac-ev-head">
       <div>
-        <div style="font-size:13px;line-height:1.6;color:#6b6b73;margin-top:12px"><span style="font:600 11px ui-monospace,Menlo,monospace;color:#96969e">BEFORE — </span>Payment was present, but it was not strongly connected to project stage, milestone status, or next action.</div>
+        <div style="font-size:24px;font-weight:700;letter-spacing:-0.015em;line-height:1.3;max-width:560px">Testing converted vague trust issues into concrete interface changes</div>
+        <div style="font-size:14px;line-height:1.65;color:#6b6b73;max-width:600px;margin-top:10px">Instead of a wall of notes, this board makes the logic visible: what participants struggled with, what changed in the interface, and how the final flow answers the problem.</div>
       </div>
-      <div style="display:grid;place-items:center;padding-top:50px;color:#96969e;font-size:15px">→</div>
-      <div>
-        <div style="font-size:13px;line-height:1.6;color:#6b6b73;margin-top:12px"><span style="font:600 11px ui-monospace,Menlo,monospace;color:oklch(0.52 0.14 255)">AFTER — </span>The final hi-fi direction pairs payment information with milestone status, amount breakdown, and the next action.</div>
+      <div class="artfac-ev-stats">
+        <div style="border:1px solid #ececef;border-radius:10px;padding:14px 16px"><div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;color:oklch(0.52 0.14 255)">5</div><div style="font-size:11.5px;line-height:1.4;color:#6b6b73;margin-top:3px">testing participants</div></div>
+        <div style="border:1px solid #ececef;border-radius:10px;padding:14px 16px"><div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;color:#047857">3</div><div style="font-size:11.5px;line-height:1.4;color:#6b6b73;margin-top:3px">interviews by Boyi</div></div>
+        <div style="border:1px solid #ececef;border-radius:10px;padding:14px 16px"><div style="font-size:22px;font-weight:700;letter-spacing:-0.02em;color:#B45309">3</div><div style="font-size:11.5px;line-height:1.4;color:#6b6b73;margin-top:3px">iteration priorities</div></div>
       </div>
     </div>
 
-    <div class="artfac-mini-compare" style="margin-bottom:52px">
-      <div class="artfac-compare-card"><b>Before · Progress tracking</b><p>Timeline or stages existed, but the current status and next step could be easier to understand.</p></div>
-      <div class="artfac-arrow">→</div>
-      <div class="artfac-compare-card"><b>After · Visible current stage</b><p>Stage labels, progress indicators, and project cards make status more visible.</p></div>
-      <div class="artfac-compare-card"><b>Before · Revision workflow</b><p>Request Edit / Leave Feedback could be overlooked or feel isolated from the collaboration flow.</p></div>
-      <div class="artfac-arrow">→</div>
-      <div class="artfac-compare-card"><b>After · Feedback in the workflow</b><p>Draft review and feedback actions become part of the milestone experience.</p></div>
+    <div class="artfac-ev-findings" style="margin-bottom:44px">
+      <div data-cursor="Finding 01 — payment transparency" style="border:1px solid #ececef;border-radius:12px;padding:20px 22px">
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:24px;height:24px;border-radius:50%;background:oklch(0.52 0.14 255);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none">1</span><span style="font-size:15px;font-weight:700">Payment transparency</span></div>
+        <div style="font-family:'Newsreader',serif;font-style:italic;font-size:14.5px;line-height:1.55;color:#3d3d44;margin-top:12px">&ldquo;I am not sure if I pay every time or how it works.&rdquo;</div>
+        <div style="height:1px;background:#ececef;margin:14px 0 12px"></div>
+        <div style="font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:oklch(0.52 0.14 255);margin-bottom:6px">&rarr; INTERFACE CHANGE</div>
+        <div style="font-size:13px;line-height:1.55;font-weight:600;color:oklch(0.45 0.13 255)">Payment amount moved into the stage CTA and tied to the current milestone.</div>
+      </div>
+      <div data-cursor="Finding 02 — information hierarchy" style="border:1px solid #ececef;border-radius:12px;padding:20px 22px">
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:24px;height:24px;border-radius:50%;background:#D97706;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none">2</span><span style="font-size:15px;font-weight:700">Information hierarchy</span></div>
+        <div style="font-family:'Newsreader',serif;font-style:italic;font-size:14.5px;line-height:1.55;color:#3d3d44;margin-top:12px">Users skipped banners and missed important details during tasks.</div>
+        <div style="height:1px;background:#ececef;margin:14px 0 12px"></div>
+        <div style="font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#B45309;margin-bottom:6px">&rarr; INTERFACE CHANGE</div>
+        <div style="font-size:13px;line-height:1.55;font-weight:600;color:#92400E">Primary action, supporting explanation, and secondary options are grouped together.</div>
+      </div>
+      <div data-cursor="Finding 03 — system visibility" style="border:1px solid #ececef;border-radius:12px;padding:20px 22px">
+        <div style="display:flex;align-items:center;gap:10px"><span style="width:24px;height:24px;border-radius:50%;background:#059669;color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700;flex:none">3</span><span style="font-size:15px;font-weight:700">System visibility</span></div>
+        <div style="font-family:'Newsreader',serif;font-style:italic;font-size:14.5px;line-height:1.55;color:#3d3d44;margin-top:12px">Users could complete tasks but did not know what happens next.</div>
+        <div style="height:1px;background:#ececef;margin:14px 0 12px"></div>
+        <div style="font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#047857;margin-bottom:6px">&rarr; INTERFACE CHANGE</div>
+        <div style="font-size:13px;line-height:1.55;font-weight:600;color:#065F46">Timeline makes the current stage visible and locks future states until ready.</div>
+      </div>
+    </div>
+
+    <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:8px">BEFORE / AFTER PROOF — PAYMENT AS A DECISION POINT</div>
+    <div style="font-size:14px;line-height:1.65;color:#6b6b73;max-width:680px;margin-bottom:22px">The final hi-fi refinement does not add decoration; it makes payment, next action, and status legible at the moment users decide.</div>
+    <div class="artfac-ev-proof" style="margin-bottom:44px">
+      <div data-cursor="Before — payment read as static information">
+        <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#B42318;margin-bottom:10px">BEFORE</div>
+        <div style="border:1px solid #ececef;border-radius:12px;padding:16px 18px;background:#fff;box-shadow:0 10px 26px rgba(23,23,26,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+            <div><div style="font-size:13px;font-weight:700">Character Illustration</div><div style="font-size:11px;color:#6b6b73;margin-top:2px">By David King</div></div>
+            <span style="font-size:9px;font-weight:600;color:#6b6b73;background:#f4f4f6;border:1px solid #ececef;border-radius:999px;padding:3px 8px;white-space:nowrap">Awaiting Your Review</span>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center;margin-top:12px"><span style="font-size:9.5px;font-weight:600;color:#6b6b73;background:#f4f4f6;border-radius:4px;padding:2px 6px">Format</span><span style="font-size:11px;color:#3d3d44">Digital Painting</span></div>
+          <div style="display:flex;gap:6px;align-items:center;margin-top:6px"><span style="font-size:9.5px;font-weight:600;color:#6b6b73;background:#f4f4f6;border-radius:4px;padding:2px 6px">Artwork Size</span><span style="font-size:11px;color:#3d3d44">Medium &middot; 3000 &times; 3000 px</span></div>
+          <div style="display:flex;align-items:center;gap:5px;margin-top:14px;font-size:9.5px;color:#6b6b73">
+            <span style="color:#059669">&#10003; Step1</span><span style="flex:1;height:1px;background:#d8d8dd"></span>
+            <span style="color:#17171a">&#9679; Step2</span><span style="flex:1;height:1px;background:#ececef"></span>
+            <span>&#9675; Step3</span><span style="flex:1;height:1px;background:#ececef"></span>
+            <span>&#9675; Step4</span>
+          </div>
+        </div>
+        <div style="font-size:13px;line-height:1.6;color:#6b6b73;margin-top:12px">Payment existed, but it read like static information rather than a clear decision point.</div>
+      </div>
+      <div class="artfac-ev-arrow" style="display:grid;place-items:center"><span style="width:40px;height:40px;border-radius:50%;background:#17171a;color:#fff;display:grid;place-items:center;font-size:16px">&rarr;</span></div>
+      <div data-cursor="After — payment tied to milestone and next action">
+        <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#047857;margin-bottom:10px">AFTER</div>
+        <div style="border:1px solid #ececef;border-radius:12px;padding:16px 18px;background:#fff;box-shadow:0 10px 26px rgba(23,23,26,.05)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+            <div style="font-size:13px;font-weight:700;line-height:1.3">Current<br>Commission</div>
+            <div style="text-align:right"><div style="font-size:8.5px;font-weight:700;letter-spacing:.08em;color:#96969e">TOTAL COMMITTED</div><div style="font-size:14px;font-weight:700;color:#047857;margin-top:2px">Pending</div></div>
+          </div>
+          <div style="font-size:11px;color:#3d3d44;margin-top:8px">2 people have accepted the order</div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:12px"><span style="font-size:11px;font-weight:600;color:#3d3d44">Project Progression</span><span style="font-size:11px;font-weight:700">Stage 1 of 4</span></div>
+          <div style="height:5px;border-radius:999px;background:#ececef;margin-top:6px;overflow:hidden"><div style="width:25%;height:100%;border-radius:999px;background:#047857"></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.18);border-radius:9px;padding:9px 12px;margin-top:12px">
+            <span style="font-size:11.5px;font-weight:700;color:oklch(0.45 0.13 255)">&#128179; Next Stage Payment</span><span style="font-size:12.5px;font-weight:700;color:oklch(0.45 0.13 255)">$24.00</span>
+          </div>
+          <div style="text-align:center;font-size:10px;color:#96969e;margin-top:10px">Start Date: 2026. 04. 02</div>
+        </div>
+        <div style="font-size:13px;line-height:1.6;color:#6b6b73;margin-top:12px">Payment is now connected to milestone state, amount, and the next action.</div>
+      </div>
+    </div>
+
+    <div class="artfac-ev-bottom" style="margin-bottom:52px">
+      <div data-cursor="Milestone timeline — locked until ready" style="border:1px solid #ececef;border-radius:12px;padding:24px 26px">
+        <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:4px">PROJECT PROGRESS &middot; CHARACTER ILLUSTRATION</div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:10px"><span style="font-size:13px;font-weight:700">Stage 3 of 4</span><span style="font-size:11.5px;font-weight:700;color:oklch(0.45 0.13 255);background:rgba(37,99,235,.08);border-radius:999px;padding:3px 10px">$24.00 &middot; current stage</span></div>
+        <div style="height:5px;border-radius:999px;background:#ececef;margin:8px 0 20px;overflow:hidden"><div style="width:75%;height:100%;border-radius:999px;background:#047857"></div></div>
+        <div style="display:grid;grid-template-columns:26px 1fr;column-gap:14px;row-gap:0">
+          <div style="display:flex;flex-direction:column;align-items:center"><span style="width:22px;height:22px;border-radius:50%;background:#059669;color:#fff;display:grid;place-items:center;font-size:11px;flex:none">&#10003;</span><span style="flex:1;width:2px;background:#ececef;min-height:16px"></span></div>
+          <div style="padding-bottom:16px"><div style="font-size:13.5px;font-weight:700">Establish Cooperation</div><div style="font-size:12px;color:#6b6b73;margin-top:2px">Both sides confirm scope, timeline, and terms</div></div>
+          <div style="display:flex;flex-direction:column;align-items:center"><span style="width:22px;height:22px;border-radius:50%;background:#059669;color:#fff;display:grid;place-items:center;font-size:11px;flex:none">&#10003;</span><span style="flex:1;width:2px;background:#ececef;min-height:16px"></span></div>
+          <div style="padding-bottom:16px"><div style="font-size:13.5px;font-weight:700">View Draft</div><div style="font-size:12px;color:#6b6b73;margin-top:2px">Artist submits the first draft for review</div></div>
+          <div style="display:flex;flex-direction:column;align-items:center"><span style="width:22px;height:22px;border-radius:50%;background:oklch(0.52 0.14 255);box-shadow:0 0 0 4px rgba(37,99,235,.15);color:#fff;display:grid;place-items:center;font-size:10px;flex:none">&#9679;</span><span style="flex:1;width:2px;background:#ececef;min-height:16px"></span></div>
+          <div style="padding-bottom:16px"><div style="font-size:13.5px;font-weight:700">Project Milestones <span style="font:600 9px ui-monospace,Menlo,monospace;letter-spacing:.07em;color:oklch(0.45 0.13 255);background:rgba(37,99,235,.08);border-radius:999px;padding:2px 7px;vertical-align:2px;margin-left:4px">CURRENT</span></div><div style="font-size:12px;color:#6b6b73;margin-top:2px">Track progress and stage updates</div></div>
+          <div style="display:flex;flex-direction:column;align-items:center"><span style="width:22px;height:22px;border-radius:50%;background:#f4f4f6;border:1px solid #d8d8dd;color:#96969e;display:grid;place-items:center;font-size:10px;flex:none">&#128274;</span></div>
+          <div><div style="font-size:13.5px;font-weight:700;color:#96969e">Final Work</div><div style="font-size:12px;color:#96969e;margin-top:2px">Receive final artwork &middot; unlocks after milestones complete</div></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-rows:repeat(3,1fr);gap:14px">
+        <div data-cursor="Decision 01 — clarify action meaning" style="background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.14);border-radius:12px;padding:18px 22px">
+          <div style="display:flex;align-items:baseline;gap:10px"><span style="font:700 13px ui-monospace,Menlo,monospace;color:oklch(0.45 0.13 255)">01</span><span style="font-size:15px;font-weight:700">Clarify action meaning</span></div>
+          <div style="font-size:13px;line-height:1.55;color:#3d3d44;margin-top:6px">Differentiate approve, edit, pay, and continue states.</div>
+        </div>
+        <div data-cursor="Decision 02 — expose system logic" style="background:rgba(5,150,105,.07);border:1px solid rgba(5,150,105,.16);border-radius:12px;padding:18px 22px">
+          <div style="display:flex;align-items:baseline;gap:10px"><span style="font:700 13px ui-monospace,Menlo,monospace;color:#047857">02</span><span style="font-size:15px;font-weight:700">Expose system logic</span></div>
+          <div style="font-size:13px;line-height:1.55;color:#3d3d44;margin-top:6px">Show stage, locked states, and what happens next.</div>
+        </div>
+        <div data-cursor="Decision 03 — reduce decision anxiety" style="background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.18);border-radius:12px;padding:18px 22px">
+          <div style="display:flex;align-items:baseline;gap:10px"><span style="font:700 13px ui-monospace,Menlo,monospace;color:#B45309">03</span><span style="font-size:15px;font-weight:700">Reduce decision anxiety</span></div>
+          <div style="font-size:13px;line-height:1.55;color:#3d3d44;margin-top:6px">Pair cost with context, not only checkout UI.</div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -614,37 +735,34 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
     </div>
     <div style="font-family:'Newsreader',serif;font-style:italic;font-size:21px;line-height:1.55;color:#3d3d44;max-width:700px">"The awkward trust problem did not disappear. It became a sequence of screens where both sides could see what was requested, what was agreed, and what should happen next."</div>
     <div style="font-size:14px;line-height:1.65;color:#6b6b73;max-width:760px;margin-top:12px">The final story moves from vague commission negotiation to a visible workflow: clearer request creation, milestone payment, project tracking, structured revision, final delivery, and stronger artist credibility signals.</div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;border-top:1px solid #ececef;border-bottom:1px solid #ececef;padding:22px 0;margin-top:32px">
-      <div><div style="font-size:20px;font-weight:700;letter-spacing:-0.02em;color:oklch(0.52 0.14 255);line-height:1.3">REQUEST → AGREEMENT → PROGRESS → REVISION → DELIVERY</div><div style="font-size:13px;color:#6b6b73;margin-top:5px">flows clarified</div></div>
-      <div><div style="font-size:26px;font-weight:700;letter-spacing:-0.02em;color:oklch(0.52 0.14 255)">PROCESS</div><div style="font-size:13px;color:#6b6b73;margin-top:5px">group mid-fi → individual low-fi → individual high-fidelity Figma refinement</div></div>
-    </div>
-    <div data-cursor="Final UI gallery — hover to reveal film framing" style="margin-top:36px">
-      <div class="artfac-image-shot artfac-image-banner artfac-film-bars">
-        <img src="./assets/artfac-images/artfac-homepage-cover.png" alt="ArtFac final UI gallery showing the overall mobile commission flow">
-        <div class="artfac-image-label">FINAL FRAME · UI GALLERY</div>
+    <style>
+      .artfac-ff-stats{display:grid;grid-template-columns:1.3fr 1fr;gap:36px;border-top:1px solid #ececef;border-bottom:1px solid #ececef;padding:24px 0;margin-top:32px}
+      .artfac-ff-chain{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:12px}
+      .artfac-ff-chain b{font:600 10.5px ui-monospace,Menlo,monospace;color:#003785;background:rgba(36,126,255,.1);border:1px solid rgba(36,126,255,.16);border-radius:999px;padding:7px 11px;white-space:nowrap}
+      .artfac-ff-chain i{font-style:normal;color:#96969e;font-size:12px}
+      @media (max-width:920px){.artfac-ff-stats{grid-template-columns:1fr}}
+    </style>
+    <div class="artfac-ff-stats">
+      <div>
+        <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e">FLOWS CLARIFIED</div>
+        <div class="artfac-ff-chain">
+          <b>Request</b><i>&rarr;</i><b>Agreement</b><i>&rarr;</i><b>Progress</b><i>&rarr;</i><b>Revision</b><i>&rarr;</i><b>Delivery</b>
+        </div>
+        <div style="font-size:13px;color:#6b6b73;margin-top:10px">Each hand-off in the commission became a visible, confirmable step.</div>
       </div>
-      <div class="artfac-image-grid" style="margin-top:22px">
-        <div>
-          <div class="artfac-image-shot artfac-image-small artfac-film-bars">
-            <img src="./assets/artfac-images/artfac-post-commission.png" alt="ArtFac post a commission screen">
-            <div class="artfac-image-label">REQUEST</div>
-          </div>
-          <div class="artfac-image-caption">Post a commission — description, references, budget, and timeline.</div>
+      <div>
+        <div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e">PROCESS</div>
+        <div class="artfac-ff-chain">
+          <b>Group mid-fi</b><i>&rarr;</i><b>Individual low-fi</b><i>&rarr;</i><b>Hi-fi refinement</b>
         </div>
-        <div>
-          <div class="artfac-image-shot artfac-image-small artfac-film-bars">
-            <img src="./assets/artfac-images/artfac-payment-in-progress.png" alt="ArtFac payment in progress screen">
-            <div class="artfac-image-label">PAYMENT</div>
-          </div>
-          <div class="artfac-image-caption">Payment in progress — stage status and next action.</div>
-        </div>
+        <div style="font-size:13px;color:#6b6b73;margin-top:10px">From shared concept to individual high-fidelity Figma refinement.</div>
       </div>
     </div>
     <sc-if value="{{ showReshoot }}" hint-placeholder-val="{{ true }}">
       <div style="display:grid;grid-template-columns:1fr;gap:36px;margin-top:36px">
         <div>
           <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:10px">RESHOOT NOTES — WHAT I'D DO DIFFERENTLY</div>
-          <div style="font:500 12px ui-monospace,Menlo,monospace;color:#6b6b73;line-height:1.8;border-left:2px solid #ececef;padding-left:16px">Next, I would test the artist-side workflow, milestone payment comprehension, revision limit expectations, chat vs structured feedback, and cancellation / refund / dispute flow with real clients and artists.</div>
+          <div style="font:500 12px ui-monospace,Menlo,monospace;color:#6b6b73;line-height:1.8;border-left:2px solid #ececef;padding-left:16px">Next, I would test the artist-side workflow, milestone payment comprehension, revision limit expectations, chat vs. structured feedback, and cancellation / refund / dispute flows with real clients and artists.</div>
         </div>
       </div>
     </sc-if>

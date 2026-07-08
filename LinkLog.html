@@ -6,6 +6,7 @@
   <title>LinkLog Case Study — Boyi Tan</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="./assets/portfolio-nav.css">
+  <script defer src="./assets/portfolio-case-lightbox.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap" rel="stylesheet">
@@ -34,6 +35,7 @@
       font-family: "Instrument Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
+      overflow-x: hidden;
     }
 
     a { color: inherit; }
@@ -159,7 +161,7 @@
     }
 
     .hero {
-      padding-top: 76px;
+      padding-top: 68px;
     }
 
     .eyebrow,
@@ -181,11 +183,12 @@
     }
 
     h1 {
-      max-width: 880px;
-      font-size: clamp(44px, 6vw, 76px);
-      line-height: .98;
-      letter-spacing: -.055em;
-      font-weight: 800;
+      max-width: 780px;
+      font-size: clamp(36px, 4vw, 41px);
+      line-height: 1.16;
+      letter-spacing: -.025em;
+      font-weight: 700;
+      overflow-wrap: break-word;
     }
 
     h2 {
@@ -203,17 +206,21 @@
     }
 
     .lede {
-      max-width: 720px;
-      font-size: clamp(19px, 2vw, 24px);
-      line-height: 1.48;
-      color: #3f424b;
-      font-weight: 500;
+      width: min(720px, 100%);
+      font-family: "Newsreader", serif;
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.5;
+      color: #3d3d44;
+      font-weight: 400;
+      overflow-wrap: anywhere;
     }
 
     .body {
       color: var(--muted);
       font-size: 15.5px;
       line-height: 1.72;
+      overflow-wrap: break-word;
     }
 
     .caption {
@@ -264,8 +271,8 @@
     .meta-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      padding: 22px 0;
+      gap: 24px;
+      padding: 20px 0;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
     }
@@ -279,9 +286,17 @@
     }
 
     .meta-grid .value {
-      font-size: 14.5px;
-      line-height: 1.4;
-      font-weight: 800;
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .meta-grid .desc {
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: #6b6b73;
+      margin-top: 4px;
+      font-weight: 400;
     }
 
     .media {
@@ -350,8 +365,14 @@
 
     .hero-media {
       aspect-ratio: 1600 / 950;
-      margin-top: 42px;
+      margin-top: 34px;
+      border-color: #dce3ee;
+      box-shadow: 0 24px 64px rgba(31, 48, 74, .10);
       animation: fadeUp .7s .28s ease both;
+    }
+
+    .hero-media img {
+      object-position: center;
     }
 
     .video-feature {
@@ -397,16 +418,48 @@
       display: block;
     }
 
+    .media img { transition: transform .45s ease, filter .45s ease; }
+    .media:hover img { transform: scale(1.025); filter: contrast(1.03) saturate(1.05); }
+
+    /* viewfinder hover: corner focus brackets + faint lens vignette, content stays visible */
     .film-strip {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(#111 0 10%, transparent 10% 90%, #111 90%);
       opacity: 0;
-      transition: opacity .25s ease;
+      transition: opacity .3s ease;
+      background:
+        radial-gradient(140% 140% at 50% 50%, transparent 64%, rgba(15, 22, 38, .14) 100%),
+        linear-gradient(var(--accent), var(--accent)) left 12px top 12px / 20px 2px,
+        linear-gradient(var(--accent), var(--accent)) left 12px top 12px / 2px 20px,
+        linear-gradient(var(--accent), var(--accent)) right 12px top 12px / 20px 2px,
+        linear-gradient(var(--accent), var(--accent)) right 12px top 12px / 2px 20px,
+        linear-gradient(var(--accent), var(--accent)) left 12px bottom 12px / 20px 2px,
+        linear-gradient(var(--accent), var(--accent)) left 12px bottom 12px / 2px 20px,
+        linear-gradient(var(--accent), var(--accent)) right 12px bottom 12px / 20px 2px,
+        linear-gradient(var(--accent), var(--accent)) right 12px bottom 12px / 2px 20px;
+      background-repeat: no-repeat;
     }
 
-    .media:hover .film-strip { opacity: .92; }
+    .media:hover .film-strip { opacity: 1; }
+
+    .film-strip::after {
+      content: "TC " attr(data-tc);
+      position: absolute;
+      right: 20px;
+      bottom: 18px;
+      background: rgba(15, 22, 38, .88);
+      color: #fff;
+      font: 700 10px ui-monospace, Menlo, monospace;
+      letter-spacing: .09em;
+      padding: 5px 10px;
+      border-radius: 999px;
+      box-shadow: 0 6px 18px rgba(15, 22, 38, .3);
+      transform: translateY(5px);
+      transition: transform .3s ease;
+    }
+
+    .media:hover .film-strip::after { transform: none; }
 
     .highlight {
       background-image: linear-gradient(var(--accent-line), var(--accent-line));
@@ -645,6 +698,103 @@
       text-overflow: ellipsis;
     }
 
+    /* ── viz: service chain (cast) ── */
+    .svc-chain { display: grid; grid-template-columns: 1fr 30px 1fr 30px 1fr 30px 1fr; align-items: stretch; margin-top: 30px; }
+    .svc-node { position: relative; border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 20px 20px 18px; box-shadow: 0 14px 40px rgba(21, 27, 41, .035); }
+    .svc-node .who { font-size: 16px; font-weight: 800; letter-spacing: -.01em; margin-top: 10px; }
+    .svc-node .what { color: var(--muted); font-size: 13px; line-height: 1.6; margin-top: 6px; }
+    .svc-node.is-hero { border-color: var(--accent-line); box-shadow: 0 0 0 3px var(--accent-soft), 0 14px 40px rgba(21, 27, 41, .05); }
+    .svc-badge { display: inline-flex; margin-top: 12px; font: 700 9.5px ui-monospace, Menlo, monospace; letter-spacing: .07em; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 4px 9px; }
+    .svc-arrow { display: grid; place-items: center; color: var(--accent); font-weight: 800; font-size: 15px; }
+    .svc-return { display: flex; align-items: center; gap: 14px; margin-top: 18px; font: 700 10px ui-monospace, Menlo, monospace; letter-spacing: .08em; color: #7a7d86; white-space: nowrap; }
+    .svc-return .ln { flex: 1; border-top: 1.5px dashed #c9cedd; }
+
+    /* ── viz: contribution bridge ── */
+    .bridge { display: grid; grid-template-columns: .72fr 34px 1.7fr 34px .72fr; align-items: center; margin-top: 34px; }
+    .bridge-end { background: var(--wash); border: 1px solid var(--line); border-radius: 12px; padding: 22px 20px; }
+    .bridge-end .t { font-size: 15.5px; font-weight: 800; letter-spacing: -.01em; margin-top: 10px; line-height: 1.3; }
+    .bridge-end .s { color: var(--muted); font-size: 12.5px; line-height: 1.55; margin-top: 6px; }
+    .bridge-arrow { display: grid; place-items: center; color: var(--accent); font-weight: 800; font-size: 15px; }
+    .bridge-mid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .bridge-item { border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 16px 18px; box-shadow: 0 14px 40px rgba(21, 27, 41, .03); }
+    .bridge-item h3 { font-size: 15.5px; }
+    .bridge-item p { margin-top: 6px; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+    .peer-quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 30px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .peer-quote { padding: 20px 22px; }
+    .peer-quote + .peer-quote { border-left: 1px solid var(--line); }
+    .peer-quote .q { font-family: "Newsreader", serif; font-style: italic; font-size: 16px; line-height: 1.5; color: #353944; }
+    .peer-quote .from { margin-top: 10px; font: 700 9.5px ui-monospace, Menlo, monospace; letter-spacing: .08em; color: #7a7d86; }
+
+    /* ── viz: phased future workflow (act ii) ── */
+    .wf2 { display: grid; grid-template-columns: 2.9fr 26px 2fr 26px 2fr; align-items: stretch; margin-top: 32px; }
+    .wf2-phase { --phc: var(--accent); border: 1px solid var(--line); border-radius: 14px; background: #fff; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 14px 40px rgba(21, 27, 41, .035); }
+    .wf2-head { font: 700 10px ui-monospace, Menlo, monospace; letter-spacing: .08em; padding: 11px 16px; border-bottom: 1px solid var(--line); }
+    .wf2-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 14px 16px; flex: 1; }
+    .wf2-steps.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .wf2-step { position: relative; border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: #fff; }
+    .wf2-step:not(:last-child)::after { content: "→"; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); color: var(--phc); font-weight: 800; font-size: 13px; z-index: 2; }
+    .wf2-step .n { font: 700 10px ui-monospace, Menlo, monospace; letter-spacing: .06em; color: var(--phc); }
+    .wf2-step b { display: block; font-size: 14.5px; letter-spacing: -.01em; margin-top: 7px; }
+    .wf2-step span { display: block; font-size: 12px; line-height: 1.45; color: var(--muted); margin-top: 2px; }
+    .wf2-surface { font: 700 9.5px ui-monospace, Menlo, monospace; letter-spacing: .06em; color: var(--soft); padding: 11px 16px; border-top: 1px dashed var(--line); }
+    .wf2-surface .blue { color: var(--phc); }
+    .wf2-join { display: grid; place-items: center; color: var(--accent); font-weight: 800; font-size: 15px; }
+    .wf2-return { display: flex; align-items: center; gap: 14px; margin-top: 16px; font: 700 10px ui-monospace, Menlo, monospace; letter-spacing: .08em; color: #7a7d86; white-space: nowrap; }
+    .wf2-return .ln { flex: 1; border-top: 1.5px dashed #c9cedd; }
+
+    /* ── viz: testing evidence board ── */
+    .tst-head { display: grid; grid-template-columns: 1.25fr 1fr; gap: 32px; align-items: start; }
+    .tst-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .tst-stat { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; background: #fff; }
+    .tst-stat .n { font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
+    .tst-stat .l { font-size: 11.5px; line-height: 1.4; color: var(--muted); margin-top: 3px; }
+    .tst-proof { display: grid; grid-template-columns: 1fr 52px 1fr; gap: 18px; align-items: start; margin-top: 22px; }
+    .tst-proof-arrow { display: grid; place-items: center; padding-top: 118px; }
+    .tst-proof-arrow span { width: 38px; height: 38px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-size: 15px; }
+    .mockcard { border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 16px; box-shadow: 0 14px 36px rgba(21, 27, 41, .05); }
+    .mock-topbar { display: flex; justify-content: space-between; align-items: center; padding: 2px 8px 10px; border-bottom: 1px solid var(--line); margin-bottom: 8px; font: 700 9.5px ui-monospace, Menlo, monospace; letter-spacing: .08em; color: #7a7d86; }
+    .mockrow { display: flex; align-items: center; gap: 10px; padding: 10px 8px; border-radius: 9px; }
+    .mock-ava { width: 30px; height: 30px; border-radius: 50%; background: #eef0f4; color: #5a5e68; display: grid; place-items: center; font: 700 10px ui-monospace, Menlo, monospace; flex: none; }
+    .mock-name { font-size: 12.5px; font-weight: 700; }
+    .mock-sub { font-size: 10.5px; color: #7a7d86; margin-top: 1px; }
+    .mock-chip { margin-left: auto; font: 700 9px ui-monospace, Menlo, monospace; letter-spacing: .05em; border-radius: 999px; padding: 4px 8px; white-space: nowrap; }
+    .state-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 12px 8px 4px; border-top: 1px dashed var(--line); margin-top: 8px; }
+    .state-chips b { font: 700 9px ui-monospace, Menlo, monospace; letter-spacing: .05em; border-radius: 999px; padding: 4px 8px; }
+    .proof-caption { font-size: 13px; line-height: 1.6; color: var(--soft); margin-top: 12px; }
+    .tst-iter { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
+    .tst-card { border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 18px 20px; }
+    .tst-card .head { display: flex; align-items: center; gap: 9px; }
+    .tst-card .dot { width: 22px; height: 22px; border-radius: 50%; color: #fff; display: grid; place-items: center; font-size: 11px; font-weight: 800; flex: none; }
+    .tst-card .head b { font-size: 14px; letter-spacing: -.01em; line-height: 1.25; }
+    .tst-card .obs { font-family: "Newsreader", serif; font-style: italic; font-size: 13.5px; line-height: 1.5; color: #3f424b; margin-top: 10px; }
+    .tst-card .div { height: 1px; background: var(--line); margin: 12px 0 10px; }
+    .tst-card .chg-l { font: 700 9.5px ui-monospace, Menlo, monospace; letter-spacing: .07em; margin-bottom: 5px; }
+    .tst-card .chg { font-size: 12.5px; line-height: 1.5; font-weight: 600; }
+
+    @media (max-width: 980px) {
+      .svc-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .svc-arrow { display: none; }
+      .bridge { grid-template-columns: 1fr; gap: 14px; }
+      .bridge-arrow { transform: rotate(90deg); }
+      .peer-quotes { grid-template-columns: 1fr; }
+      .peer-quote + .peer-quote { border-left: 0; border-top: 1px solid var(--line); }
+      .tst-head { grid-template-columns: 1fr; }
+      .tst-proof { grid-template-columns: 1fr; }
+      .tst-proof-arrow { padding-top: 0; transform: rotate(90deg); }
+      .tst-iter { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .wf2 { grid-template-columns: 1fr; gap: 12px; }
+      .wf2-join { transform: rotate(90deg); }
+    }
+
+    @media (max-width: 720px) {
+      .svc-chain,
+      .tst-iter,
+      .bridge-mid { grid-template-columns: 1fr; }
+      .wf2-steps, .wf2-steps.two { grid-template-columns: 1fr; }
+      .wf2-step:not(:last-child)::after { display: none; }
+      .svc-return, .wf2-return { white-space: normal; text-align: center; }
+    }
+
     @media (max-width: 980px) {
       .grid-4,
       .grid-3,
@@ -667,6 +817,17 @@
         padding: 62px 24px 0;
       }
       .hero { padding-top: 54px; }
+      h1 {
+        max-width: 100%;
+        font-size: clamp(32px, 9vw, 36px);
+        line-height: 1.12;
+        letter-spacing: -.035em;
+      }
+      .lede {
+        max-width: 100%;
+        font-size: 17px;
+        line-height: 1.62;
+      }
       .grid-2,
       .grid-3,
       .grid-4,
@@ -686,6 +847,12 @@
       .media[style*="aspect-ratio: 21 / 8"],
       .media[style*="aspect-ratio: 16 / 9"] {
         aspect-ratio: 4 / 3 !important;
+      }
+      .hero-media {
+        aspect-ratio: 16 / 10 !important;
+      }
+      .hero-media img {
+        object-fit: contain;
       }
       .solution-card,
       .card,
@@ -746,15 +913,15 @@
       <div class="eyebrow" style="margin-bottom: 24px;"><span>SCENE 02</span> · SERVICE DESIGN CASE STUDY · 2026</div>
       <h1>LinkLog — follow-up workflow for <span class="highlight">social prescribing</span> teams</h1>
       <p class="lede" style="margin-top: 24px;">Helping Link Workers turn scattered follow-up records into usable client context and dashboard-readable data.</p>
-      <div class="meta-grid" style="margin-top: 38px;">
-        <div><div class="label">Role</div><div class="value">UX Designer / Prototype Designer</div></div>
-        <div><div class="label">Timeline</div><div class="value">2-week sprint + refinement and delivery</div></div>
-        <div><div class="label">Partner</div><div class="value">OACAO / Links2Wellbeing</div></div>
-        <div><div class="label">Focus</div><div class="value">Follow-up workflow, context, data continuity</div></div>
+      <div class="meta-grid" style="margin-top: 34px;">
+        <div><div class="label">ROLE</div><div class="value">UX Designer / Prototype Designer</div><div class="desc">Workflow mapping, prototype logic, data structure, and demo storytelling.</div></div>
+        <div><div class="label">TIMELINE</div><div class="value">2-week sprint + prototype refinement</div><div class="desc">Team service-design sprint followed by portfolio-ready refinement.</div></div>
+        <div><div class="label">PARTNER</div><div class="value">OACAO / Links2Wellbeing</div><div class="desc">Social-prescribing follow-up workflow for Link Workers and SALCs.</div></div>
+        <div><div class="label">FOCUS</div><div class="value">Follow-up workflow, context, data continuity</div><div class="desc">Priority queue, client context, interaction logging, and CSV migration.</div></div>
       </div>
       <div class="media hero-media" data-cursor="LinkLog product hero">
         <img src="./assets/linklog-images/linklog-hero-product.png" alt="LinkLog product hero showing dashboard and client context screens">
-        <div class="film-strip"></div>
+        <div class="film-strip" data-tc="00:04"></div>
       </div>
       <p class="caption" style="margin-top: 14px;">OPENING FRAME — LinkLog reframed as a service workflow, not only a dashboard.</p>
       <div class="video-feature" data-cursor="Demo video produced by Boyi Tan">
@@ -789,50 +956,73 @@
         </div>
       </div>
       <div class="soft-card" style="margin-top: 30px;">
-        <p class="quote">“The problem was not simply that Link Workers needed another place to enter data. They needed a way to preserve the narrative context behind follow-ups while still producing structured information for reporting.”</p>
+        <p class="body"><b style="color: var(--ink);">Takeaway:</b> Link Workers did not simply need another place to enter data. They needed a way to preserve the narrative context behind follow-ups while still producing structured information for reporting.</p>
       </div>
     </section>
 
     <section id="contribution" class="section" data-screen-label="Contribution">
       <div class="rule"><span class="eyebrow"><span>MY CONTRIBUTION</span> · WHAT I OWNED</span></div>
       <h2>I turned the service idea into a working prototype story.</h2>
-      <p class="body" style="max-width: 740px; margin-top: 18px;">In a team service-design sprint, I focused on the bridge between workflow, data, prototype behavior, and demo communication.</p>
+      <p class="body" style="max-width: 740px; margin-top: 18px;">In a team sprint, I focused on the bridge between workflow, data, prototype behavior, and demo communication.</p>
 
-      <div class="grid grid-2" style="margin-top: 34px;">
-        <div class="card"><div class="eyebrow blue">01</div><h3 style="margin-top: 12px;">Context filter</h3><p class="body" style="margin-top: 10px;">Turned client barriers, preferences, programs, notes, and history into usable profile context.</p></div>
-        <div class="card"><div class="eyebrow blue">02</div><h3 style="margin-top: 12px;">Data structure</h3><p class="body" style="margin-top: 10px;">Organized sample records and interaction logs into dashboard-readable CSV fields.</p></div>
-        <div class="card"><div class="eyebrow blue">03</div><h3 style="margin-top: 12px;">Prototype logic</h3><p class="body" style="margin-top: 10px;">Refined field mapping, status display, context filtering, and demo-ready interactions.</p></div>
-        <div class="card"><div class="eyebrow blue">04</div><h3 style="margin-top: 12px;">Demo storytelling</h3><p class="body" style="margin-top: 10px;">Produced a video walkthrough that framed LinkLog inside a realistic Link Worker day.</p></div>
+      <div class="bridge" data-cursor="What I owned — the bridge from idea to prototype">
+        <div class="bridge-end">
+          <div class="eyebrow">Input</div>
+          <div class="t">Team sprint</div>
+          <div class="s">Shared blueprint, concept direction, and service story.</div>
+        </div>
+        <div class="bridge-arrow">→</div>
+        <div class="bridge-mid">
+          <div class="bridge-item"><div class="eyebrow blue">01 · Context filter</div><h3 style="margin-top: 8px;">Usable profile context</h3><p>Barriers, preferences, programs, notes, and history — surfaced when they matter.</p></div>
+          <div class="bridge-item"><div class="eyebrow blue">02 · Data structure</div><h3 style="margin-top: 8px;">Dashboard-readable CSV</h3><p>Sample records and interaction logs organized into stable fields.</p></div>
+          <div class="bridge-item"><div class="eyebrow blue">03 · Prototype logic</div><h3 style="margin-top: 8px;">Behavior, not mockups</h3><p>Field mapping, status display, context filtering, demo-ready interactions.</p></div>
+          <div class="bridge-item"><div class="eyebrow blue">04 · Demo storytelling</div><h3 style="margin-top: 8px;">The service story on film</h3><p>A video walkthrough framing LinkLog inside a Link Worker&rsquo;s real day.</p></div>
+        </div>
+        <div class="bridge-arrow">→</div>
+        <div class="bridge-end">
+          <div class="eyebrow blue">Output</div>
+          <div class="t">Working prototype story</div>
+          <div class="s">Live demo with sample data, plus a produced video walkthrough.</div>
+        </div>
       </div>
 
-      <div class="grid grid-3" style="margin-top: 32px;">
-        <div class="soft-card"><p class="body"><b>Peer feedback:</b> “Technically-oriented ideas and alternative solutions.”</p></div>
-        <div class="soft-card"><p class="body"><b>Peer feedback:</b> “Solved our huge client problem of data migration.”</p></div>
-        <div class="soft-card"><p class="body"><b>Peer feedback:</b> “Brought creative and unconventional ideas.”</p></div>
+      <div class="peer-quotes" data-cursor="Peer feedback from the sprint retro">
+        <div class="peer-quote"><p class="q">&ldquo;Technically-oriented ideas and alternative solutions.&rdquo;</p><div class="from">PEER FEEDBACK · SPRINT RETRO</div></div>
+        <div class="peer-quote"><p class="q">&ldquo;Solved our huge client problem of data migration.&rdquo;</p><div class="from">PEER FEEDBACK · SPRINT RETRO</div></div>
+        <div class="peer-quote"><p class="q">&ldquo;Brought creative and unconventional ideas.&rdquo;</p><div class="from">PEER FEEDBACK · SPRINT RETRO</div></div>
       </div>
     </section>
 
     <section id="cast" class="section" data-screen-label="Cast">
       <div class="rule"><span class="eyebrow"><span>THE CAST</span> · PEOPLE BEHIND SOCIAL PRESCRIBING</span></div>
-      <div class="grid grid-4">
-        <div class="card">
-          <div class="eyebrow blue">OACAO</div>
-          <p class="body" style="margin-top: 12px;">Program partner and reporting stakeholder for Links2Wellbeing.</p>
+      <div class="svc-chain" data-cursor="Who serves whom — and where LinkLog sits">
+        <div class="svc-node">
+          <div class="eyebrow">Program partner</div>
+          <div class="who">OACAO</div>
+          <div class="what">Runs Links2Wellbeing and needs reporting it can trust.</div>
         </div>
-        <div class="card">
-          <div class="eyebrow blue">SALC staff</div>
-          <p class="body" style="margin-top: 12px;">Centre-level staff and volunteers delivering the service across local contexts.</p>
+        <div class="svc-arrow">→</div>
+        <div class="svc-node">
+          <div class="eyebrow">Local delivery</div>
+          <div class="who">SALC staff</div>
+          <div class="what">Centre staff and volunteers delivering the service locally.</div>
         </div>
-        <div class="card">
-          <div class="eyebrow blue">Link Workers</div>
-          <p class="body" style="margin-top: 12px;">The connectors who prepare, call, document, and maintain relationships over time.</p>
+        <div class="svc-arrow">→</div>
+        <div class="svc-node is-hero">
+          <div class="eyebrow blue">The users</div>
+          <div class="who">Link Workers</div>
+          <div class="what">Prepare, call, document, and maintain relationships over time.</div>
+          <div class="svc-badge">LINKLOG SUPPORTS THIS ROLE</div>
         </div>
-        <div class="card">
-          <div class="eyebrow blue">Older adults</div>
-          <p class="body" style="margin-top: 12px;">The people receiving social prescribing support, represented only through simulated or anonymized prototype data.</p>
+        <div class="svc-arrow">→</div>
+        <div class="svc-node">
+          <div class="eyebrow">The people served</div>
+          <div class="who">Older adults</div>
+          <div class="what">Represented only through simulated or anonymized prototype data.</div>
         </div>
       </div>
-      <p class="body" style="max-width: 720px; margin-top: 24px;">This project designed for the people behind social prescribing. It was not a direct app for older adults; it was a backstage workflow for the staff who keep follow-up, context, and reporting connected.</p>
+      <div class="svc-return"><span class="ln"></span><span>&larr; CONTEXT, RECORDS &amp; REPORTING FLOW BACK THROUGH LINKLOG</span><span class="ln"></span></div>
+      <p class="body" style="max-width: 720px; margin-top: 24px;">This project was designed for the people behind social prescribing. It was not a direct app for older adults; it was a backstage workflow for the staff who keep follow-up, context, and reporting connected.</p>
     </section>
 
     <section id="current" class="section" data-screen-label="Act I">
@@ -878,7 +1068,7 @@
         <div class="synthesis-intro">
           <div class="eyebrow blue">Synthesis Cut</div>
           <h3>The problem was not more fields. It was usable context.</h3>
-          <p class="body" style="margin-top: 16px;">Current-state synthesis helped separate “data exists somewhere” from “a Link Worker can use it at the moment of follow-up.” That distinction shaped the prototype priorities: priority queue, profile context, structured logging, and data migration.</p>
+          <p class="body" style="margin-top: 16px;">Current-state synthesis helped separate scattered data from usable follow-up context. That distinction shaped the prototype priorities: priority queue, profile context, structured logging, and data migration.</p>
         </div>
         <div class="evidence-strip" aria-label="Current-state synthesis evidence">
           <figure class="evidence-card" data-cursor="Source forms and tracking tools">
@@ -902,16 +1092,37 @@
       <h2>The future workflow reframed LinkLog as follow-up support, not a static dashboard.</h2>
       <p class="body" style="max-width: 720px; margin-top: 18px;">The service needed to help Link Workers know who to contact, understand why, document what happened, and preserve that history for future follow-ups and reporting.</p>
 
-      <div class="workflow" style="margin-top: 32px;">
-        <div class="workflow-step"><div class="eyebrow blue">01</div><p class="body" style="margin-top: 10px;"><b>Review</b><br>priority list</p></div>
-        <div class="workflow-step"><div class="eyebrow blue">02</div><p class="body" style="margin-top: 10px;"><b>Open</b><br>client profile</p></div>
-        <div class="workflow-step"><div class="eyebrow blue">03</div><p class="body" style="margin-top: 10px;"><b>Review</b><br>context</p></div>
-        <div class="workflow-step"><div class="eyebrow blue">04</div><p class="body" style="margin-top: 10px;"><b>Contact</b><br>client</p></div>
-        <div class="workflow-step"><div class="eyebrow blue">05</div><p class="body" style="margin-top: 10px;"><b>Log</b><br>interaction</p></div>
-        <div class="workflow-step"><div class="eyebrow blue">06</div><p class="body" style="margin-top: 10px;"><b>Update</b><br>journey</p></div>
-        <div class="workflow-step"><div class="eyebrow blue">07</div><p class="body" style="margin-top: 10px;"><b>Preserve</b><br>history</p></div>
+      <div class="wf2" data-cursor="One follow-up day — prepare, connect, preserve">
+        <div class="wf2-phase" style="--phc: oklch(0.45 0.13 255);">
+          <div class="wf2-head" style="background: var(--accent-soft); color: oklch(0.45 0.13 255);">PREPARE · BEFORE THE CALL</div>
+          <div class="wf2-steps">
+            <div class="wf2-step"><span class="n">01</span><b>Review</b><span>priority list</span></div>
+            <div class="wf2-step"><span class="n">02</span><b>Open</b><span>client profile</span></div>
+            <div class="wf2-step"><span class="n">03</span><b>Review</b><span>context</span></div>
+          </div>
+          <div class="wf2-surface">LINKLOG SURFACE · <span class="blue">PRIORITY DASHBOARD + CONTEXT FILTER</span></div>
+        </div>
+        <div class="wf2-join">→</div>
+        <div class="wf2-phase" style="--phc: #047857;">
+          <div class="wf2-head" style="background: #e5f3ec; color: #047857;">CONNECT · DURING THE CALL</div>
+          <div class="wf2-steps two">
+            <div class="wf2-step"><span class="n">04</span><b>Contact</b><span>client</span></div>
+            <div class="wf2-step"><span class="n">05</span><b>Log</b><span>interaction</span></div>
+          </div>
+          <div class="wf2-surface">LINKLOG SURFACE · <span class="blue">INTERACTION LOG</span></div>
+        </div>
+        <div class="wf2-join">→</div>
+        <div class="wf2-phase" style="--phc: #8a5a10;">
+          <div class="wf2-head" style="background: #fbf1e2; color: #8a5a10;">PRESERVE · AFTER THE CALL</div>
+          <div class="wf2-steps two">
+            <div class="wf2-step"><span class="n">06</span><b>Update</b><span>journey</span></div>
+            <div class="wf2-step"><span class="n">07</span><b>Preserve</b><span>history</span></div>
+          </div>
+          <div class="wf2-surface">LINKLOG SURFACE · <span class="blue">TIMELINE + REPORTING</span></div>
+        </div>
       </div>
-      <p class="caption" style="margin-top: 14px;">SIMPLIFIED FUTURE WORKFLOW — built from the future blueprint and demo flow instead of showing the entire canvas.</p>
+      <div class="wf2-return"><span class="ln"></span><span>&#8635; PRESERVED HISTORY FEEDS THE NEXT 3 / 6 / 12-MONTH FOLLOW-UP CYCLE</span><span class="ln"></span></div>
+      <p class="caption" style="margin-top: 14px;">SIMPLIFIED FUTURE WORKFLOW — built from the future blueprint and demo flow, grouped into the three moments of a follow-up day.</p>
 
       <div class="storyboard-panel">
         <div class="storyboard-copy">
@@ -947,14 +1158,14 @@
           </div>
           <div class="media" style="aspect-ratio: 16 / 10;" data-cursor="Priority dashboard">
             <img src="./assets/linklog-images/linklog-dashboard-priority.png" alt="LinkLog dashboard showing priority follow-up tasks">
-            <div class="film-strip"></div>
+            <div class="film-strip" data-tc="04:05"></div>
           </div>
         </article>
 
         <article class="card solution-card">
           <div class="media" style="aspect-ratio: 16 / 10;" data-cursor="Client profile context filter">
             <img src="./assets/linklog-images/linklog-context-filter.png" alt="LinkLog client profile context filter for barriers preferences programs transportation and notes">
-            <div class="film-strip"></div>
+            <div class="film-strip" data-tc="04:19"></div>
           </div>
           <div class="solution-copy">
             <div class="eyebrow blue">Highlight 02 — Client Profile Context Filter</div>
@@ -979,7 +1190,7 @@
           </div>
           <div class="media" style="aspect-ratio: 16 / 10;" data-cursor="Guided interaction log">
             <img src="./assets/linklog-images/linklog-log-interaction.png" alt="LinkLog interaction log screen with structured fields and notes">
-            <div class="film-strip"></div>
+            <div class="film-strip" data-tc="04:33"></div>
           </div>
         </article>
 
@@ -1013,28 +1224,108 @@
 
     <section id="testing" class="section" data-screen-label="Testing">
       <div class="rule"><span class="eyebrow"><span>TESTING</span> · SPRINT-BASED EVALUATION</span></div>
-      <div class="grid grid-2" style="align-items: start;">
+      <div class="tst-head">
         <div>
           <h2>This was sprint-based testing, not large-scale validation.</h2>
           <p class="body" style="margin-top: 18px;">The prototype was tested with 3 participants who had contextual familiarity in social prescribing, community coordination, and the Links2Wellbeing ecosystem.</p>
+          <div class="pill-row" style="margin-top: 18px;">
+            <span class="pill">Task 1 · Pre-call preparation</span>
+            <span class="pill">Task 2 · Document a follow-up</span>
+          </div>
         </div>
-        <div class="card">
-          <div class="eyebrow blue">Tasks</div>
-          <ul class="body" style="margin: 14px 0 0; padding-left: 18px;">
-            <li>Pre-call preparation</li>
-            <li>Completing and documenting a follow-up interaction</li>
-          </ul>
+        <div class="tst-stats">
+          <div class="tst-stat"><div class="n blue">3</div><div class="l">sprint participants</div></div>
+          <div class="tst-stat"><div class="n" style="color:#047857">2</div><div class="l">core tasks tested</div></div>
+          <div class="tst-stat"><div class="n" style="color:#B45309">4</div><div class="l">iterations shipped</div></div>
         </div>
       </div>
-      <div class="grid grid-4" style="margin-top: 32px;">
-        <div class="card"><div class="eyebrow blue">Iteration 01</div><h3 style="margin-top: 12px;">Clarified priority hierarchy</h3><p class="body" style="margin-top: 10px;">Made urgency, overdue status, and due windows easier to scan.</p></div>
-        <div class="card"><div class="eyebrow blue">Iteration 02</div><h3 style="margin-top: 12px;">Separated due vs scheduled date</h3><p class="body" style="margin-top: 10px;">Reduced ambiguity between required follow-up and booked interaction.</p></div>
-        <div class="card"><div class="eyebrow blue">Iteration 03</div><h3 style="margin-top: 12px;">Strengthened timeline states</h3><p class="body" style="margin-top: 10px;">Added clearer completed, upcoming, no-answer, rescheduled, and discontinued states.</p></div>
-        <div class="card"><div class="eyebrow blue">Iteration 04</div><h3 style="margin-top: 12px;">Simplified logging and context</h3><p class="body" style="margin-top: 10px;">Reorganized profile information and interaction fields around follow-up tasks.</p></div>
+
+      <div class="mono" style="margin-top: 36px;">BEFORE / AFTER PROOF — ONE DASHBOARD ROW</div>
+      <div class="tst-proof">
+        <div data-cursor="Before — one date field, no urgency">
+          <div class="mono" style="color:#B42318; margin-bottom: 10px;">BEFORE</div>
+          <div class="mockcard">
+            <div class="mock-topbar"><span>FOLLOW-UP LIST</span><span>MAR 2026</span></div>
+            <div class="mockrow">
+              <span class="mock-ava">MC</span>
+              <span><span class="mock-name">Margaret Chen</span><br><span class="mock-sub">Follow-up: 2026.03.15</span></span>
+              <span class="mock-chip" style="background:#f0f1f4;color:#5a5e68;">ACTIVE</span>
+            </div>
+            <div class="mockrow" style="opacity:.62;">
+              <span class="mock-ava">RL</span>
+              <span><span class="mock-name">Robert Liu</span><br><span class="mock-sub">Follow-up: 2026.03.02</span></span>
+              <span class="mock-chip" style="background:#f0f1f4;color:#5a5e68;">ACTIVE</span>
+            </div>
+            <div class="mockrow" style="opacity:.38;">
+              <span class="mock-ava">JP</span>
+              <span><span class="mock-name">Joan Park</span><br><span class="mock-sub">Follow-up: 2026.03.22</span></span>
+              <span class="mock-chip" style="background:#f0f1f4;color:#5a5e68;">ACTIVE</span>
+            </div>
+          </div>
+          <p class="proof-caption">One date field carried two meanings, every client looked equally urgent, and the state after a call was invisible.</p>
+        </div>
+        <div class="tst-proof-arrow"><span>→</span></div>
+        <div data-cursor="After — due vs scheduled, urgency, next action">
+          <div class="mono" style="color:#047857; margin-bottom: 10px;">AFTER</div>
+          <div class="mockcard">
+            <div class="mock-topbar"><span>PRIORITY QUEUE</span><span>MAR 2026</span></div>
+            <div class="mockrow" style="background:#fdf3f2;">
+              <span class="mock-ava" style="background:#f6dedc;color:#8e2b23;">MC</span>
+              <span><span class="mock-name">Margaret Chen</span><br><span class="mock-sub"><b style="color:#17171a;">Due Mar 15</b> &middot; Scheduled Mar 18</span></span>
+              <span class="mock-chip" style="background:#B42318;color:#fff;">OVERDUE &middot; 3D</span>
+            </div>
+            <div class="mockrow">
+              <span class="mock-ava" style="background:#f4e8d6;color:#8a5a10;">RL</span>
+              <span><span class="mock-name">Robert Liu</span><br><span class="mock-sub"><b style="color:#17171a;">Due Mar 20</b> &middot; Not scheduled yet</span></span>
+              <span class="mock-chip" style="background:#fbf1e2;color:#8a5a10;">DUE THIS WEEK</span>
+            </div>
+            <div class="state-chips">
+              <span class="mono" style="font-size:8.5px;">TIMELINE STATES</span>
+              <b style="background:#e5f3ec;color:#047857;">&#10003; COMPLETED</b>
+              <b style="background:var(--accent-soft);color:oklch(0.45 0.13 255);">UPCOMING</b>
+              <b style="background:#fbf1e2;color:#8a5a10;">NO ANSWER</b>
+              <b style="background:#efe9fb;color:#5b34a8;">RESCHEDULED</b>
+              <b style="background:#f0f1f4;color:#5a5e68;">DISCONTINUED</b>
+            </div>
+          </div>
+          <p class="proof-caption">Due vs scheduled became separate labeled fields, urgency reads at row level, and every follow-up lands in an explicit state.</p>
+        </div>
+      </div>
+
+      <div class="mono" style="margin-top: 36px; margin-bottom: 4px;">WHAT TESTING CHANGED — FOUR ITERATIONS</div>
+      <div class="tst-iter">
+        <div class="tst-card" data-cursor="Iteration 01 — priority hierarchy">
+          <div class="head"><span class="dot" style="background:oklch(0.52 0.14 255);">1</span><b>Priority hierarchy</b></div>
+          <p class="obs">Participants could not tell which client needed attention first.</p>
+          <div class="div"></div>
+          <div class="chg-l" style="color:oklch(0.45 0.13 255);">&rarr; WHAT CHANGED</div>
+          <p class="chg" style="color:oklch(0.45 0.13 255);">Urgency, overdue status, and due windows became scannable at row level.</p>
+        </div>
+        <div class="tst-card" data-cursor="Iteration 02 — due vs scheduled">
+          <div class="head"><span class="dot" style="background:#B42318;">2</span><b>Due vs scheduled</b></div>
+          <p class="obs">One date carried two meanings: required follow-up and booked call.</p>
+          <div class="div"></div>
+          <div class="chg-l" style="color:#B42318;">&rarr; WHAT CHANGED</div>
+          <p class="chg" style="color:#8e2b23;">Due date and scheduled date are now separate, labeled fields.</p>
+        </div>
+        <div class="tst-card" data-cursor="Iteration 03 — timeline states">
+          <div class="head"><span class="dot" style="background:#059669;">3</span><b>Timeline states</b></div>
+          <p class="obs">After a call, the journey state of the client was unclear.</p>
+          <div class="div"></div>
+          <div class="chg-l" style="color:#047857;">&rarr; WHAT CHANGED</div>
+          <p class="chg" style="color:#065F46;">Completed, upcoming, no-answer, rescheduled, and discontinued states added.</p>
+        </div>
+        <div class="tst-card" data-cursor="Iteration 04 — simplified logging">
+          <div class="head"><span class="dot" style="background:#7C3AED;">4</span><b>Simplified logging</b></div>
+          <p class="obs">Logging and profile context asked for everything at once.</p>
+          <div class="div"></div>
+          <div class="chg-l" style="color:#6D28D9;">&rarr; WHAT CHANGED</div>
+          <p class="chg" style="color:#5B21B6;">Profile and interaction fields reorganized around the follow-up task.</p>
+        </div>
       </div>
       <div class="media" style="aspect-ratio: 16 / 9; margin-top: 32px;" data-cursor="Workflow iteration evidence">
         <img src="./assets/linklog-images/linklog-workflow-iteration.png" alt="LinkLog workflow iteration evidence">
-        <div class="film-strip"></div>
+        <div class="film-strip" data-tc="05:26"></div>
       </div>
     </section>
 
@@ -1058,11 +1349,11 @@
         </div>
       </div>
       <div class="soft-card" style="margin-top: 34px;">
-        <p class="quote">“Service design is not only about improving touchpoints. It also means designing the backstage conditions that allow a service to work: data migration, staff handoff, context preservation, and reporting continuity.”</p>
+        <p class="body"><b style="color: var(--ink);">Final takeaway:</b> Service design is not only about improving touchpoints. It also means designing the backstage conditions that allow a service to work: data migration, staff handoff, context preservation, and reporting continuity.</p>
       </div>
       <div class="final-actions">
         <a class="final-action" href="./ArtFac.html" data-cursor="Previous project — ArtFac">← PREVIOUS PROJECT</a>
-        <a class="final-action" href="./assets/linklog-demo/SP_Dashboard_Followup_Merged_v69_filter_v68_style.html" data-cursor="Open the standalone prototype">OPEN PROTOTYPE</a>
+        <a class="final-action" href="#prototype" data-cursor="Jump to embedded prototype">VIEW EMBEDDED PROTOTYPE</a>
         <a class="final-action" href="./index.html#projects" data-cursor="Back to all case studies">BACK TO PROJECTS</a>
       </div>
       <a class="next-scene-card" href="./Boyi Kindness Quest Demo.html" data-cursor="Roll scene 03 — The Kindness Quest">

@@ -179,6 +179,91 @@ main,
   text-rendering: optimizeLegibility;
 }
 
+.portfolio-lightbox-target {
+  cursor: zoom-in;
+  transition: transform .35s ease, filter .35s ease;
+}
+
+[data-case-lightbox-frame="true"] {
+  cursor: zoom-in;
+}
+
+[data-case-lightbox-frame="true"]:hover .portfolio-lightbox-target,
+[data-case-lightbox-frame="true"]:focus-visible .portfolio-lightbox-target {
+  transform: scale(1.018);
+  filter: contrast(1.03) saturate(1.05);
+}
+
+[data-case-lightbox-frame="true"]:focus-visible {
+  outline: 2px solid var(--portfolio-ux-accent);
+  outline-offset: 3px;
+}
+
+.portfolio-lightbox-open {
+  overflow: hidden;
+}
+
+.portfolio-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 4vw, 46px);
+  background: rgba(10, 10, 12, .86);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease;
+}
+
+.portfolio-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.portfolio-lightbox-figure {
+  width: min(1180px, 100%);
+  max-height: calc(100vh - 96px);
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.portfolio-lightbox-figure img {
+  width: 100%;
+  max-height: calc(100vh - 150px);
+  object-fit: contain;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, .38);
+}
+
+.portfolio-lightbox-figure figcaption {
+  color: rgba(255, 255, 255, .78);
+  text-align: center;
+  font: 600 11.5px ui-monospace, Menlo, monospace;
+  letter-spacing: .04em;
+  line-height: 1.5;
+}
+
+.portfolio-lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  font: 500 24px/1 "Instrument Sans", system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.portfolio-lightbox-close:hover {
+  background: rgba(255, 255, 255, .2);
+}
+
 [data-screen-label] p,
 main p,
 .side p,

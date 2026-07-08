@@ -6,6 +6,7 @@
 <link rel="icon" href="data:,">
 <script src="./support.js"></script>
 <link rel="stylesheet" href="./assets/portfolio-nav.css">
+<script defer src="./assets/portfolio-case-lightbox.js"></script>
 
 </head>
 <body>
@@ -744,10 +745,12 @@ class Component extends DCLogic {
 
   componentDidMount() {
     const label = document.createElement("div");
+    label.dataset.caseCursorLabel = "true";
     label.style.cssText = "position:fixed;left:0;top:0;z-index:900;pointer-events:none;padding:7px 12px;border-radius:999px;background:#17171a;color:#fff;font:600 11px ui-monospace,Menlo,monospace;white-space:nowrap;opacity:0;transition:opacity .15s ease;box-shadow:0 10px 28px rgba(0,0,0,.25)";
     document.body.appendChild(label);
     this._label = label;
     this._over = (e) => {
+      if (window.matchMedia("(max-width: 1140px), (hover: none), (pointer: coarse)").matches) { label.style.opacity = "0"; return; }
       const t = e.target.closest("[data-cursor]");
       if (t) { label.textContent = t.getAttribute("data-cursor"); label.style.opacity = "1"; }
       else { label.style.opacity = "0"; }

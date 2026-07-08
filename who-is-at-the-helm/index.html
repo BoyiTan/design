@@ -6,6 +6,7 @@
 <title>Who Is at the Helm? Case Study - Boyi Tan</title>
 <script src="./support.js"></script>
 <link rel="stylesheet" href="../assets/portfolio-nav.css">
+<script defer src="../assets/portfolio-case-lightbox.js"></script>
 </head>
 <body>
 <x-dc>
@@ -542,6 +543,7 @@ class Component extends DCLogic {
     }, { threshold: 0.15 });
     this._vidTimer = setInterval(() => {
       document.querySelectorAll("video").forEach((v) => {
+        if (!v || v.nodeType !== 1 || v.tagName !== "VIDEO") return;
         if (!v._helmObserved) { v._helmObserved = true; this._vidObs.observe(v); }
       });
     }, 700);
