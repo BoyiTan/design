@@ -334,13 +334,13 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
       </div>
     </div>
     <div style="height:2px;background:#ececef"><div style="height:100%;width:calc(var(--prog)*100%);background:oklch(0.52 0.14 255)"></div></div>
-    <div class="artfac-shot-list portfolio-nav-chapters" style="height:38px;background:rgba(253,253,254,.92);backdrop-filter:blur(6px);border-bottom:1px solid #ececef;display:flex;align-items:center;gap:4px;padding:0 max(30px,calc((100vw - 1140px)/2 + 40px));overflow-x:auto">
-      <sc-if value="{{ showTimecode }}" hint-placeholder-val="{{ true }}">
-        <span class="portfolio-nav-meta"><span style="color:oklch(0.52 0.14 255)">SCENE 01</span> · TC <span ref="{{ tcRef }}">00:00</span> / 06:30</span>
-      </sc-if>
+    <div class="artfac-shot-list portfolio-nav-chapters" style="height:38px;background:rgba(253,253,254,.92);backdrop-filter:blur(6px);border-bottom:1px solid #ececef;display:flex;align-items:center;gap:4px;padding:0 max(30px,calc((100vw - 1140px)/2 + 40px));overflow-x:auto" role="navigation" aria-label="Case study chapters">
       <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="7">
         <button onclick="{{ ch.onClick }}" data-ch="{{ ch.id }}" data-cursor="Jump the timeline" style="all:unset;cursor:pointer;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.07em;color:#96969e;padding:4px 10px;border-radius:999px;white-space:nowrap;transition:color .2s ease,background .2s ease" style-hover="color:#17171a">{{ ch.label }}</button>
       </sc-for>
+      <sc-if value="{{ showTimecode }}" hint-placeholder-val="{{ true }}">
+        <span class="portfolio-nav-meta"><span style="color:oklch(0.52 0.14 255)">SCENE 01</span> · TC <span ref="{{ tcRef }}">00:00</span> / 06:30</span>
+      </sc-if>
     </div>
   </div>
 

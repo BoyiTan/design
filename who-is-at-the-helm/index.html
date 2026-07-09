@@ -109,13 +109,13 @@ body{margin:0;background:#0a0a0c;font-family:'Instrument Sans',sans-serif;-webki
       </div>
     </div>
     <div class="film-progress"><div class="film-progress-fill"></div></div>
-    <div class="film-chapters portfolio-nav-chapters">
-      <sc-if value="{{ showTimecode }}" hint-placeholder-val="{{ true }}">
-        <span class="portfolio-nav-meta"><span class="portfolio-nav-meta-rec" aria-hidden="true"></span><span style="color:#e5484d">REEL 02</span> · TC <span ref="{{ tcRef }}" data-helm-timecode>00:00:00</span> / 07:00:00</span>
-      </sc-if>
+    <div class="film-chapters portfolio-nav-chapters" role="navigation" aria-label="Film chapters">
       <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="8">
         <button onClick="{{ ch.onClick }}" data-ch="{{ ch.id }}" data-cursor="Jump the reel" style="appearance:none;background:transparent;border:0;cursor:pointer;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.07em;color:rgba(255,255,255,.7);padding:5px 12px;border-radius:999px;white-space:nowrap;transition:color .2s ease,background .2s ease" style-hover="color:#f2f2f4">{{ ch.label }}</button>
       </sc-for>
+      <sc-if value="{{ showTimecode }}" hint-placeholder-val="{{ true }}">
+        <span class="portfolio-nav-meta"><span class="portfolio-nav-meta-rec" aria-hidden="true"></span><span style="color:#e5484d">REEL 02</span> · TC <span ref="{{ tcRef }}" data-helm-timecode>00:00:00</span> / 07:00:00</span>
+      </sc-if>
     </div>
   </div>
   <button type="button" class="portfolio-grain-toggle portfolio-grain-toggle-case portfolio-grain-toggle-helm" data-grain-toggle aria-pressed="{{ grainPressed }}" aria-label="Film grain overlay" onClick="{{ toggleGrain }}" data-cursor="Toggle film grain"><span aria-hidden="true">GRAIN</span><span class="portfolio-grain-toggle-state" aria-hidden="true">{{ grainStateLabel }}</span></button>

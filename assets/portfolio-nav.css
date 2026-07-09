@@ -139,13 +139,14 @@ nav.portfolio-nav [data-nav-separator] {
   align-items: center !important;
   gap: 8px !important;
   flex: 0 0 auto !important;
-  margin-right: 10px !important;
-  padding-right: 14px !important;
-  border-right: 1px solid rgba(150, 150, 158, .24) !important;
+  margin-left: auto !important;
+  padding-left: 14px !important;
+  border-left: 1px solid rgba(150, 150, 158, .24) !important;
   white-space: nowrap !important;
   font: 600 var(--text-meta)/1 var(--font-mono) !important;
   letter-spacing: .07em !important;
   color: #555862 !important;
+  cursor: default !important;
 }
 
 .portfolio-nav-meta-rec {
@@ -163,7 +164,7 @@ nav.portfolio-nav [data-nav-separator] {
 
 .portfolio-nav-dark .portfolio-nav-meta {
   color: rgba(255, 255, 255, .72) !important;
-  border-right-color: rgba(255, 255, 255, .14) !important;
+  border-left-color: rgba(255, 255, 255, .14) !important;
 }
 
 .portfolio-nav-brand,
