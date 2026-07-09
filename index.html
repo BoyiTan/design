@@ -174,8 +174,9 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
   <sc-if value="{{ isFilm }}" hint-placeholder-val="{{ false }}">
     <div id="film" data-screen-label="Film Mode" style="background:#0a0a0c;min-height:100vh;position:relative;overflow:hidden">
       <sc-if value="{{ grainOn }}" hint-placeholder-val="{{ false }}">
-        <div ref="{{ grainRef }}" style="position:absolute;inset:-60px;opacity:0.13;animation:grainShift 1.1s steps(1,end) infinite;pointer-events:none;z-index:1"></div>
+        <div ref="{{ grainRef }}" data-film-grain aria-hidden="true" style="position:absolute;inset:-60px;opacity:0.13;animation:grainShift 1.1s steps(1,end) infinite;pointer-events:none;z-index:1"></div>
       </sc-if>
+      <button type="button" class="portfolio-grain-toggle portfolio-grain-toggle-home" data-grain-toggle aria-pressed="{{ grainPressed }}" aria-label="Film grain overlay" onClick="{{ toggleGrain }}" data-cursor="Toggle film grain"><span aria-hidden="true">GRAIN</span><span class="portfolio-grain-toggle-state" aria-hidden="true">{{ grainStateLabel }}</span></button>
 
       <div style="position:relative;z-index:2">
         <div class="film-hero-stage" style="min-height:96vh;display:grid;place-items:center;padding:110px 40px 40px">
@@ -272,7 +273,9 @@ class Component extends DCLogic {
   constructor(props) {
     super(props);
     const hashMode = typeof window !== "undefined" && window.location.hash === "#film" ? "film" : null;
-    this.state = { mode: hashMode || (props.startMode ?? "ux") };
+    const grainPref = this.getInitialGrainPreference(props);
+    this.state = { mode: hashMode || (props.startMode ?? "ux"), grain: grainPref.on };
+    this._grainUserSet = grainPref.userSet;
     this._mode = this.state.mode;
     this.rootRef = React.createRef();
     this.grainRef = React.createRef();
@@ -282,6 +285,7 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
+    this.syncGrainPreference();
     const label = document.createElement("div");
     label.dataset.caseCursorLabel = "true";
     label.style.cssText = "position:fixed;left:0;top:0;z-index:900;pointer-events:none;padding:7px 12px;border-radius:999px;background:#17171a;color:#fff;border:1px solid rgba(255,255,255,.35);font:600 11px ui-monospace,Menlo,monospace;white-space:nowrap;opacity:0;transition:opacity .15s ease;box-shadow:0 10px 28px rgba(0,0,0,.25)";
@@ -327,7 +331,45 @@ class Component extends DCLogic {
       this.setState({ mode: this.props.startMode });
       return;
     }
+    this.syncGrainPreference();
     this.syncMode();
+  }
+
+  readGrainPreference() {
+    try {
+      return window.localStorage.getItem("boyi-portfolio-grain");
+    } catch (_) {
+      return null;
+    }
+  }
+
+  getInitialGrainPreference(props) {
+    const stored = typeof window !== "undefined" ? this.readGrainPreference() : null;
+    if (stored === "on" || stored === "off") {
+      return { on: stored === "on", userSet: true };
+    }
+    const reduce = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return { on: reduce ? false : (props.grain ?? true), userSet: false };
+  }
+
+  syncGrainPreference() {
+    if (typeof document === "undefined") return;
+    document.documentElement.setAttribute("data-grain", this.state.grain ? "on" : "off");
+    if (this._grainUserSet) document.documentElement.setAttribute("data-grain-user-set", "true");
+    else document.documentElement.removeAttribute("data-grain-user-set");
+  }
+
+  writeGrainPreference(on) {
+    try {
+      window.localStorage.setItem("boyi-portfolio-grain", on ? "on" : "off");
+    } catch (_) {}
+  }
+
+  toggleGrain() {
+    const next = !this.state.grain;
+    this._grainUserSet = true;
+    this.writeGrainPreference(next);
+    this.setState({ grain: next }, () => this.syncGrainPreference());
   }
 
   makeGrainUrl() {
@@ -444,7 +486,10 @@ class Component extends DCLogic {
       veilTextRef: this.veilTextRef,
       isUx: this.state.mode === "ux",
       isFilm: this.state.mode === "film",
-      grainOn: this.props.grain ?? true,
+      grainOn: this.state.grain,
+      grainPressed: this.state.grain ? "true" : "false",
+      grainStateLabel: this.state.grain ? "ON" : "OFF",
+      toggleGrain: () => this.toggleGrain(),
       toFilm: () => this.jump("film"),
       toUx: () => this.jump("ux")
     };

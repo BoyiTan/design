@@ -48,7 +48,7 @@ a{color:inherit}
 <div ref="{{ rootRef }}" style="--prog:0;color:#f2f2f4;background:#0a0a0c;min-height:100vh">
 
   <sc-if value="{{ grainOn }}" hint-placeholder-val="{{ false }}">
-    <div ref="{{ grainRef }}" style="position:fixed;inset:-60px;opacity:.1;animation:grainShift 1.1s steps(1,end) infinite;pointer-events:none;z-index:50"></div>
+    <div ref="{{ grainRef }}" data-film-grain aria-hidden="true" style="position:fixed;inset:-60px;opacity:.1;animation:grainShift 1.1s steps(1,end) infinite;pointer-events:none;z-index:50"></div>
   </sc-if>
 
   <!-- ══════════ NAV + TC progress + reel chapters ══════════ -->
@@ -59,19 +59,20 @@ a{color:inherit}
         <a href="./index.html#film" data-cursor="Back to film work" style="text-decoration:none;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px">← ALL REELS</a>
       </div>
       <div class="portfolio-nav-right" style="display:flex;align-items:center;gap:26px">
-        <sc-if value="{{ showTimecode }}" hint-placeholder-val="{{ true }}">
-          <span class="portfolio-nav-timecode" style="display:flex;align-items:center;gap:8px;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:rgba(255,255,255,.45)"><span style="width:8px;height:8px;border-radius:50%;background:#e5484d;animation:recBlink 1.3s infinite"></span><span style="color:#e5484d">REEL 01</span> · TC <span ref="{{ tcRef }}">00:00:00</span> / 07:00:00</span>
-        </sc-if>
         <div data-nav-links class="portfolio-nav-links" style="display:flex;align-items:center;gap:22px;font-size:13px;color:rgba(255,255,255,.5)"><div data-package-mode-switch aria-label="Portfolio mode navigation" style="display:grid;grid-template-columns:auto 18px auto;align-items:center;column-gap:9px;font:600 11.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:rgba(255,255,255,.58)"><a href="./index.html#projects" data-cursor="Back to UX work" style="color:inherit;text-decoration:none">UX</a><span style="color:rgba(255,255,255,.36);text-align:center">/</span><a href="./index.html#film" data-cursor="Cut to film work" style="color:rgba(255,255,255,.5);text-decoration:none">FILM</a></div><span data-nav-separator aria-hidden="true" style="width:1px;height:18px;background:rgba(255,255,255,.14);display:inline-block"></span><a href="./About.html" data-cursor="About Boyi" style="color:inherit;text-decoration:none">About</a><a href="./Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf" target="_blank" rel="noopener" data-cursor="Open resume PDF" style="color:inherit;text-decoration:none">Resume</a></div>
       </div>
     </div>
     <div style="height:2px;background:rgba(255,255,255,.1)"><div style="height:100%;width:calc(var(--prog)*100%);background:#e5484d"></div></div>
     <div data-chapter-strip class="portfolio-nav-chapters" style="height:38px;background:rgba(10,10,12,.88);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:4px;padding:0 30px;overflow-x:auto">
+      <sc-if value="{{ showTimecode }}" hint-placeholder-val="{{ true }}">
+        <span class="portfolio-nav-meta"><span class="portfolio-nav-meta-rec" aria-hidden="true"></span><span style="color:#e5484d">REEL 01</span> · TC <span ref="{{ tcRef }}">00:00:00</span> / 07:00:00</span>
+      </sc-if>
       <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="8">
         <button onClick="{{ ch.onClick }}" data-ch="{{ ch.id }}" data-cursor="Jump the reel" style="all:unset;cursor:pointer;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.07em;color:rgba(255,255,255,.42);padding:4px 10px;border-radius:999px;white-space:nowrap;transition:color .2s ease,background .2s ease" style-hover="color:#f2f2f4">{{ ch.label }}</button>
       </sc-for>
     </div>
   </div>
+  <button type="button" class="portfolio-grain-toggle portfolio-grain-toggle-case" data-grain-toggle aria-pressed="{{ grainPressed }}" aria-label="Film grain overlay" onClick="{{ toggleGrain }}" data-cursor="Toggle film grain"><span aria-hidden="true">GRAIN</span><span class="portfolio-grain-toggle-state" aria-hidden="true">{{ grainStateLabel }}</span></button>
 
   <!-- ══════════ TITLE SEQUENCE ══════════ -->
   <div data-title-sequence data-screen-label="Title Sequence" style="max-width:1080px;margin:0 auto;padding:186px 40px 0;text-align:center">
@@ -408,6 +409,9 @@ a{color:inherit}
 class Component extends DCLogic {
   constructor(props) {
     super(props);
+    const grainPref = this.getInitialGrainPreference(props);
+    this.state = { grain: grainPref.on };
+    this._grainUserSet = grainPref.userSet;
     this.rootRef = React.createRef();
     this.tcRef = React.createRef();
     this.grainRef = React.createRef();
@@ -423,6 +427,7 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
+    this.syncGrainPreference();
     const label = document.createElement("div");
     label.dataset.caseCursorLabel = "true";
     label.style.cssText = "position:fixed;left:0;top:0;z-index:900;pointer-events:none;padding:7px 12px;border-radius:999px;background:#17171a;color:#fff;border:1px solid rgba(255,255,255,.35);font:600 11px ui-monospace,Menlo,monospace;white-space:nowrap;opacity:0;transition:opacity .15s ease;box-shadow:0 10px 28px rgba(0,0,0,.25)";
@@ -457,7 +462,49 @@ class Component extends DCLogic {
   }
 
   componentDidUpdate() {
+    this.syncGrainPreference();
     this.syncGrain();
+  }
+
+  readGrainPreference() {
+    try {
+      return window.localStorage.getItem("boyi-portfolio-grain");
+    } catch (_) {
+      return null;
+    }
+  }
+
+  getInitialGrainPreference(props) {
+    const stored = typeof window !== "undefined" ? this.readGrainPreference() : null;
+    if (stored === "on" || stored === "off") {
+      return { on: stored === "on", userSet: true };
+    }
+    const reduce = typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return { on: reduce ? false : (props.grain ?? true), userSet: false };
+  }
+
+  syncGrainPreference() {
+    if (typeof document === "undefined") return;
+    document.documentElement.setAttribute("data-grain", this.state.grain ? "on" : "off");
+    if (this._grainUserSet) document.documentElement.setAttribute("data-grain-user-set", "true");
+    else document.documentElement.removeAttribute("data-grain-user-set");
+  }
+
+  writeGrainPreference(on) {
+    try {
+      window.localStorage.setItem("boyi-portfolio-grain", on ? "on" : "off");
+    } catch (_) {}
+  }
+
+  toggleGrain() {
+    const next = !this.state.grain;
+    this._grainUserSet = true;
+    this.writeGrainPreference(next);
+    this.setState({ grain: next }, () => this.syncGrainPreference());
+  }
+
+  prefersReducedMotion() {
+    return typeof window !== "undefined" && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
 
   makeGrainUrl() {
@@ -484,7 +531,7 @@ class Component extends DCLogic {
     const el = document.getElementById(id);
     if (!el) return;
     const top = el.getBoundingClientRect().top + window.scrollY - 118;
-    window.scrollTo({ top: top, behavior: "smooth" });
+    window.scrollTo({ top: top, behavior: this.prefersReducedMotion() ? "auto" : "smooth" });
   }
 
   update() {
@@ -527,7 +574,10 @@ class Component extends DCLogic {
       tcRef: this.tcRef,
       grainRef: this.grainRef,
       chapters: this._chapters,
-      grainOn: this.props.grain ?? true,
+      grainOn: this.state.grain,
+      grainPressed: this.state.grain ? "true" : "false",
+      grainStateLabel: this.state.grain ? "ON" : "OFF",
+      toggleGrain: () => this.toggleGrain(),
       showTimecode: this.props.showTimecode ?? true,
       showCommentary: this.props.showCommentary ?? true
     };

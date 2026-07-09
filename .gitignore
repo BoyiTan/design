@@ -1,6 +1,10 @@
 .DS_Store
 docs/
 tests/
+!tests/
+tests/*
+!tests/portfolio-resume-viewer.mjs
+!tests/portfolio-film-grain-toggle.mjs
 主页/
 *.zip
 boyi_portfolio_*.html

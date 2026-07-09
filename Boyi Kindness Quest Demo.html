@@ -191,6 +191,58 @@
   [style*="animation:drawLine"] { animation: none !important; background-size: 100% 3px !important; }
 }
 
+@media (max-width: 900px) {
+  .kindness-hero {
+    padding-top: 132px !important;
+  }
+
+  .kindness-hero-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px 20px !important;
+    margin: 30px 0 32px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .kindness-hero {
+    padding-top: 96px !important;
+  }
+
+  .kindness-hero-title {
+    font-size: 31px !important;
+    line-height: 1.14 !important;
+  }
+
+  .kindness-hero-subtitle {
+    font-size: 18px !important;
+    line-height: 1.36 !important;
+    margin-top: 14px !important;
+  }
+
+  .kindness-hero-context {
+    font-size: 15px !important;
+    line-height: 1.64 !important;
+    margin-top: 14px !important;
+  }
+
+  .kindness-hero-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 13px 16px !important;
+    padding: 15px 0 !important;
+    margin: 24px 0 26px !important;
+  }
+
+  .kindness-hero-meta > div > div:nth-child(2) {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+  }
+
+  .kindness-hero-meta > div > div:nth-child(3) {
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+  }
+}
+
 /* Runtime style-string selectors for React-rendered inline styles */
 @media (max-width: 820px) {
   [style*="position: fixed"][style*="z-index: 70"] [style*="height: 60px"] { height: 58px !important; padding: 0 var(--portfolio-nav-edge) !important; }
@@ -231,6 +283,26 @@
   [style*="animation:"][style*="drawLine"] { animation: none !important; background-size: 100% 3px !important; }
 }
 
+/* Stable Kindness hero hooks override the legacy inline-style fallbacks above. */
+@media (max-width: 560px) {
+  .kindness-hero-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 13px 16px !important;
+    padding: 15px 0 !important;
+    margin: 24px 0 26px !important;
+  }
+
+  .kindness-hero-meta > div > div:nth-child(2) {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+  }
+
+  .kindness-hero-meta > div > div:nth-child(3) {
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+  }
+}
+
 </style>
 <style>
 body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webkit-font-smoothing:antialiased}
@@ -249,14 +321,14 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
         <button data-cursor="Back to all scenes" style="all:unset;cursor:pointer;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#6b6b73;display:flex;align-items:center;gap:6px" style-hover="color:oklch(0.52 0.14 255)">← ALL SCENES</button>
       </div>
       <div class="portfolio-nav-right" style="display:flex;align-items:center;gap:26px">
-        <sc-if value="{{ showTimecode }}" hint-placeholder-val="{{ true }}">
-          <span class="portfolio-nav-timecode" style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e"><span style="color:oklch(0.52 0.14 255)">SCENE 03</span> · TC <span ref="{{ tcRef }}">00:00</span> / 05:10</span>
-        </sc-if>
         <div class="portfolio-nav-links" style="display:flex;align-items:center;gap:22px;font-size:13px;color:#6b6b73"><div data-package-mode-switch aria-label="Portfolio mode navigation" style="display:grid;grid-template-columns:auto 18px auto;align-items:center;column-gap:9px;font:600 11.5px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#6b6b73"><a href="./index.html#projects" data-cursor="Back to UX work" style="color:inherit;text-decoration:none">UX</a><span style="color:#96969e;text-align:center">/</span><a href="./index.html#film" data-cursor="Cut to film work" style="color:#8a8a92;text-decoration:none">FILM</a></div><span data-nav-separator aria-hidden="true" style="width:1px;height:18px;background:#ececef;display:inline-block"></span><a href="./About.html" data-cursor="About Boyi" style="color:inherit;text-decoration:none">About</a><a href="./Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf" target="_blank" rel="noopener" data-cursor="Open resume PDF" style="color:inherit;text-decoration:none">Resume</a></div>
       </div>
     </div>
     <div style="height:2px;background:#ececef"><div style="height:100%;width:calc(var(--prog)*100%);background:oklch(0.52 0.14 255)"></div></div>
     <div class="portfolio-nav-chapters" style="height:38px;background:rgba(253,253,254,.92);backdrop-filter:blur(6px);border-bottom:1px solid #ececef;display:flex;align-items:center;gap:4px;padding:0 max(30px,calc((100vw - 1140px)/2 + 40px));overflow-x:auto">
+      <sc-if value="{{ showTimecode }}" hint-placeholder-val="{{ true }}">
+        <span class="portfolio-nav-meta"><span style="color:oklch(0.52 0.14 255)">SCENE 03</span> · TC <span ref="{{ tcRef }}">00:00</span> / 05:10</span>
+      </sc-if>
       <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="7">
         <button onclick="{{ ch.onClick }}" data-ch="{{ ch.id }}" data-cursor="Jump the timeline" style="all:unset;cursor:pointer;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.07em;color:#96969e;padding:4px 10px;border-radius:999px;white-space:nowrap;transition:color .2s ease,background .2s ease" style-hover="color:#17171a">{{ ch.label }}</button>
       </sc-for>
@@ -264,25 +336,24 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
   </div>
 
   <!-- ══════════ SLATE — title card ══════════ -->
-  <div data-screen-label="Slate" style="max-width:1080px;margin:0 auto;padding:172px 40px 0">
-    <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;animation:fadeUp .6s ease both">
+  <div class="kindness-hero" data-screen-label="Slate" style="max-width:1080px;margin:0 auto;padding:156px 40px 0">
+    <div class="kindness-hero-eyebrow" style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;animation:fadeUp .6s ease both">
       <div style="display:flex;align-items:center;gap:12px;font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e">
-        <span style="color:oklch(0.52 0.14 255)">SCENE 03</span><span>·</span><span>CASE STUDY</span><span>·</span><span>2025</span>
+        <span style="color:oklch(0.52 0.14 255)">CARLETON × CITYSTUDIO</span><span>·</span><span>CASE STUDY</span><span>·</span><span>2025</span>
       </div>
     </div>
-    <div style="font-size:41px;line-height:1.16;letter-spacing:-0.025em;font-weight:700;max-width:820px;animation:fadeUp .6s .12s ease both">The Kindness Quest</div>
-    <div style="font-size:23px;line-height:1.35;letter-spacing:-0.015em;font-weight:600;max-width:760px;margin-top:16px;animation:fadeUp .6s .18s ease both">Designing a Child-Friendly Web Quest for Hate-Crime Awareness</div>
-    <div style="font-family:'Newsreader',serif;font-style:italic;font-size:20px;line-height:1.5;color:#3d3d44;max-width:720px;margin-top:20px;animation:fadeUp .6s .24s ease both">A Carleton and CityStudio capstone website that translated hate-crime evidence into a safer, story-led learning experience for children, youth, and future generations.</div>
-    <div style="font-size:14.5px;line-height:1.75;color:#3d3d44;max-width:690px;margin-top:20px;animation:fadeUp .6s .3s ease both">The Kindness Quest helped turn a serious civic topic into an age-appropriate website experience. Within a team project, I focused on coordination, homepage delivery, data visualization, content optimization, and exhibition presentation support.</div>
+    <h1 class="kindness-hero-title" style="font-size:42px;line-height:1.14;letter-spacing:-0.025em;font-weight:700;max-width:820px;margin:0;animation:fadeUp .6s .12s ease both">The Kindness Quest</h1>
+    <div class="kindness-hero-subtitle" style="font-size:21px;line-height:1.36;letter-spacing:-0.01em;font-weight:650;max-width:780px;margin-top:14px;animation:fadeUp .6s .18s ease both">Carleton × CityStudio team capstone public website for child-friendly hate-crime awareness.</div>
+    <div class="kindness-hero-context" style="font-family:var(--font-sans);font-size:var(--text-body);line-height:var(--leading-body);color:#3d3d44;max-width:760px;margin-top:16px;animation:fadeUp .6s .24s ease both">Built by a Carleton University / CityStudio Ottawa capstone team, this public website translated hate-crime evidence into a story-led learning experience for children and youth. My role covered UX design, frontend contribution, project coordination, homepage delivery, data visualization, content optimization, and public showcase support.</div>
 
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid #ececef;border-bottom:1px solid #ececef;padding:20px 0;margin:38px 0 44px;animation:fadeUp .6s .36s ease both">
-      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">ROLE</div><div style="font-size:14px;font-weight:600">UX Designer · Frontend Contributor · Project Coordination</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Homepage, data viz, content, showcase</div></div>
+    <div class="kindness-hero-meta" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border-top:1px solid #ececef;border-bottom:1px solid #ececef;padding:18px 0;margin:32px 0 34px;animation:fadeUp .6s .36s ease both">
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">ROLE</div><div style="font-size:14px;font-weight:600">UX Designer · Frontend Contributor · Project Coordination</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Homepage delivery · data visualization · content optimization · showcase support</div></div>
       <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">TIMELINE</div><div style="font-size:14px;font-weight:600">Jan–Apr 2025</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Public showcase Apr 10</div></div>
       <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">TOOLS</div><div style="font-size:14px;font-weight:600">WordPress/Divi · Datawrapper</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Photoshop · Adobe PR/AE/AU</div></div>
-      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">SCOPE</div><div style="font-size:14px;font-weight:600">Public capstone website</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">5-person core team + 1 honorary member</div></div>
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">SCOPE</div><div style="font-size:14px;font-weight:600">Carleton × CityStudio team capstone</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Public website · 5-person core team + 1 honorary member</div></div>
     </div>
 
-    <div data-cursor="The product hero — quest homepage, characters, and evidence cards" style="position:relative;aspect-ratio:1600/1000;border-radius:10px;border:1px solid #ececef;overflow:hidden;animation:fadeUp .7s .45s ease both;background:#fbf8ff">
+    <div class="kindness-product-hero" data-cursor="The product hero — quest homepage, characters, and evidence cards" style="position:relative;aspect-ratio:1600/1000;border-radius:10px;border:1px solid #ececef;overflow:hidden;animation:fadeUp .7s .45s ease both;background:#fbf8ff">
       <img src="./assets/kindness-quest/kindness-quest-product-hero.png" alt="The Kindness Quest product hero showing the quest homepage, Young Explorer, Hate Monster, and evidence visualization cards" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;display:block">
     </div>
 

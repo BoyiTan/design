@@ -731,11 +731,56 @@
     .bridge-item { border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 16px 18px; box-shadow: 0 14px 40px rgba(21, 27, 41, .03); }
     .bridge-item h3 { font-size: 15.5px; }
     .bridge-item p { margin-top: 6px; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
-    .peer-quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 30px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .peer-quote { padding: 20px 22px; }
-    .peer-quote + .peer-quote { border-left: 1px solid var(--line); }
-    .peer-quote .q { font-family: "Newsreader", serif; font-style: italic; font-size: 16px; line-height: 1.5; color: #353944; }
-    .peer-quote .from { margin-top: 10px; font: 700 9.5px ui-monospace, Menlo, monospace; letter-spacing: .08em; color: #7a7d86; }
+    .linklog-collab-note {
+      max-width: 780px;
+      margin-top: 22px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent);
+      border-radius: 10px;
+      background: rgba(247, 249, 253, .76);
+    }
+
+    .linklog-collab-note .collab-label {
+      font: 700 10px ui-monospace, Menlo, monospace;
+      letter-spacing: .08em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .linklog-collab-note .collab-copy {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.65;
+    }
+
+    .linklog-collab-note .collab-proof {
+      margin-top: 12px;
+      color: #343842;
+      font-size: 14px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .linklog-collab-note .collab-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .linklog-collab-note .collab-points li {
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid rgba(210, 216, 226, .86);
+      color: #555b66;
+      font: 700 10.5px/1.25 ui-monospace, Menlo, monospace;
+      letter-spacing: .035em;
+    }
 
     /* ── viz: phased future workflow (act ii) ── */
     .wf2 { display: grid; grid-template-columns: 2.9fr 26px 2fr 26px 2fr; align-items: stretch; margin-top: 32px; }
@@ -788,8 +833,7 @@
       .svc-arrow { display: none; }
       .bridge { grid-template-columns: 1fr; gap: 14px; }
       .bridge-arrow { transform: rotate(90deg); }
-      .peer-quotes { grid-template-columns: 1fr; }
-      .peer-quote + .peer-quote { border-left: 0; border-top: 1px solid var(--line); }
+      .linklog-collab-note .collab-points { display: grid; }
       .tst-head { grid-template-columns: 1fr; }
       .tst-proof { grid-template-columns: 1fr; }
       .tst-proof-arrow { padding-top: 0; transform: rotate(90deg); }
@@ -868,7 +912,8 @@
       }
       .solution-card,
       .card,
-      .soft-card {
+      .soft-card,
+      .linklog-collab-note {
         padding: 20px;
       }
       .footer {
@@ -895,7 +940,6 @@
         <a class="back-link" href="./index.html#projects" data-cursor="Back to all UX cases">← ALL SCENES</a>
       </div>
       <div class="portfolio-nav-right">
-        <span class="portfolio-nav-timecode timecode"><span class="blue">SCENE 02</span> · TC <span data-timecode>00:00</span> / 07:30</span>
         <div class="portfolio-nav-links">
           <div class="mode-switch" data-package-mode-switch aria-label="Portfolio mode navigation">
             <a href="./index.html#projects" data-cursor="Back to UX work">UX</a>
@@ -910,6 +954,7 @@
     </div>
     <div class="progress-shell"><div class="progress-bar" aria-hidden="true"></div></div>
     <div class="portfolio-nav-chapters" aria-label="Case study chapters">
+      <span class="portfolio-nav-meta"><span class="blue">SCENE 02</span> · TC <span data-timecode>00:00</span> / 07:30</span>
       <button class="chapter-btn" data-target="problem" data-ch="problem">PROBLEM</button>
       <button class="chapter-btn" data-target="contribution" data-ch="contribution">MY ROLE</button>
       <button class="chapter-btn" data-target="cast" data-ch="cast">CAST</button>
@@ -999,11 +1044,6 @@
         </div>
       </div>
 
-      <div class="peer-quotes" data-cursor="Peer feedback from the sprint retro">
-        <div class="peer-quote"><p class="q">&ldquo;Technically-oriented ideas and alternative solutions.&rdquo;</p><div class="from">PEER FEEDBACK · SPRINT RETRO</div></div>
-        <div class="peer-quote"><p class="q">&ldquo;Solved our huge client problem of data migration.&rdquo;</p><div class="from">PEER FEEDBACK · SPRINT RETRO</div></div>
-        <div class="peer-quote"><p class="q">&ldquo;Brought creative and unconventional ideas.&rdquo;</p><div class="from">PEER FEEDBACK · SPRINT RETRO</div></div>
-      </div>
     </section>
 
     <section id="cast" class="section" data-screen-label="Cast">
@@ -1363,6 +1403,16 @@
       </div>
       <div class="soft-card" style="margin-top: 34px;">
         <p class="body"><b style="color: var(--ink);">Final takeaway:</b> Service design is not only about improving touchpoints. It also means designing the backstage conditions that allow a service to work: data migration, staff handoff, context preservation, and reporting continuity.</p>
+      </div>
+      <div class="linklog-collab-note" data-cursor="Sprint retro collaboration signal">
+        <div class="collab-label">COLLABORATION NOTE · SPRINT RETRO</div>
+        <p class="collab-copy">Peer feedback reinforced that my contribution sat between service concept and implementation: technical alternatives during ambiguity, data migration, prototype feasibility, and demo storytelling.</p>
+        <p class="collab-proof">&ldquo;Solved our huge client problem of data migration.&rdquo;</p>
+        <ul class="collab-points" aria-label="Compressed peer feedback themes">
+          <li>Technical alternatives</li>
+          <li>Dashboard-readable CSV support</li>
+          <li>Unconventional solution framing</li>
+        </ul>
       </div>
       <div class="final-actions">
         <a class="final-action" href="./ArtFac.html" data-cursor="Previous project — ArtFac">← PREVIOUS PROJECT</a>
