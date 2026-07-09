@@ -3,7 +3,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = process.cwd();
-const resumePdf = 'Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf';
+const resumePdf = 'Boyi_Tan_UX_Designer_Resume.pdf';
 const publicHtmlFiles = [
   'index.html',
   'About.html',

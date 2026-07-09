@@ -21,7 +21,7 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
   .ux-hero{grid-template-columns:1fr!important;gap:30px!important;padding:128px 32px 58px!important}
   .ux-hero-title{font-size:36px!important;line-height:1.16!important}
   .ux-hero-notes{border-left:0!important;border-top:1px solid #ececef;padding-left:0!important;padding-top:18px!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
-  .film-hero-stage{min-height:auto!important;padding:104px 32px 28px!important}
+  .film-hero-stage{min-height:auto!important;padding:126px 32px 28px!important}
   .film-hero-frame{width:min(86vw,960px)!important}
   .film-statement{padding-top:26px!important}
 }
@@ -32,11 +32,14 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
   [data-homepage-hover-button="film-primary"]:hover{border-color:rgba(255,255,255,.34)!important;background:rgba(10,10,12,.28)!important}
   [data-homepage-hover-button="film-secondary"]:hover{border-color:rgba(255,255,255,.3)!important}
 }
+@media (max-width:720px){
+  .film-hero-stage{padding-top:140px!important}
+}
 @media (max-width:680px){
   .ux-hero{padding:104px 24px 48px!important}
   .ux-hero-title{font-size:30px!important;line-height:1.18!important;letter-spacing:-0.015em!important}
   .ux-hero-notes{grid-template-columns:1fr!important;gap:10px!important}
-  .film-hero-stage{padding:92px 20px 22px!important}
+  .film-hero-stage{padding:140px 20px 22px!important}
   .film-hero-frame{width:92vw!important}
   .film-hero-eyebrow{margin-bottom:18px!important}
   .film-hero-caption{margin-top:16px!important}
@@ -71,7 +74,7 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
         <span data-nav-separator aria-hidden="true" style="width:1px;height:20px;background:var(--navText);opacity:.16;transition:background .45s ease,opacity .45s ease"></span>
         <div class="portfolio-nav-links" style="display:flex;gap:22px;font-size:13px">
           <a href="./About.html" data-cursor="About Boyi" style="color:var(--navText);opacity:.75;transition:color .45s ease;text-decoration:none">About</a>
-          <a href="./Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf" target="_blank" rel="noopener" data-cursor="Open resume PDF" style="color:var(--navText);opacity:.75;transition:color .45s ease;text-decoration:none">Resume</a>
+          <a href="./Boyi_Tan_UX_Designer_Resume.pdf" target="_blank" rel="noopener" data-cursor="Open resume PDF" style="color:var(--navText);opacity:.75;transition:color .45s ease;text-decoration:none">Resume</a>
         </div>
       </div>
     </div>
@@ -90,7 +93,7 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
 
           <div style="margin-top:42px;max-width:600px;animation:fadeUp .6s .3s ease both">
 
-            <div style="font-family:'Newsreader',serif;font-style:italic;font-size:19px;line-height:1.55;color:#3d3d44">"Before UX, I framed documentary shots. It turned out to be the same job — deciding what the audience sees first, and what can wait."</div>
+            <div style="font-family:'Newsreader',serif;font-style:italic;font-size:19px;line-height:1.55;color:#3d3d44">Before UX, I framed documentary shots. It turned out to be the same job — deciding what the audience sees first, and what can wait.</div>
             <button onClick="{{ toFilm }}" data-cursor="Cut to film work" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;margin-top:16px;font:600 12px ui-monospace,Menlo,monospace;letter-spacing:.06em;color:oklch(0.52 0.14 255)">I STILL MAKE FILMS — CUT TO FILM MODE <span>→</span></button>
           </div>
         </div>
@@ -161,10 +164,20 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
 
         <div id="about" style="position:relative;top:-80px;height:0"></div>
         <div id="resume" style="position:relative;top:-80px;height:0"></div>
-        <div style="margin-top:64px;padding:26px 0;border-top:1px solid #ececef;text-align:center;font:500 12px ui-monospace,Menlo,monospace;color:#6b6b73">Observe like a documentarian <span style="color:oklch(0.52 0.14 255)">×</span> Map like a systems thinker <span style="color:oklch(0.52 0.14 255)">×</span> Deliver like a UX designer</div>
-        <div style="display:flex;justify-content:space-between;padding:14px 0 4px;font-size:12.5px;color:#96969e">
-          <span>© 2026 Boyi Tan</span>
-          <span>Roll credits: <a href="./About.html" style="color:inherit">About</a> · <a href="./Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf" target="_blank" rel="noopener" style="color:inherit">Resume</a> · <a href="mailto:boyitan0011@gmail.com" style="color:inherit">boyitan0011@gmail.com</a> · <a href="https://www.linkedin.com/in/boyi-tan-719230285/" target="_blank" rel="noopener" style="color:inherit">LinkedIn</a></span>
+        <div class="portfolio-footer" style="margin-top:64px">
+          <div class="portfolio-footer-signature">Observe like a documentarian <span style="color:oklch(0.52 0.14 255)">×</span> Map like a systems thinker <span style="color:oklch(0.52 0.14 255)">×</span> Deliver like a UX designer</div>
+          <div class="portfolio-footer-cta">
+            <div class="portfolio-footer-cta-title">Let’s talk</div>
+            <div class="portfolio-footer-links">
+              <a class="portfolio-footer-mail" href="mailto:boyitan0011@gmail.com" data-cursor="Email Boyi">EMAIL ME →</a>
+              <a href="https://www.linkedin.com/in/boyi-tan-719230285/" target="_blank" rel="noopener" data-cursor="Open LinkedIn">LINKEDIN ↗</a>
+              <a href="./Boyi_Tan_UX_Designer_Resume.pdf" target="_blank" rel="noopener" data-cursor="Open resume PDF">RESUME</a>
+              <a href="./About.html" data-cursor="About Boyi">ABOUT</a>
+            </div>
+          </div>
+          <div class="portfolio-footer-bottom">
+            <span>© 2026 Boyi Tan</span>
+          </div>
         </div>
       </div>
     </div>
@@ -250,9 +263,20 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
           <div style="display:grid;place-items:center;margin-top:60px">
             <button onClick="{{ toUx }}" data-cursor="Back to the design work" data-homepage-hover-button="film-secondary" style="all:unset;cursor:pointer;font:600 11.5px ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#f5f5f7;border:1px solid rgba(255,255,255,.3);padding:12px 22px" style-hover="border-color:#fff">CUT BACK TO: UX WORK →</button>
           </div>
-          <div style="display:flex;justify-content:space-between;margin-top:52px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);font-size:12.5px;color:rgba(255,255,255,.4)">
-            <span>© 2026 Boyi Tan</span>
-            <span>Roll credits: <a href="./About.html" style="color:inherit">About</a> · <a href="./Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf" target="_blank" rel="noopener" style="color:inherit">Resume</a> · <a href="mailto:boyitan0011@gmail.com" style="color:inherit">boyitan0011@gmail.com</a> · <a href="https://www.linkedin.com/in/boyi-tan-719230285/" target="_blank" rel="noopener" style="color:inherit">LinkedIn</a></span>
+          <div class="portfolio-footer portfolio-footer-dark" style="margin-top:52px">
+            <div class="portfolio-footer-signature">Frame the problem <span style="color:#e5484d">×</span> Hold the intent <span style="color:#e5484d">×</span> Finish the film</div>
+            <div class="portfolio-footer-cta">
+              <div class="portfolio-footer-cta-title">Let’s talk</div>
+              <div class="portfolio-footer-links">
+                <a class="portfolio-footer-mail" href="mailto:boyitan0011@gmail.com" data-cursor="Email Boyi">EMAIL ME →</a>
+                <a href="https://www.linkedin.com/in/boyi-tan-719230285/" target="_blank" rel="noopener" data-cursor="Open LinkedIn">LINKEDIN ↗</a>
+                <a href="./Boyi_Tan_UX_Designer_Resume.pdf" target="_blank" rel="noopener" data-cursor="Open resume PDF">RESUME</a>
+                <a href="./About.html" data-cursor="About Boyi">ABOUT</a>
+              </div>
+            </div>
+            <div class="portfolio-footer-bottom">
+              <span>© 2026 Boyi Tan</span>
+            </div>
           </div>
         </div>
       </div>

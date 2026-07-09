@@ -192,9 +192,9 @@
     }
 
     h2 {
-      font-size: clamp(30px, 3.8vw, 48px);
-      line-height: 1.04;
-      letter-spacing: -.04em;
+      font-size: clamp(24px, 2.25vw, 32px);
+      line-height: 1.16;
+      letter-spacing: -.026em;
       font-weight: 800;
     }
 
@@ -342,9 +342,9 @@
     }
 
     .synthesis-intro h3 {
-      font-size: clamp(26px, 3vw, 38px);
-      line-height: 1.08;
-      letter-spacing: -.035em;
+      font-size: clamp(22px, 2vw, 28px);
+      line-height: 1.18;
+      letter-spacing: -.024em;
       margin-top: 14px;
     }
 
@@ -562,6 +562,59 @@
       color: var(--ink);
     }
 
+    #problem .grid-3 .card {
+      border: 0;
+      box-shadow: none;
+      background: rgba(36, 102, 190, .055);
+    }
+
+    #problem .grid-3 .card:nth-child(2) {
+      background: rgba(0, 128, 96, .052);
+    }
+
+    #problem .grid-3 .card:nth-child(3) {
+      background: rgba(114, 92, 190, .052);
+    }
+
+    #problem .soft-card {
+      border: 0;
+      background: rgba(247, 249, 253, .86);
+      box-shadow: none;
+    }
+
+    #prototype > .grid {
+      gap: 0;
+    }
+
+    #prototype > .grid > .solution-card.card {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      padding: 34px 0;
+    }
+
+    #prototype > .grid > .solution-card.card + .solution-card.card {
+      border-top: 1px solid rgba(218, 222, 230, .74);
+    }
+
+    #prototype .solution-card > .soft-card {
+      border: 0;
+      background: rgba(247, 249, 253, .86);
+      box-shadow: none;
+    }
+
+    #prototype .solution-card .workflow-step {
+      border: 0;
+      background: #fff;
+      box-shadow: 0 1px 0 rgba(218, 222, 230, .7);
+    }
+
+    #prototype .problem-decision div {
+      border-left: 0;
+      padding-left: 0;
+    }
+
     .storyboard-panel {
       display: grid;
       gap: 24px;
@@ -573,9 +626,9 @@
     }
 
     .storyboard-copy h3 {
-      font-size: clamp(26px, 3vw, 38px);
-      line-height: 1.08;
-      letter-spacing: -.035em;
+      font-size: clamp(22px, 2vw, 28px);
+      line-height: 1.18;
+      letter-spacing: -.024em;
       margin-top: 14px;
     }
 
@@ -805,6 +858,38 @@
     .tst-stat { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; background: #fff; }
     .tst-stat .n { font-size: 22px; font-weight: 800; letter-spacing: -.02em; }
     .tst-stat .l { font-size: 11.5px; line-height: 1.4; color: var(--muted); margin-top: 3px; }
+    .tst-evidence-strip {
+      margin-top: 28px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 0;
+      color: #3f424b;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .tst-evidence-strip b {
+      color: var(--ink);
+    }
+    .tst-evidence-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 8px;
+      font: 700 10.5px ui-monospace, Menlo, monospace;
+      letter-spacing: .055em;
+      color: #555862;
+      text-transform: uppercase;
+    }
+    .tst-evidence-flow span:not(.arr) {
+      border: 1px solid rgba(210, 216, 226, .9);
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: #fff;
+    }
+    .tst-evidence-flow .arr {
+      color: var(--accent);
+    }
     .tst-proof { display: grid; grid-template-columns: 1fr 52px 1fr; gap: 18px; align-items: start; margin-top: 22px; }
     .tst-proof-arrow { display: grid; place-items: center; padding-top: 118px; }
     .tst-proof-arrow span { width: 38px; height: 38px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-size: 15px; }
@@ -818,15 +903,48 @@
     .state-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 12px 8px 4px; border-top: 1px dashed var(--line); margin-top: 8px; }
     .state-chips b { font: 700 9px ui-monospace, Menlo, monospace; letter-spacing: .05em; border-radius: 999px; padding: 4px 8px; }
     .proof-caption { font-size: 13px; line-height: 1.6; color: var(--soft); margin-top: 12px; }
-    .tst-iter { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
-    .tst-card { border: 1px solid var(--line); border-radius: 12px; background: #fff; padding: 18px 20px; }
+    .tst-iter { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .tst-card { border-left: 2px solid rgba(210, 216, 226, .9); background: transparent; padding: 4px 14px 6px; }
     .tst-card .head { display: flex; align-items: center; gap: 9px; }
-    .tst-card .dot { width: 22px; height: 22px; border-radius: 50%; color: #fff; display: grid; place-items: center; font-size: 11px; font-weight: 800; flex: none; }
+    .tst-card .dot { width: 20px; height: 20px; border-radius: 50%; color: #fff; display: grid; place-items: center; font-size: 10.5px; font-weight: 800; flex: none; }
     .tst-card .head b { font-size: 14px; letter-spacing: -.01em; line-height: 1.25; }
-    .tst-card .obs { font-family: "Newsreader", serif; font-style: italic; font-size: 13.5px; line-height: 1.5; color: #3f424b; margin-top: 10px; }
-    .tst-card .div { height: 1px; background: var(--line); margin: 12px 0 10px; }
-    .tst-card .chg-l { font: 700 9.5px ui-monospace, Menlo, monospace; letter-spacing: .07em; margin-bottom: 5px; }
-    .tst-card .chg { font-size: 12.5px; line-height: 1.5; font-weight: 600; }
+    .tst-card .chg { margin-top: 8px; font-size: 13px; line-height: 1.55; font-weight: 500; color: var(--muted) !important; }
+
+    #final .timeline {
+      gap: 28px;
+      padding: 18px 0 20px;
+    }
+
+    #final .timeline .card {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    #final .timeline .card + .card {
+      padding-left: 28px;
+    }
+
+    #final .soft-card {
+      border: 0;
+      background: rgba(247, 249, 253, .78);
+      box-shadow: none;
+    }
+
+    #final .linklog-collab-note {
+      max-width: 760px;
+      border: 0;
+      border-top: 1px solid rgba(218, 222, 230, .86);
+      border-radius: 0;
+      background: transparent;
+      padding: 16px 0 0;
+    }
+
+    #final .linklog-collab-note .collab-points li {
+      background: transparent;
+    }
 
     @media (max-width: 980px) {
       .svc-chain { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
@@ -849,6 +967,10 @@
       .wf2-steps, .wf2-steps.two { grid-template-columns: 1fr; }
       .wf2-step:not(:last-child)::after { display: none; }
       .svc-return, .wf2-return { white-space: normal; text-align: center; }
+      #final .timeline .card + .card {
+        padding-left: 0;
+        padding-top: 18px;
+      }
     }
 
     @media (max-width: 980px) {
@@ -948,7 +1070,7 @@
           </div>
           <span class="nav-separator" data-nav-separator aria-hidden="true"></span>
           <a class="nav-link" href="./About.html" data-cursor="About Boyi">About</a>
-          <a class="nav-link" href="./Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf" target="_blank" rel="noopener" data-cursor="Open resume PDF">Resume</a>
+          <a class="nav-link" href="./Boyi_Tan_UX_Designer_Resume.pdf" target="_blank" rel="noopener" data-cursor="Open resume PDF">Resume</a>
         </div>
       </div>
     </div>
@@ -1293,55 +1415,10 @@
         </div>
       </div>
 
-      <div class="mono" style="margin-top: 36px;">BEFORE / AFTER PROOF — ONE DASHBOARD ROW</div>
-      <div class="tst-proof">
-        <div data-cursor="Before — one date field, no urgency">
-          <div class="mono" style="color:#B42318; margin-bottom: 10px;">BEFORE</div>
-          <div class="mockcard">
-            <div class="mock-topbar"><span>FOLLOW-UP LIST</span><span>MAR 2026</span></div>
-            <div class="mockrow">
-              <span class="mock-ava">MC</span>
-              <span><span class="mock-name">Margaret Chen</span><br><span class="mock-sub">Follow-up: 2026.03.15</span></span>
-              <span class="mock-chip" style="background:#f0f1f4;color:#5a5e68;">ACTIVE</span>
-            </div>
-            <div class="mockrow" style="opacity:.62;">
-              <span class="mock-ava">RL</span>
-              <span><span class="mock-name">Robert Liu</span><br><span class="mock-sub">Follow-up: 2026.03.02</span></span>
-              <span class="mock-chip" style="background:#f0f1f4;color:#5a5e68;">ACTIVE</span>
-            </div>
-            <div class="mockrow" style="opacity:.38;">
-              <span class="mock-ava">JP</span>
-              <span><span class="mock-name">Joan Park</span><br><span class="mock-sub">Follow-up: 2026.03.22</span></span>
-              <span class="mock-chip" style="background:#f0f1f4;color:#5a5e68;">ACTIVE</span>
-            </div>
-          </div>
-          <p class="proof-caption">One date field carried two meanings, every client looked equally urgent, and the state after a call was invisible.</p>
-        </div>
-        <div class="tst-proof-arrow"><span>→</span></div>
-        <div data-cursor="After — due vs scheduled, urgency, next action">
-          <div class="mono" style="color:#047857; margin-bottom: 10px;">AFTER</div>
-          <div class="mockcard">
-            <div class="mock-topbar"><span>PRIORITY QUEUE</span><span>MAR 2026</span></div>
-            <div class="mockrow" style="background:#fdf3f2;">
-              <span class="mock-ava" style="background:#f6dedc;color:#8e2b23;">MC</span>
-              <span><span class="mock-name">Margaret Chen</span><br><span class="mock-sub"><b style="color:#17171a;">Due Mar 15</b> &middot; Scheduled Mar 18</span></span>
-              <span class="mock-chip" style="background:#B42318;color:#fff;">OVERDUE &middot; 3D</span>
-            </div>
-            <div class="mockrow">
-              <span class="mock-ava" style="background:#f4e8d6;color:#8a5a10;">RL</span>
-              <span><span class="mock-name">Robert Liu</span><br><span class="mock-sub"><b style="color:#17171a;">Due Mar 20</b> &middot; Not scheduled yet</span></span>
-              <span class="mock-chip" style="background:#fbf1e2;color:#8a5a10;">DUE THIS WEEK</span>
-            </div>
-            <div class="state-chips">
-              <span class="mono" style="font-size:8.5px;">TIMELINE STATES</span>
-              <b style="background:#e5f3ec;color:#047857;">&#10003; COMPLETED</b>
-              <b style="background:var(--accent-soft);color:oklch(0.45 0.13 255);">UPCOMING</b>
-              <b style="background:#fbf1e2;color:#8a5a10;">NO ANSWER</b>
-              <b style="background:#efe9fb;color:#5b34a8;">RESCHEDULED</b>
-              <b style="background:#f0f1f4;color:#5a5e68;">DISCONTINUED</b>
-            </div>
-          </div>
-          <p class="proof-caption">Due vs scheduled became separate labeled fields, urgency reads at row level, and every follow-up lands in an explicit state.</p>
+      <div class="tst-evidence-strip">
+        <b>Iteration spotlight:</b> the task became more realistic and easier to judge.
+        <div class="tst-evidence-flow" aria-label="Iteration spotlight flow">
+          <span>Generic task instruction</span><span class="arr">→</span><span>Role-based scenario</span><span class="arr">→</span><span>Visible cause/effect</span>
         </div>
       </div>
 
@@ -1349,36 +1426,20 @@
       <div class="tst-iter">
         <div class="tst-card" data-cursor="Iteration 01 — priority hierarchy">
           <div class="head"><span class="dot" style="background:oklch(0.52 0.14 255);">1</span><b>Priority hierarchy</b></div>
-          <p class="obs">Participants could not tell which client needed attention first.</p>
-          <div class="div"></div>
-          <div class="chg-l" style="color:oklch(0.45 0.13 255);">&rarr; WHAT CHANGED</div>
-          <p class="chg" style="color:oklch(0.45 0.13 255);">Urgency, overdue status, and due windows became scannable at row level.</p>
+          <p class="chg">Urgency, overdue status, and due windows became scannable at row level.</p>
         </div>
         <div class="tst-card" data-cursor="Iteration 02 — due vs scheduled">
           <div class="head"><span class="dot" style="background:#B42318;">2</span><b>Due vs scheduled</b></div>
-          <p class="obs">One date carried two meanings: required follow-up and booked call.</p>
-          <div class="div"></div>
-          <div class="chg-l" style="color:#B42318;">&rarr; WHAT CHANGED</div>
-          <p class="chg" style="color:#8e2b23;">Due date and scheduled date are now separate, labeled fields.</p>
+          <p class="chg">Due date and scheduled date are now separate, labeled fields.</p>
         </div>
         <div class="tst-card" data-cursor="Iteration 03 — timeline states">
           <div class="head"><span class="dot" style="background:#059669;">3</span><b>Timeline states</b></div>
-          <p class="obs">After a call, the journey state of the client was unclear.</p>
-          <div class="div"></div>
-          <div class="chg-l" style="color:#047857;">&rarr; WHAT CHANGED</div>
-          <p class="chg" style="color:#065F46;">Completed, upcoming, no-answer, rescheduled, and discontinued states added.</p>
+          <p class="chg">Completed, upcoming, no-answer, rescheduled, and discontinued states were added.</p>
         </div>
         <div class="tst-card" data-cursor="Iteration 04 — simplified logging">
           <div class="head"><span class="dot" style="background:#7C3AED;">4</span><b>Simplified logging</b></div>
-          <p class="obs">Logging and profile context asked for everything at once.</p>
-          <div class="div"></div>
-          <div class="chg-l" style="color:#6D28D9;">&rarr; WHAT CHANGED</div>
-          <p class="chg" style="color:#5B21B6;">Profile and interaction fields reorganized around the follow-up task.</p>
+          <p class="chg">Profile and interaction fields were reorganized around the follow-up task.</p>
         </div>
-      </div>
-      <div class="media" style="aspect-ratio: 16 / 9; margin-top: 32px;" data-cursor="Workflow iteration evidence">
-        <img src="./assets/linklog-images/linklog-workflow-iteration.png" alt="LinkLog workflow iteration evidence">
-        <div class="film-strip" data-tc="05:26"></div>
       </div>
     </section>
 
@@ -1433,14 +1494,20 @@
   </main>
 
   <footer class="footer">
-    <div class="footer-inner">
-      <span>© 2026 Boyi Tan</span>
-      <span>
-        <a href="./About.html">About</a> ·
-        <a href="./Boyi_Tan_UX_Designer_Resume_Integrated_Master.pdf" target="_blank" rel="noopener">Resume</a> ·
-        <a href="mailto:boyitan0011@gmail.com">boyitan0011@gmail.com</a> ·
-        <a href="https://www.linkedin.com/in/boyi-tan-719230285/" target="_blank" rel="noopener">LinkedIn</a>
-      </span>
+    <div class="portfolio-footer" style="margin-top:0">
+      <div class="portfolio-footer-signature">Observe like a documentarian <span style="color:oklch(0.52 0.14 255)">×</span> Map like a systems thinker <span style="color:oklch(0.52 0.14 255)">×</span> Deliver like a UX designer</div>
+      <div class="portfolio-footer-cta">
+        <div class="portfolio-footer-cta-title">Let’s talk</div>
+        <div class="portfolio-footer-links">
+          <a class="portfolio-footer-mail" href="mailto:boyitan0011@gmail.com" data-cursor="Email Boyi">EMAIL ME →</a>
+          <a href="https://www.linkedin.com/in/boyi-tan-719230285/" target="_blank" rel="noopener" data-cursor="Open LinkedIn">LINKEDIN ↗</a>
+          <a href="./Boyi_Tan_UX_Designer_Resume.pdf" target="_blank" rel="noopener" data-cursor="Open resume PDF">RESUME</a>
+          <a href="./About.html" data-cursor="About Boyi">ABOUT</a>
+        </div>
+      </div>
+      <div class="portfolio-footer-bottom">
+        <span>© 2026 Boyi Tan</span>
+      </div>
     </div>
   </footer>
 

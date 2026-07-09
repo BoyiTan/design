@@ -4,6 +4,7 @@ import { join } from 'node:path';
 
 const root = process.cwd();
 const css = readFileSync(join(root, 'assets/portfolio-nav.css'), 'utf8');
+const homeHtml = readFileSync(join(root, 'index.html'), 'utf8');
 
 const pages = [
   {
@@ -42,6 +43,37 @@ assert.match(
   css,
   /\.portfolio-grain-toggle\b[\s\S]*position:\s*fixed/,
   'Shared CSS should define a fixed, out-of-primary-nav grain toggle.'
+);
+
+const mobileNavHeight = Number(
+  css.match(/@media\s*\(max-width:\s*720px\)\s*\{[\s\S]*?\.portfolio-nav-home\s*\{[\s\S]*?min-height:\s*(\d+)px\s*!important/)?.[1]
+);
+const mobileHomeGrainTop = Number(
+  css.match(/@media\s*\(max-width:\s*720px\)\s*\{[\s\S]*?\.portfolio-grain-toggle-home\s*\{[\s\S]*?top:\s*(\d+)px/)?.[1]
+);
+
+assert.ok(
+  Number.isFinite(mobileNavHeight) && Number.isFinite(mobileHomeGrainTop),
+  'Mobile nav height and home grain toggle top should be declared in shared CSS.'
+);
+
+assert.ok(
+  mobileHomeGrainTop >= mobileNavHeight + 12,
+  'Mobile home film grain toggle should sit below the expanded two-line navigation.'
+);
+
+const narrowHomeFilmHeroPadding = Number(
+  homeHtml.match(/@media\s*\(max-width:\s*680px\)\s*\{[\s\S]*?\.film-hero-stage\s*\{[\s\S]*?padding:\s*(\d+)px/)?.[1]
+);
+
+assert.ok(
+  Number.isFinite(narrowHomeFilmHeroPadding),
+  'Homepage should declare narrow mobile film hero top padding.'
+);
+
+assert.ok(
+  narrowHomeFilmHeroPadding >= mobileHomeGrainTop + 32,
+  'Mobile home film hero content should leave vertical room for the fixed grain toggle.'
 );
 
 assert.match(
