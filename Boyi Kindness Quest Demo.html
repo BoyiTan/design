@@ -334,6 +334,19 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
 #s-cast > div[style*="grid-template-columns"] > div > div:first-child {
   border: 0 !important;
 }
+
+body:not(#page) [data-kindness-final-note][style*="border-left"][style*="padding-left"][style*="ui-monospace"] {
+  color: #3d3d44 !important;
+  border-left-color: #ececef !important;
+}
+
+body:not(#page) [data-kindness-final-note] span {
+  color: #17171a !important;
+}
+
+body:not(#page) [data-kindness-final-note] [data-kindness-note-accent] {
+  color: oklch(0.52 0.14 255) !important;
+}
 </style>
 </helmet>
 
@@ -374,7 +387,7 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
     <div class="kindness-hero-meta" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border-top:1px solid #ececef;border-bottom:1px solid #ececef;padding:18px 0;margin:32px 0 34px;animation:fadeUp .6s .36s ease both">
       <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">ROLE</div><div style="font-size:14px;font-weight:600">UX design · frontend contribution · coordination</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Story concept · homepage · data visualization · showcase support</div></div>
       <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">TIMELINE</div><div style="font-size:14px;font-weight:600">Jan–Apr 2025</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Public showcase Apr 10</div></div>
-      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">TOOLS</div><div style="font-size:14px;font-weight:600">WordPress/Divi · Datawrapper</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Photoshop · Adobe PR/AE/AU</div></div>
+      <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">TOOLS</div><div style="font-size:14px;font-weight:600">WordPress/Divi · Datawrapper</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Adobe Photoshop · PR/AE/AU</div></div>
       <div><div style="font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#96969e;margin-bottom:7px">SCOPE</div><div style="font-size:14px;font-weight:600">Carleton × CityStudio team capstone</div><div style="font-size:12.5px;color:#6b6b73;margin-top:4px">Public website · 5-person core team + 1 honorary member</div></div>
     </div>
 
@@ -788,11 +801,11 @@ body{margin:0;background:#fdfdfe;font-family:'Instrument Sans',sans-serif;-webki
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:36px">
         <div>
           <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:10px">EXPECTATIONS VS REALITY</div>
-          <div style="font:500 12px ui-monospace,Menlo,monospace;color:#6b6b73;line-height:1.8;border-left:2px solid #ececef;padding-left:16px"><span style="color:#3d3d44">delivered</span> — a completed public capstone website and an offline showcase.<br><span style="color:#3d3d44">claimed</span> — nothing we didn't verify: no usage, adoption, or learning metrics.<br><span style="color:oklch(0.52 0.14 255)">keep</span> — treat the verified outcome as the outcome.</div>
+          <div data-kindness-final-note style="font:500 12px ui-monospace,Menlo,monospace;color:#3d3d44;line-height:1.8;border-left:2px solid #ececef;padding-left:16px"><span style="color:#17171a">delivered</span> — a completed public capstone website and an offline showcase.<br><span style="color:#17171a">claimed</span> — nothing we didn't verify: no usage, adoption, or learning metrics.<br><span data-kindness-note-accent style="color:oklch(0.52 0.14 255)">keep</span> — treat the verified outcome as the outcome.</div>
         </div>
         <div>
           <div style="font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#96969e;margin-bottom:10px">RESHOOT NOTES — WHAT I'D DO DIFFERENTLY</div>
-          <div style="font:500 12px ui-monospace,Menlo,monospace;color:#6b6b73;line-height:1.8;border-left:2px solid #ececef;padding-left:16px">Run structured testing with children, parents, and educators. Measure what children understand before and after the quiz. Refine the data visuals so they stay legible — without making the issue feel like a game score.</div>
+          <div data-kindness-final-note style="font:500 12px ui-monospace,Menlo,monospace;color:#6b6b73;line-height:1.8;border-left:2px solid #ececef;padding-left:16px">Looking back, I would spend less time refining individual screens and more time validating whether the storytelling approach truly supports learning. I would test the experience with children, parents, and educators to understand what participants remember before and after the journey, while continuing to refine the visual language so it remains engaging without trivializing the seriousness of hate crime.</div>
         </div>
       </div>
     </sc-if>
