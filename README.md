@@ -7,7 +7,7 @@ Included finished pages:
 - `About.html`
 - `ArtFac.html`
 - `LinkLog.html`
-- `Boyi Kindness Quest Demo.html`
+- `KindnessQuest.html`
 - `DoneBefore.html`
 - `who-is-at-the-helm/index.html`
 - `who-is-at-the-helm/interactive-demo.html`

@@ -9,7 +9,7 @@ const publicHtmlFiles = [
   'About.html',
   'ArtFac.html',
   'LinkLog.html',
-  'Boyi Kindness Quest Demo.html',
+  'KindnessQuest.html',
   'DoneBefore.html',
   'who-is-at-the-helm/index.html',
   'who-is-at-the-helm/interactive-demo.html',
@@ -18,7 +18,7 @@ const publicHtmlFiles = [
 const caseNavFiles = [
   ['ArtFac.html', 'SCENE 01'],
   ['LinkLog.html', 'SCENE 02'],
-  ['Boyi Kindness Quest Demo.html', 'SCENE 03'],
+  ['KindnessQuest.html', 'SCENE 03'],
   ['DoneBefore.html', 'REEL 01'],
   ['who-is-at-the-helm/index.html', 'REEL 02'],
 ];
