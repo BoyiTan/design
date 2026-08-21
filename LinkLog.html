@@ -430,6 +430,131 @@
       display: block;
     }
 
+    .linklog-demo-shell {
+      position: relative;
+      margin-top: 36px;
+    }
+
+    .linklog-demo-frame {
+      aspect-ratio: 21 / 10;
+    }
+
+    .linklog-demo-frame iframe {
+      border: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #fff;
+    }
+
+    .linklog-demo-expand {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 9px 14px;
+      border: 1px solid rgba(15, 22, 38, .14);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .92);
+      color: var(--ink);
+      font: 750 11px ui-monospace, Menlo, monospace;
+      letter-spacing: .08em;
+      box-shadow: 0 12px 28px rgba(15, 22, 38, .12);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      transition: transform .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .linklog-demo-expand:hover {
+      color: var(--accent);
+      border-color: rgba(37, 107, 194, .32);
+      box-shadow: 0 16px 34px rgba(37, 107, 194, .18);
+      transform: translateY(-1px);
+    }
+
+    body.linklog-demo-modal-open {
+      overflow: hidden;
+    }
+
+    .linklog-demo-modal[hidden] {
+      display: none;
+    }
+
+    .linklog-demo-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(15, 22, 38, .68);
+      backdrop-filter: blur(12px);
+    }
+
+    .linklog-demo-modal-panel {
+      display: flex;
+      flex-direction: column;
+      width: min(1440px, 96vw);
+      height: min(900px, 92vh);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: 14px;
+      background: #f7f8fa;
+      box-shadow: 0 30px 90px rgba(15, 22, 38, .38);
+    }
+
+    .linklog-demo-modal-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .linklog-demo-modal-title {
+      margin-top: 4px;
+      color: var(--ink);
+      font-size: 18px;
+      font-weight: 760;
+      letter-spacing: -.02em;
+    }
+
+    .linklog-demo-modal-close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font: 750 11px ui-monospace, Menlo, monospace;
+      letter-spacing: .08em;
+      cursor: pointer;
+    }
+
+    .linklog-demo-modal-frame {
+      flex: 1;
+      min-height: 0;
+      background: #fff;
+    }
+
+    .linklog-demo-modal-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #fff;
+    }
+
     .media img { transition: transform .45s ease, filter .45s ease; }
     .media:hover img { transform: scale(1.025); filter: contrast(1.03) saturate(1.05); }
 
@@ -1021,6 +1146,7 @@
       }
       .hero-media,
       .evidence-card .media,
+      .linklog-demo-frame,
       .media[style*="aspect-ratio: 21 / 9"],
       .media[style*="aspect-ratio: 21 / 8"],
       .media[style*="aspect-ratio: 16 / 9"] {
@@ -1043,6 +1169,30 @@
       }
       .footer-inner {
         flex-direction: column;
+      }
+      .linklog-demo-shell {
+        display: grid;
+        gap: 12px;
+      }
+      .linklog-demo-expand {
+        position: static;
+        justify-self: start;
+      }
+      .linklog-demo-modal {
+        padding: 10px;
+      }
+      .linklog-demo-modal-panel {
+        width: 100%;
+        height: 94vh;
+        border-radius: 12px;
+      }
+      .linklog-demo-modal-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px;
+      }
+      .linklog-demo-modal-close {
+        width: 100%;
       }
     }
 
@@ -1391,8 +1541,11 @@
         </article>
       </div>
 
-      <div class="media" style="aspect-ratio: 21 / 10; margin-top: 36px;" data-cursor="Embedded working prototype">
-        <iframe title="LinkLog interactive dashboard prototype" src="./assets/linklog-demo/SP_Dashboard_Followup_Merged_v69_filter_v68_style.html" style="border:0;width:100%;height:100%;display:block;background:#fff"></iframe>
+      <div class="linklog-demo-shell" data-cursor="Expand the live LinkLog prototype">
+        <button class="linklog-demo-expand" type="button" data-linklog-demo-open aria-haspopup="dialog">EXPAND DEMO ↗</button>
+        <div class="media linklog-demo-frame" data-cursor="Embedded working prototype">
+          <iframe data-linklog-demo-source title="LinkLog interactive dashboard prototype" src="./assets/linklog-demo/SP_Dashboard_Followup_Merged_v69_filter_v68_style.html"></iframe>
+        </div>
       </div>
       <p class="caption" style="margin-top: 14px;">LIVE PROTOTYPE — HTML/CSS/JavaScript demo with CSV sample data. Prototype data is simulated.</p>
     </section>
@@ -1513,6 +1666,19 @@
 
   <div class="case-cursor" data-case-cursor-label="true" aria-hidden="true"></div>
 
+  <div class="linklog-demo-modal" data-linklog-demo-modal hidden role="dialog" aria-modal="true" aria-labelledby="linklog-demo-modal-title">
+    <div class="linklog-demo-modal-panel">
+      <div class="linklog-demo-modal-bar">
+        <div>
+          <div class="eyebrow blue">LIVE PROTOTYPE</div>
+          <div class="linklog-demo-modal-title" id="linklog-demo-modal-title">LinkLog interactive dashboard</div>
+        </div>
+        <button class="linklog-demo-modal-close" type="button" data-linklog-demo-close>CLOSE</button>
+      </div>
+      <div class="linklog-demo-modal-frame" data-linklog-demo-frame></div>
+    </div>
+  </div>
+
   <script>
     const root = document.documentElement;
     const progress = document.querySelector(".progress-bar");
@@ -1589,6 +1755,47 @@
         cursor.style.transform = `translate(${x}px, ${y}px)`;
       });
     }
+
+    const demoOpen = document.querySelector("[data-linklog-demo-open]");
+    const demoModal = document.querySelector("[data-linklog-demo-modal]");
+    const demoClose = document.querySelector("[data-linklog-demo-close]");
+    const demoFrame = document.querySelector("[data-linklog-demo-frame]");
+    const demoSource = document.querySelector("[data-linklog-demo-source]");
+    let demoLastFocus = null;
+
+    function closeDemoModal() {
+      if (!demoModal || !demoFrame) return;
+      demoModal.hidden = true;
+      demoFrame.replaceChildren();
+      document.body.classList.remove("linklog-demo-modal-open");
+      if (demoLastFocus && typeof demoLastFocus.focus === "function") {
+        demoLastFocus.focus({ preventScroll: true });
+      }
+    }
+
+    function openDemoModal() {
+      if (!demoModal || !demoFrame || !demoSource) return;
+      demoLastFocus = document.activeElement;
+      const iframe = document.createElement("iframe");
+      iframe.title = "Expanded LinkLog interactive dashboard prototype";
+      iframe.src = demoSource.getAttribute("src");
+      iframe.loading = "eager";
+      demoFrame.replaceChildren(iframe);
+      demoModal.hidden = false;
+      document.body.classList.add("linklog-demo-modal-open");
+      if (demoClose) demoClose.focus({ preventScroll: true });
+    }
+
+    if (demoOpen) demoOpen.addEventListener("click", openDemoModal);
+    if (demoClose) demoClose.addEventListener("click", closeDemoModal);
+    if (demoModal) {
+      demoModal.addEventListener("click", (event) => {
+        if (event.target === demoModal) closeDemoModal();
+      });
+    }
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && demoModal && !demoModal.hidden) closeDemoModal();
+    });
   </script>
 </body>
 </html>
